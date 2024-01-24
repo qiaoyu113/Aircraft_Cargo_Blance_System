@@ -14,10 +14,10 @@ Aircraft Cargo Balance System is an open-source system designed for managing air
 
 | Name      | Email                                   | Contribution                                       | GitHub                              |
 | --------- | --------------------------------------- | -------------------------------------------------- | ----------------------------------- |
-| Qiao Yu   | [Email](mailto:qy0803@yeah.net)        | Brief description of the main contribution by Qiao Yu | [GitHubUsername1](GitHubLink1)    |
-| Liu Yuhang | [Email](mailto:yuhanliu123@outlook.com) | Brief description of the main contribution by Liu Yuhang | [GitHubUsername2](GitHubLink2)    |
-| Deng Yiling | [Email](mailto:2840572D@student.gla.ac.uk) | Brief description of the main contribution by Deng Yiling | [GitHubUsername3](GitHubLink3)    |
-| He Chanzhang | [Email](mailto:2949931H@student.gla.ac.uk) | Brief description of the main contribution by He Chanzhang | [GitHubUsername4](GitHubLink4)    |
+| Yu Qiao | [Email](mailto:qy0803@yeah.net)        | Brief description of the main contribution by Qiao Yu | [GitHubUsername1](GitHubLink1)    |
+| Yuhang Liu | [Email](mailto:yuhanliu123@outlook.com) | Brief description of the main contribution by Liu Yuhang | [GitHubUsername2](GitHubLink2)    |
+| Yiling Deng | [Email](mailto:2840572D@student.gla.ac.uk) | Brief description of the main contribution by Deng Yiling | [GitHubUsername3](GitHubLink3)    |
+| Chanzhang He | [Email](mailto:2949931H@student.gla.ac.uk) | Brief description of the main contribution by He Chanzhang | [GitHubUsername4](GitHubLink4)    |
 
 
 ## Key Features
