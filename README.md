@@ -1,115 +1,74 @@
 # Aircraft_Cargo_Blance_System
-<details>
-  <summary>点击展开详细内容</summary>
 
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub README Language Switch</title>
-  <style>
-    .content {
-      display: none;
-    }
-    .content.active {
-      display: block;
-    }
-  </style>
-</head>
-<body>
+- en [English](README.md)
+- zh_CN [简体中文](readme/README.zh_CN.md)
 
-<button onclick="toggleLanguage('english')">English</button>
-<button onclick="toggleLanguage('chinese')">中文</button>
+<p align="center">
+  🇬🇧 <a href="README.zh_CN.md">English</a>
+  &nbsp;
+  🇨🇳 <a href="readme/README.zh_CN.md">Chinese</a>
+</p>
 
-<div id="englishContent" class="content active">
-  <!-- English content goes here -->
-</div>
+## Project Introduction
+Aircraft Cargo Balance System is an open-source system designed for managing aircraft cargo balance. This system aims to assist airlines and cargo operators in efficiently planning and managing the distribution of cargo on airplanes, ensuring a proper balance during flights to enhance flight safety and fuel efficiency.
 
-<div id="chineseContent" class="content">
-  <!-- 中文内容放在这里 -->
-</div>
+## Key Features
+1. **Cargo Management:** Provides an intuitive interface for users to easily add, remove, and edit cargo information on the airplane.
+2. **Balance Calculation:** Based on the aircraft model and cargo distribution, calculates the aircraft's center of gravity and balance conditions, ensuring a reasonable balance at various flight stages.
+3. **Report Generation:** Generates detailed balance reports, including center of gravity charts, load charts, etc., for reference by pilots and ground personnel.
 
-<script>
-  function toggleLanguage(language) {
-    document.getElementById('englishContent').classList.toggle('active', language === 'english');
-    document.getElementById('chineseContent').classList.toggle('active', language === 'chinese');
-  }
-</script>
+## Technical Architecture
+1. **Raspberry Pi**
+   - **Sensor Interface:** Connects sensors through GPIO interfaces to real-time retrieve cargo weight data.
+   - **Data Processing:** Uses Python for data processing, calculating balance conditions and generating weight heatmaps.
+   - **Local Area Network Server:** Implements a server using Flask or FastAPI to provide APIs for access by STM32 and the web frontend.
 
-</body>
-</html>
+2. **STM32 Microcontroller**
+   - **Connection to Raspberry Pi:** Communicates with the Raspberry Pi through serial communication or other protocols to receive balance commands.
+   - **Conveyor Control:** Controls the conveyor belt motor to achieve real-time balance adjustments.
+   - **Sensor Interface:** Connects to cargo sensors to obtain real-time cargo position information.
 
+3. **Web Frontend**
+   - **Frontend Interface:** Built with Vue to create a user-friendly interface displaying real-time cargo balance status and weight heatmaps.
+   - **Communication with Raspberry Pi:** Uses WebSocket or HTTP polling to fetch real-time data from the Raspberry Pi.
+   - **User Control:** Enables users to send control commands through the interface to adjust the conveyor belt position and view real-time data.
 
-</details>
-
-## 项目简介
-Aircraft Cargo Balance System 是一个用于飞机货物平衡管理的开源系统。该系统致力于帮助航空公司和货运运营商有效地规划和管理飞机上的货物分布，确保在飞行过程中保持良好的平衡，以提高飞行安全性和燃油效率。
-
-## 功能特性
-1. 货物管理： 提供直观的界面，让用户轻松添加、删除和编辑飞机上的货物信息。
-2. 平衡计算： 基于飞机型号和货物分布，计算飞机的重心和平衡情况，确保在各个飞行阶段保持合理的平衡。
-3. 报告生成： 生成详细的平衡报告，包括重心图、荷载图等，以供飞行员和地勤人员参考。
-
-## 技术架构
-1. 树莓派 (Raspberry Pi)
-树莓派作为中央控制单元，负责接收和处理传感器数据，管理货物平衡系统，同时提供一个局域网服务器以供网页端访问。
-
-传感器接口： 通过 GPIO 接口连接传感器，实时获取货物重量数据。
-数据处理： 使用 Python 进行数据处理，计算平衡情况，生成重量热力图。
-局域网服务器： 使用 Flask 或 FastAPI 框架搭建服务器，提供 API 供STM32和网页端访问。
-
-2. STM32 微控制器
-STM32负责实时控制传送带的移动，接收树莓派的指令来调整传送带的位置，确保货物保持平衡。
-
-连接树莓派： 通过串口通信或其他通信协议，接收树莓派发送的平衡指令。
-传送带控制： 控制传送带的电机，实现实时平衡调整。
-传感器接口： 连接货物传感器，获取实时的货物位置信息。
-
-3. 网页端 (Web)
-网页端提供用户界面，允许用户监视货物平衡状态，实时查看重量热力图，以及进行远程控制。
-
-前端界面： 使用 Vue 构建用户友好的界面，展示实时的货物平衡状态和重量热力图。
-与树莓派通信： 通过使用 WebSocket 或 HTTP 轮询等方式，实时获取树莓派的数据。
-用户控制： 允许用户通过界面发送控制指令，调整传送带位置，查看实时数据。
-
-
-## 项目框架及结构
+## Project Framework and Structure
 ```
 Aircraft_Cargo_Balance_System/
-|-- backend/                  # 树莓派端代码
-|   |-- app/                  # Flask或FastAPI应用代码
+|-- backend/                  
+|   |-- app/                  
 |   |   |-- __init__.py
-|   |   |-- routes.py         # API路由
-|   |   |-- controllers/      # 控制器，处理业务逻辑
+|   |   |-- routes.py         
+|   |   |-- controllers/      
 |   |       |-- __init__.py
-|   |       |-- balance_controller.py   # 平衡控制器
-|   |-- config/               # 配置文件
-|   |   |-- config.py         # 数据库和其他配置
-|   |-- models/               # 数据库模型
+|   |       |-- balance_controller.py   
+|   |-- config/               
+|   |   |-- config.py         
+|   |-- models/               
 |   |   |-- __init__.py
-|   |   |-- cargo_model.py    # 货物模型
-|   |   |-- balance_model.py  # 平衡信息模型
-|   |-- utils/                # 工具函数
+|   |   |-- cargo_model.py    
+|   |   |-- balance_model.py  
+|   |-- utils/                
 |       |-- __init__.py
-|       |-- calculations.py   # 计算平衡等实用函数
-|-- frontend/                 # 网页端代码
+|       |-- calculations.py   
+|-- frontend/                 
 |   |-- public/
 |   |-- src/
-|   |   |-- components/       # React组件
-|   |   |   |-- BalanceChart.js    # 重量热力图组件
-|   |   |   |-- ControlPanel.js   # 控制面板组件
-|   |   |-- pages/            # 页面组件
-|   |   |   |-- Dashboard.js      # 仪表盘页面
-|   |   |-- services/         # 前端服务
-|   |   |   |-- api.js         # 与后端API通信
-|   |   |-- App.js            # 主应用组件
-|   |   |-- index.js          # 应用入口
-|-- stm32/                    # STM32端代码
-|   |-- src/                  # STM32源代码
-|   |   |-- main.c            # 主程序入口
-|   |   |-- communication.c   # 通信模块
-|   |   |-- conveyor.c        # 传送带控制模块
-|-- README.md                 # 项目说明文件
-|-- LICENSE                   # 许可证文件
+|   |   |-- components/       
+|   |   |   |-- BalanceChart.js    
+|   |   |   |-- ControlPanel.js   
+|   |   |-- pages/            
+|   |   |   |-- Dashboard.js      
+|   |   |-- services/         
+|   |   |   |-- api.js         
+|   |   |-- App.js            
+|   |   |-- index.js          
+|-- stm32/                    
+|   |-- src/                  
+|   |   |-- main.c            
+|   |   |-- communication.c   
+|   |   |-- conveyor.c        
+|-- README.md                 
+|-- LICENSE                   
 ```
