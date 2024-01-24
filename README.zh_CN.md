@@ -1,7 +1,7 @@
 # 飞机货物自动化平衡管理系统
 
 <p align="center">
-    <img alt="logo" src="assets/icon.png" width="120" height="120" style="margin-bottom: 10px;">
+    <img alt="logo" src="/assets/icon.png" width="120" height="120" style="margin-bottom: 10px;">
 </p>
 
 <p align="center">
