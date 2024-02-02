@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "echarts": "^5.4.3",
+    "echarts-gl": "^2.0.9"
+  }
+}
