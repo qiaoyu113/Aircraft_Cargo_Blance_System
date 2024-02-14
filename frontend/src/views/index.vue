@@ -2,6 +2,9 @@
   <div id="index">
     <dv-full-screen-container class="bg">
 
+
+        <button @click="increaseCounter">Increase Counter</button>
+        <button @click="decreaseCounter">Decrease Counter</button>
       <dv-loading v-if="loading">Loading...</dv-loading>
       <div v-else class="host-body">
           <div class="nav">
@@ -45,7 +48,8 @@ import status from "./status";
 export default {
   data() {
     return {
-      loading: true
+      loading: true,
+      ws: null,
     };
   },
   components: {
@@ -55,13 +59,47 @@ export default {
   mounted() {
     this.cancelLoading();
   },
+  created() {
+    this.connect();
+  },
   methods: {
     cancelLoading() {
       setTimeout(() => {
         this.loading = false;
       }, 2000);
+    },
+    connect() {
+      this.ws = new WebSocket('ws://127.0.0.1:8084');
+      this.ws.onmessage = (event) => {
+        // 当收到消息时更新message
+        console.log(event.data)
+      };
+      this.ws.onopen = () => {
+        console.log('WebSocket connection established');
+      };
+      this.ws.onerror = (error) => {
+        console.error('WebSocket Error:', error);
+      };
+    },
+    // 发送增加计数器的消息
+    increaseCounter() {
+      if (this.ws.readyState === WebSocket.OPEN) {
+        this.ws.send('increase');
+      }
+    },
+    // 发送减少计数器的消息
+    decreaseCounter() {
+      if (this.ws.readyState === WebSocket.OPEN) {
+        this.ws.send('decrease');
+      }
+    },
+  },
+  beforeDestroy() {
+    // 组件销毁前关闭WebSocket连接
+    if (this.ws) {
+      this.ws.close();
     }
-  }
+  },
 };
 </script>
 
