@@ -1,8 +1,6 @@
 <template>
   <div id="index">
     <dv-full-screen-container class="bg">
-
-
         <button @click="increaseCounter">Increase Counter</button>
         <button @click="decreaseCounter">Decrease Counter</button>
       <dv-loading v-if="loading">Loading...</dv-loading>
