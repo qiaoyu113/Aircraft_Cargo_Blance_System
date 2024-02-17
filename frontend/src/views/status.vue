@@ -13,7 +13,7 @@
         </div>
       </div>
       <div>
-        <light />
+        <light :status="conveyorStatus"/>
       </div>
       <div>
         <balance />
@@ -30,11 +30,16 @@ export default {
   data() {
     return {};
   },
+  props: {
+    // 声明接收来自父组件的参数
+    conveyorStatus: Number,
+  },
   components: {
     light,
     balance
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {}
 };
 </script>

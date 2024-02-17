@@ -1,23 +1,26 @@
-#include <boost/beast.hpp>
-#include <boost/asio.hpp>
-#include <iostream>
-#include <string>
-#include <thread>
-#include <nlohmann/json.hpp>
+// websocket_session.cpp
+
+#include "websocket_session.hpp"
 #include "../app/conveyor_status.hpp"
+#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
-namespace net = boost::asio;
-using tcp = net::ip::tcp;
-namespace websocket = boost::beast::websocket;
+WebSocketSession::WebSocketSession(tcp::socket socket)
+    : socket(std::move(socket)), ws(std::move(this->socket)), counter(0) {}
 
-void websocket_session(tcp::socket socket) {
+void WebSocketSession::run() {
     try {
-        websocket::stream<tcp::socket> ws{std::move(socket)};
+        // 在 run 方法中执行 accept
+        std::cout << "Running WebSocketSession" << std::endl;
+        // if (!socket.is_open()) {
+        //     std::cerr << "Error: Socket is not open" << std::endl;
+        //     return;
+        // }
+        
         ws.accept();
 
-        for(;;) {
+        for (;;) {
             boost::beast::flat_buffer buffer;
             ws.read(buffer);
 
@@ -53,21 +56,6 @@ void websocket_session(tcp::socket socket) {
             }
         }
 
-    } catch (std::exception const& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-}
-
-int main() {
-    try {
-        net::io_context ioc{1};
-        tcp::acceptor acceptor{ioc, {net::ip::make_address("127.0.0.1"), 8085}};
-        
-        for (;;) {
-            tcp::socket socket{ioc};
-            acceptor.accept(socket);
-            std::thread{websocket_session, std::move(socket)}.detach();
-        }
     } catch (std::exception const& e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
