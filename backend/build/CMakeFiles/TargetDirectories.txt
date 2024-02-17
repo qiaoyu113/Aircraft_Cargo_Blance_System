@@ -1,0 +1,3 @@
+/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles/run.dir
+/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles/edit_cache.dir
+/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles/rebuild_cache.dir

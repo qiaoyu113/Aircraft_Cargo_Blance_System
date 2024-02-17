@@ -26,7 +26,7 @@
             <!-- 左侧 -->
             <div>
               <!-- <dv-border-box-12> -->
-              <bottomLeft />
+              <simulation />
               <!-- </dv-border-box-12> -->
             </div>
             <!-- 右侧 -->
@@ -40,7 +40,7 @@
 
 <script>
 // import center from "./center";
-import bottomLeft from "./bottomLeft";
+import simulation from "./simulation";
 import status from "./status";
 // import centreLeft1 from "./centreLeft1";
 export default {
@@ -51,7 +51,7 @@ export default {
     };
   },
   components: {
-    bottomLeft,
+    simulation,
     status
   },
   mounted() {
