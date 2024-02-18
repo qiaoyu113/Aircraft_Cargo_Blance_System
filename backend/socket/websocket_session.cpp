@@ -1,23 +1,26 @@
-#include <boost/beast.hpp>
-#include <boost/asio.hpp>
-#include <iostream>
-#include <string>
-#include <thread>
-#include <nlohmann/json.hpp>
+// websocket_session.cpp
+
+#include "websocket_session.hpp"
 #include "../app/conveyor_status.hpp"
+#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
-namespace net = boost::asio;
-using tcp = net::ip::tcp;
-namespace websocket = boost::beast::websocket;
+WebSocketSession::WebSocketSession(tcp::socket socket)
+    : socket(std::move(socket)), ws(std::move(this->socket)), counter(0) {}
 
-void websocket_session(tcp::socket socket) {
+void WebSocketSession::run() {
     try {
-        websocket::stream<tcp::socket> ws{std::move(socket)};
+        // 在 run 方法中执行 accept
+        std::cout << "Running WebSocketSession" << std::endl;
+        // if (!socket.is_open()) {
+        //     std::cerr << "Error: Socket is not open" << std::endl;
+        //     return;
+        // }
+        
         ws.accept();
 
-        for(;;) {
+        for (;;) {
             boost::beast::flat_buffer buffer;
             ws.read(buffer);
 
@@ -37,37 +40,21 @@ void websocket_session(tcp::socket socket) {
                 std::cout << "Action: " << action << std::endl;
                 std::cout << "Parameter: " << parameter << std::endl;
 
-                // 根据接收到的消息来增加或减少计数器
-                int param = 0;
                 if(action == "changeConveyorStatus") {
-                    param = changeConveyorStatus(parameter);
+                    // 根据接收到的消息来变更
+                    int param = changeConveyorStatus(parameter);
+                    // 发送更新后的值回客户端
+                    json response;
+                    response["action"] = action;
+                    response["parameter"] = param;
+                    ws.write(net::buffer(response.dump()));
                 }
-                // 发送更新后的计数器值回客户端
-                json response;
-                response["action"] = action;
-                response["parameter"] = param;
-                ws.write(net::buffer(response.dump()));
 
             } catch (const json::exception& e) {
                 std::cerr << "Error parsing JSON: " << e.what() << std::endl;
             }
         }
 
-    } catch (std::exception const& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-}
-
-int main() {
-    try {
-        net::io_context ioc{1};
-        tcp::acceptor acceptor{ioc, {net::ip::make_address("127.0.0.1"), 8085}};
-        
-        for (;;) {
-            tcp::socket socket{ioc};
-            acceptor.accept(socket);
-            std::thread{websocket_session, std::move(socket)}.detach();
-        }
     } catch (std::exception const& e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }

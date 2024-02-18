@@ -87,3 +87,10 @@ Aircraft_Cargo_Balance_System/
 
 ### boost download link: 
 https://www.boost.org/doc/libs/1_84_0/more/getting_started/unix-variants.html
+### nlohmann download link: 
+https://github.com/nlohmann/json.git
+### install wiringpi
+```
+sudo apt-get update
+sudo apt-get install wiringpi
+```
