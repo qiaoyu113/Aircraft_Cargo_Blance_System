@@ -83,50 +83,66 @@ CMakeFiles/run.dir/socket/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run.dir/socket/main.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/main.cpp -o CMakeFiles/run.dir/socket/main.cpp.s
 
-CMakeFiles/run.dir/socket/websocket_session.cpp.o: CMakeFiles/run.dir/flags.make
-CMakeFiles/run.dir/socket/websocket_session.cpp.o: /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session.cpp
-CMakeFiles/run.dir/socket/websocket_session.cpp.o: CMakeFiles/run.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/run.dir/socket/websocket_session.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run.dir/socket/websocket_session.cpp.o -MF CMakeFiles/run.dir/socket/websocket_session.cpp.o.d -o CMakeFiles/run.dir/socket/websocket_session.cpp.o -c /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session.cpp
+CMakeFiles/run.dir/socket/websocket_session_button.cpp.o: CMakeFiles/run.dir/flags.make
+CMakeFiles/run.dir/socket/websocket_session_button.cpp.o: /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session_button.cpp
+CMakeFiles/run.dir/socket/websocket_session_button.cpp.o: CMakeFiles/run.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/run.dir/socket/websocket_session_button.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run.dir/socket/websocket_session_button.cpp.o -MF CMakeFiles/run.dir/socket/websocket_session_button.cpp.o.d -o CMakeFiles/run.dir/socket/websocket_session_button.cpp.o -c /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session_button.cpp
 
-CMakeFiles/run.dir/socket/websocket_session.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/run.dir/socket/websocket_session.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session.cpp > CMakeFiles/run.dir/socket/websocket_session.cpp.i
+CMakeFiles/run.dir/socket/websocket_session_button.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/run.dir/socket/websocket_session_button.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session_button.cpp > CMakeFiles/run.dir/socket/websocket_session_button.cpp.i
 
-CMakeFiles/run.dir/socket/websocket_session.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run.dir/socket/websocket_session.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session.cpp -o CMakeFiles/run.dir/socket/websocket_session.cpp.s
+CMakeFiles/run.dir/socket/websocket_session_button.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run.dir/socket/websocket_session_button.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session_button.cpp -o CMakeFiles/run.dir/socket/websocket_session_button.cpp.s
 
-CMakeFiles/run.dir/app/conveyor_status.cpp.o: CMakeFiles/run.dir/flags.make
-CMakeFiles/run.dir/app/conveyor_status.cpp.o: /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/conveyor_status.cpp
-CMakeFiles/run.dir/app/conveyor_status.cpp.o: CMakeFiles/run.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/run.dir/app/conveyor_status.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run.dir/app/conveyor_status.cpp.o -MF CMakeFiles/run.dir/app/conveyor_status.cpp.o.d -o CMakeFiles/run.dir/app/conveyor_status.cpp.o -c /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/conveyor_status.cpp
+CMakeFiles/run.dir/app/led_control/led.cpp.o: CMakeFiles/run.dir/flags.make
+CMakeFiles/run.dir/app/led_control/led.cpp.o: /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/led.cpp
+CMakeFiles/run.dir/app/led_control/led.cpp.o: CMakeFiles/run.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/run.dir/app/led_control/led.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run.dir/app/led_control/led.cpp.o -MF CMakeFiles/run.dir/app/led_control/led.cpp.o.d -o CMakeFiles/run.dir/app/led_control/led.cpp.o -c /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/led.cpp
 
-CMakeFiles/run.dir/app/conveyor_status.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/run.dir/app/conveyor_status.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/conveyor_status.cpp > CMakeFiles/run.dir/app/conveyor_status.cpp.i
+CMakeFiles/run.dir/app/led_control/led.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/run.dir/app/led_control/led.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/led.cpp > CMakeFiles/run.dir/app/led_control/led.cpp.i
 
-CMakeFiles/run.dir/app/conveyor_status.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run.dir/app/conveyor_status.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/conveyor_status.cpp -o CMakeFiles/run.dir/app/conveyor_status.cpp.s
+CMakeFiles/run.dir/app/led_control/led.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run.dir/app/led_control/led.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/led.cpp -o CMakeFiles/run.dir/app/led_control/led.cpp.s
+
+CMakeFiles/run.dir/app/led_control/button.cpp.o: CMakeFiles/run.dir/flags.make
+CMakeFiles/run.dir/app/led_control/button.cpp.o: /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/button.cpp
+CMakeFiles/run.dir/app/led_control/button.cpp.o: CMakeFiles/run.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/run.dir/app/led_control/button.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run.dir/app/led_control/button.cpp.o -MF CMakeFiles/run.dir/app/led_control/button.cpp.o.d -o CMakeFiles/run.dir/app/led_control/button.cpp.o -c /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/button.cpp
+
+CMakeFiles/run.dir/app/led_control/button.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/run.dir/app/led_control/button.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/button.cpp > CMakeFiles/run.dir/app/led_control/button.cpp.i
+
+CMakeFiles/run.dir/app/led_control/button.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run.dir/app/led_control/button.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/button.cpp -o CMakeFiles/run.dir/app/led_control/button.cpp.s
 
 # Object files for target run
 run_OBJECTS = \
 "CMakeFiles/run.dir/socket/main.cpp.o" \
-"CMakeFiles/run.dir/socket/websocket_session.cpp.o" \
-"CMakeFiles/run.dir/app/conveyor_status.cpp.o"
+"CMakeFiles/run.dir/socket/websocket_session_button.cpp.o" \
+"CMakeFiles/run.dir/app/led_control/led.cpp.o" \
+"CMakeFiles/run.dir/app/led_control/button.cpp.o"
 
 # External object files for target run
 run_EXTERNAL_OBJECTS =
 
 run: CMakeFiles/run.dir/socket/main.cpp.o
-run: CMakeFiles/run.dir/socket/websocket_session.cpp.o
-run: CMakeFiles/run.dir/app/conveyor_status.cpp.o
+run: CMakeFiles/run.dir/socket/websocket_session_button.cpp.o
+run: CMakeFiles/run.dir/app/led_control/led.cpp.o
+run: CMakeFiles/run.dir/app/led_control/button.cpp.o
 run: CMakeFiles/run.dir/build.make
 run: /usr/local/lib/libboost_system.dylib
 run: CMakeFiles/run.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable run"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/run.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

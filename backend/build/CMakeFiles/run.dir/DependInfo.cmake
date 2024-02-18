@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/conveyor_status.cpp" "CMakeFiles/run.dir/app/conveyor_status.cpp.o" "gcc" "CMakeFiles/run.dir/app/conveyor_status.cpp.o.d"
+  "/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/button.cpp" "CMakeFiles/run.dir/app/led_control/button.cpp.o" "gcc" "CMakeFiles/run.dir/app/led_control/button.cpp.o.d"
+  "/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/app/led_control/led.cpp" "CMakeFiles/run.dir/app/led_control/led.cpp.o" "gcc" "CMakeFiles/run.dir/app/led_control/led.cpp.o.d"
   "/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/main.cpp" "CMakeFiles/run.dir/socket/main.cpp.o" "gcc" "CMakeFiles/run.dir/socket/main.cpp.o.d"
-  "/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session.cpp" "CMakeFiles/run.dir/socket/websocket_session.cpp.o" "gcc" "CMakeFiles/run.dir/socket/websocket_session.cpp.o.d"
+  "/Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session_button.cpp" "CMakeFiles/run.dir/socket/websocket_session_button.cpp.o" "gcc" "CMakeFiles/run.dir/socket/websocket_session_button.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

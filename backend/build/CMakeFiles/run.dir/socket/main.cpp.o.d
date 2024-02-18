@@ -1,6 +1,6 @@
 CMakeFiles/run.dir/socket/main.cpp.o: \
   /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/main.cpp \
-  /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session.hpp \
+  /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/websocket_session_button.hpp \
   /usr/local/include/boost/beast.hpp \
   /usr/local/include/boost/beast/core/detail/config.hpp \
   /usr/local/include/boost/config.hpp \
@@ -2040,6 +2040,8 @@ CMakeFiles/run.dir/socket/main.cpp.o: \
   /usr/local/include/boost/beast/websocket/impl/write.hpp \
   /usr/local/include/boost/beast/zlib.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/iostream \
+  /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/../app/led_control/led.hpp \
+  /Users/qiaoyu/Documents/格拉斯哥/嵌入式/Aircraft_Cargo_Blance_System/backend/socket/../app/led_control/button.hpp \
   /usr/local/include/boost/asio.hpp \
   /usr/local/include/boost/asio/any_completion_executor.hpp \
   /usr/local/include/boost/asio/impl/any_completion_executor.ipp \

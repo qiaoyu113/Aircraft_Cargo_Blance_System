@@ -129,29 +129,53 @@ run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
 
-app/conveyor_status.o: app/conveyor_status.cpp.o
-.PHONY : app/conveyor_status.o
+app/led_control/button.o: app/led_control/button.cpp.o
+.PHONY : app/led_control/button.o
 
 # target to build an object file
-app/conveyor_status.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/app/conveyor_status.cpp.o
-.PHONY : app/conveyor_status.cpp.o
+app/led_control/button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/app/led_control/button.cpp.o
+.PHONY : app/led_control/button.cpp.o
 
-app/conveyor_status.i: app/conveyor_status.cpp.i
-.PHONY : app/conveyor_status.i
+app/led_control/button.i: app/led_control/button.cpp.i
+.PHONY : app/led_control/button.i
 
 # target to preprocess a source file
-app/conveyor_status.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/app/conveyor_status.cpp.i
-.PHONY : app/conveyor_status.cpp.i
+app/led_control/button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/app/led_control/button.cpp.i
+.PHONY : app/led_control/button.cpp.i
 
-app/conveyor_status.s: app/conveyor_status.cpp.s
-.PHONY : app/conveyor_status.s
+app/led_control/button.s: app/led_control/button.cpp.s
+.PHONY : app/led_control/button.s
 
 # target to generate assembly for a file
-app/conveyor_status.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/app/conveyor_status.cpp.s
-.PHONY : app/conveyor_status.cpp.s
+app/led_control/button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/app/led_control/button.cpp.s
+.PHONY : app/led_control/button.cpp.s
+
+app/led_control/led.o: app/led_control/led.cpp.o
+.PHONY : app/led_control/led.o
+
+# target to build an object file
+app/led_control/led.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/app/led_control/led.cpp.o
+.PHONY : app/led_control/led.cpp.o
+
+app/led_control/led.i: app/led_control/led.cpp.i
+.PHONY : app/led_control/led.i
+
+# target to preprocess a source file
+app/led_control/led.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/app/led_control/led.cpp.i
+.PHONY : app/led_control/led.cpp.i
+
+app/led_control/led.s: app/led_control/led.cpp.s
+.PHONY : app/led_control/led.s
+
+# target to generate assembly for a file
+app/led_control/led.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/app/led_control/led.cpp.s
+.PHONY : app/led_control/led.cpp.s
 
 socket/main.o: socket/main.cpp.o
 .PHONY : socket/main.o
@@ -177,29 +201,29 @@ socket/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/socket/main.cpp.s
 .PHONY : socket/main.cpp.s
 
-socket/websocket_session.o: socket/websocket_session.cpp.o
-.PHONY : socket/websocket_session.o
+socket/websocket_session_button.o: socket/websocket_session_button.cpp.o
+.PHONY : socket/websocket_session_button.o
 
 # target to build an object file
-socket/websocket_session.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/socket/websocket_session.cpp.o
-.PHONY : socket/websocket_session.cpp.o
+socket/websocket_session_button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/socket/websocket_session_button.cpp.o
+.PHONY : socket/websocket_session_button.cpp.o
 
-socket/websocket_session.i: socket/websocket_session.cpp.i
-.PHONY : socket/websocket_session.i
+socket/websocket_session_button.i: socket/websocket_session_button.cpp.i
+.PHONY : socket/websocket_session_button.i
 
 # target to preprocess a source file
-socket/websocket_session.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/socket/websocket_session.cpp.i
-.PHONY : socket/websocket_session.cpp.i
+socket/websocket_session_button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/socket/websocket_session_button.cpp.i
+.PHONY : socket/websocket_session_button.cpp.i
 
-socket/websocket_session.s: socket/websocket_session.cpp.s
-.PHONY : socket/websocket_session.s
+socket/websocket_session_button.s: socket/websocket_session_button.cpp.s
+.PHONY : socket/websocket_session_button.s
 
 # target to generate assembly for a file
-socket/websocket_session.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/socket/websocket_session.cpp.s
-.PHONY : socket/websocket_session.cpp.s
+socket/websocket_session_button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/socket/websocket_session_button.cpp.s
+.PHONY : socket/websocket_session_button.cpp.s
 
 # Help Target
 help:
@@ -210,15 +234,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... run"
-	@echo "... app/conveyor_status.o"
-	@echo "... app/conveyor_status.i"
-	@echo "... app/conveyor_status.s"
+	@echo "... app/led_control/button.o"
+	@echo "... app/led_control/button.i"
+	@echo "... app/led_control/button.s"
+	@echo "... app/led_control/led.o"
+	@echo "... app/led_control/led.i"
+	@echo "... app/led_control/led.s"
 	@echo "... socket/main.o"
 	@echo "... socket/main.i"
 	@echo "... socket/main.s"
-	@echo "... socket/websocket_session.o"
-	@echo "... socket/websocket_session.i"
-	@echo "... socket/websocket_session.s"
+	@echo "... socket/websocket_session_button.o"
+	@echo "... socket/websocket_session_button.i"
+	@echo "... socket/websocket_session_button.s"
 .PHONY : help
 
 

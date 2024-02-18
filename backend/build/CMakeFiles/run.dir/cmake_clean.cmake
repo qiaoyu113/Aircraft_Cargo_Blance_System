@@ -1,10 +1,12 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/run.dir/app/conveyor_status.cpp.o"
-  "CMakeFiles/run.dir/app/conveyor_status.cpp.o.d"
+  "CMakeFiles/run.dir/app/led_control/button.cpp.o"
+  "CMakeFiles/run.dir/app/led_control/button.cpp.o.d"
+  "CMakeFiles/run.dir/app/led_control/led.cpp.o"
+  "CMakeFiles/run.dir/app/led_control/led.cpp.o.d"
   "CMakeFiles/run.dir/socket/main.cpp.o"
   "CMakeFiles/run.dir/socket/main.cpp.o.d"
-  "CMakeFiles/run.dir/socket/websocket_session.cpp.o"
-  "CMakeFiles/run.dir/socket/websocket_session.cpp.o.d"
+  "CMakeFiles/run.dir/socket/websocket_session_button.cpp.o"
+  "CMakeFiles/run.dir/socket/websocket_session_button.cpp.o.d"
   "run"
   "run.pdb"
 )

@@ -1,8 +1,8 @@
 <template>
   <div id="index">
     <dv-full-screen-container class="bg">
-        <button @click="increaseCounter">Increase Counter</button>
-        <button @click="decreaseCounter">Decrease Counter</button>
+        <button @click="changeConveyorStatus('warning')">warning</button>
+        <button @click="changeConveyorStatus('normal')">normal</button>
       <dv-loading v-if="loading">Loading...</dv-loading>
       <div v-else class="host-body">
           <div class="nav">
@@ -30,7 +30,7 @@
               <!-- </dv-border-box-12> -->
             </div>
             <!-- 右侧 -->
-            <status></status>
+            <status :conveyorStatus="conveyorStatus"></status>
           </div>
         </div>
       </div>
@@ -48,6 +48,7 @@ export default {
     return {
       loading: true,
       ws: null,
+      conveyorStatus:0
     };
   },
   components: {
@@ -67,10 +68,13 @@ export default {
       }, 2000);
     },
     connect() {
-      this.ws = new WebSocket('ws://127.0.0.1:8084');
+      this.ws = new WebSocket('ws://127.0.0.1:8095');
       this.ws.onmessage = (event) => {
         // 当收到消息时更新message
-        console.log(event.data)
+        const res = JSON.parse(event.data);
+        if(res.action == 'changeConveyorStatus') {
+          this.conveyorStatus = res.parameter
+        }
       };
       this.ws.onopen = () => {
         console.log('WebSocket connection established');
@@ -79,18 +83,17 @@ export default {
         console.error('WebSocket Error:', error);
       };
     },
-    // 发送增加计数器的消息
-    increaseCounter() {
+    // conveyor status
+    changeConveyorStatus(status) {
       if (this.ws.readyState === WebSocket.OPEN) {
-        this.ws.send('increase');
+        const message = {
+          action: 'changeConveyorStatus',
+          parameter: status
+        };
+        const messageString = JSON.stringify(message);
+        this.ws.send(messageString);
       }
-    },
-    // 发送减少计数器的消息
-    decreaseCounter() {
-      if (this.ws.readyState === WebSocket.OPEN) {
-        this.ws.send('decrease');
-      }
-    },
+    }
   },
   beforeDestroy() {
     // 组件销毁前关闭WebSocket连接
