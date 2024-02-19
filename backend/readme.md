@@ -1,4 +1,4 @@
-### running code in terminal: 
+### running code in terminal for singal: 
 1. g++ -std=c++11 server.cpp -o server
 g++ -std=c++11 -I../packages/json-develop -o server server.cpp
 2. ./server
