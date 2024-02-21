@@ -25,13 +25,16 @@
 
 <script>
 export default {
+  props: {
+    // 声明接收来自父组件的参数
+    status: Number,
+  },
   data() {
     return {
-        status: 0
+        // status: 0
     };
   },
   mounted() {
-    
   },
   methods: {
     
