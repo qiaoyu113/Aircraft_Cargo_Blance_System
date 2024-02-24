@@ -25,11 +25,11 @@ private:
     Left left;
     std::function<void(bool)> callback;
     // 重量传感器对象作为成员变量
-    W1 W1;
-    W2 W2;
-    W3 W3;
-    W4 W4;
-    W5 W5;
+    W1 w1;
+    W2 w2;
+    W3 w3;
+    W4 w4;
+    W5 w5;
 };
 
 #endif // CONTROLLER_HPP
