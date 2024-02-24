@@ -1,4 +1,4 @@
-#include "W1.hpp"
+#include "w1.hpp"
 #include <wiringPi.h>
 #include <iostream>
 
