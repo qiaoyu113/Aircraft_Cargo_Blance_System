@@ -1,11 +1,12 @@
 // main.cpp
 
 // #include "websocket_session.hpp"
-#include "websocket_session_button.hpp"
+// #include "websocket_session_button.hpp"
+#include "websocket_session_main.hpp"
 #include <boost/asio.hpp>
 #include <thread>
-#include "../app/led_control/led.hpp"
-#include "../app/led_control/button.hpp"
+// #include "../app/led_control/led.hpp"
+// #include "../app/led_control/button.hpp"
 #include "../app/controller/controller.hpp"
 
 int main() {
@@ -22,10 +23,11 @@ int main() {
                 // 模拟电灯
                 // WebSocketSession(std::move(socket)).run();
                 // 真实电灯
-                Led led;  // 创建 Led 对象
-                Button button;  // 创建 Button 对象
-                
-                WebSocketSession(std::move(socket), led, button).run();
+                // Led led;  // 创建 Led 对象
+                // Button button;  // 创建 Button 对象
+                // WebSocketSession(std::move(socket), led, button).run();
+                Controller controller;
+                WebSocketSession(std::move(socket), controller).run();
             }}.detach();
         }
 
