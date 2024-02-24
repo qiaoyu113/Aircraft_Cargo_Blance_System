@@ -13,13 +13,12 @@ int main() {
     std::cerr << "main is comming" << std::endl;
     try {
         boost::asio::io_context ioc{1};
-        tcp::acceptor acceptor{ioc, {net::ip::make_address("127.0.0.1"), 8081}};
+        tcp::acceptor acceptor{ioc, {net::ip::make_address("127.0.0.1"), 8084}};
 
         for (;;) {
             tcp::socket socket{ioc};
             acceptor.accept(socket);
 
-            // 在新线程中执行 WebSocket 逻辑
             std::thread{[socket = std::move(socket)]() mutable {
                 // 模拟电灯
                 // WebSocketSession(std::move(socket)).run();

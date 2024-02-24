@@ -19,11 +19,11 @@ std::vector<double> Controller::readWeight() {
     double w4_weight = w4.weightReading();
     double w5_weight = w5.weightReading();
 
-    std::cerr << "w1_weight" << w1_weight << std::endl;
-    std::cerr << "w2_weight" << w2_weight << std::endl;
-    std::cerr << "w3_weight" << w3_weight << std::endl;
-    std::cerr << "w4_weight" << w4_weight << std::endl;
-    std::cerr << "w5_weight" << w5_weight << std::endl;
+    // std::cerr << "w1_weight" << w1_weight << std::endl;
+    // std::cerr << "w2_weight" << w2_weight << std::endl;
+    // std::cerr << "w3_weight" << w3_weight << std::endl;
+    // std::cerr << "w4_weight" << w4_weight << std::endl;
+    // std::cerr << "w5_weight" << w5_weight << std::endl;
 
     return {w1_weight, w2_weight, w3_weight, w4_weight, w5_weight};
 }
