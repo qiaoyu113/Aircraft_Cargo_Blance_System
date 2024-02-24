@@ -28,7 +28,10 @@ std::vector<double> Controller::readWeight() {
     return {w1_weight, w2_weight, w3_weight, w4_weight, w5_weight};
 }
 
-void Controller::setpControl(const std::string& status) {
+void Controller::setpControl(const std::string& status, int sensorIndex) {
+    // 可以在这里添加基于sensorIndex的逻辑
+    std::cout << "Sensor " << sensorIndex << " triggered action: " << status << std::endl;
+
     if(status == "right"){
         right.turnOn();
         pause.turnOff();
@@ -52,13 +55,21 @@ void Controller::RTP(const std::vector<double>& currentWeight) {
         return;
     }
 
-    // 检查是否满足特定条件以调用对应的控制函数
-    if (currentWeight[0] > 0 || currentWeight[1] > 0) {
-        setpControl("right");
-    } else if (currentWeight[2] > 0) {
-        setpControl("pause");
-    } else if (currentWeight[3] > 0 || currentWeight[4] > 0) {
-        setpControl("left");
+    // 对每个传感器的读数独立判断
+    if (currentWeight[0] > 0) {
+        setpControl("right", 0);  // 第1个传感器特定的操作
+    }
+    if (currentWeight[1] > 0) {
+        setpControl("right", 1);  // 第2个传感器特定的操作
+    }
+    if (currentWeight[2] > 0) {
+        setpControl("pause", 2);  // 第3个传感器特定的操作
+    }
+    if (currentWeight[3] > 0) {
+        setpControl("left", 3);  // 第4个传感器特定的操作
+    }
+    if (currentWeight[4] > 0) {
+        setpControl("left", 4);  // 第5个传感器特定的操作
     }
 }
 
