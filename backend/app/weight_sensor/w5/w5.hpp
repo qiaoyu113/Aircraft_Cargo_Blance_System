@@ -5,7 +5,7 @@
 
 class W5 {
 public:
-    W5();
+    W5(int pin);
 
     void setCallback(std::function<void(bool)> callback);
 
