@@ -3,7 +3,7 @@
 #include <wiringPi.h>
 
 // 初始化定义传送带的GPIO引脚号
-Controller::Controller(): left(29), pause(28), right(27), W1(7), W2(0), W3(2), W4(3), W5(21) {
+Controller::Controller(): left(29), pause(28), right(27), w1(7), w2(0), w3(2), w4(3), w5(21) {
     wiringPiSetup();
 }
 
@@ -13,11 +13,11 @@ void Controller::setCallback(std::function<void(bool)> callback) {
 
 std::vector<double> Controller::readWeight() {
     // 直接使用成员变量读取重量
-    double w1_weight = W1.weightReading();
-    double w2_weight = W2.weightReading();
-    double w3_weight = W3.weightReading();
-    double w4_weight = W4.weightReading();
-    double w5_weight = W5.weightReading();
+    double w1_weight = w1.weightReading();
+    double w2_weight = w2.weightReading();
+    double w3_weight = w3.weightReading();
+    double w4_weight = w4.weightReading();
+    double w5_weight = w5.weightReading();
 
     return {w1_weight, w2_weight, w3_weight, w4_weight, w5_weight};
 }
