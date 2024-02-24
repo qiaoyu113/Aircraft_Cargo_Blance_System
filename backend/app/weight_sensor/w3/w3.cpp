@@ -5,7 +5,7 @@
 W3::W3(int pin) : pin(pin) {
     wiringPiSetup();
     pinMode(pin, INPUT);
-    pullUpDnControl(pin, PUD_UP);
+    pullUpDnControl(pin, PUD_DOWN);
 }
 
 void W3::setCallback(std::function<void(bool)> callback) {

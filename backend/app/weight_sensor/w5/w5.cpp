@@ -5,7 +5,7 @@
 W5::W5(int pin) : pin(pin) {
     wiringPiSetup();
     pinMode(pin, INPUT);
-    pullUpDnControl(pin, PUD_UP);
+    pullUpDnControl(pin, PUD_DOWN);
 }
 
 void W5::setCallback(std::function<void(bool)> callback) {
