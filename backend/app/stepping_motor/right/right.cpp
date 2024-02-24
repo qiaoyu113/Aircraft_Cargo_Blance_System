@@ -1,17 +1,15 @@
-#include "led.hpp"
+#include "right.hpp"
 #include <wiringPi.h>
 
-Led::Led() {
-    pin = 7; // GPIO0
-    wiringPiSetup();
+Right::Right(int pin) : pin(pin) {
     pinMode(pin, OUTPUT);
     digitalWrite(pin, LOW); // Turn off initially
 }
 
-void Led::turnOn() {
+void Right::turnOn() {
     digitalWrite(pin, HIGH);
 }
 
-void Led::turnOff() {
+void Right::turnOff() {
     digitalWrite(pin, LOW);
 }

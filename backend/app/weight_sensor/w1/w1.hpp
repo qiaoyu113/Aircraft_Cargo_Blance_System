@@ -1,19 +1,19 @@
-#ifndef BUTTON_HPP
-#define BUTTON_HPP
+#ifndef W1_HPP
+#define W1_HPP
 
 #include <functional>
 
-class Button {
+class W1 {
 public:
-    Button();
+    w1(int pin);
 
     void setCallback(std::function<void(bool)> callback);
 
-    bool isPressed();
+    bool weightReading();
 
 private:
     int pin;
     std::function<void(bool)> callback;
 };
 
-#endif // BUTTON_HPP
+#endif // W1_HPP

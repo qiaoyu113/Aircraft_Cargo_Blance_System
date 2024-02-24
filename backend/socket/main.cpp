@@ -6,6 +6,7 @@
 #include <thread>
 #include "../app/led_control/led.hpp"
 #include "../app/led_control/button.hpp"
+#include "../app/controller/controller.hpp"
 
 int main() {
     try {
@@ -23,6 +24,7 @@ int main() {
                 // 真实电灯
                 Led led;  // 创建 Led 对象
                 Button button;  // 创建 Button 对象
+                
                 WebSocketSession(std::move(socket), led, button).run();
             }}.detach();
         }

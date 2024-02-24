@@ -1,17 +1,15 @@
-#include "led.hpp"
+#include "pause.hpp"
 #include <wiringPi.h>
 
-Led::Led() {
-    pin = 7; // GPIO0
-    wiringPiSetup();
+Pause::Pause(int pin) : pin(pin) {
     pinMode(pin, OUTPUT);
     digitalWrite(pin, LOW); // Turn off initially
 }
 
-void Led::turnOn() {
+void Pause::turnOn() {
     digitalWrite(pin, HIGH);
 }
 
-void Led::turnOff() {
+void Pause::turnOff() {
     digitalWrite(pin, LOW);
 }
