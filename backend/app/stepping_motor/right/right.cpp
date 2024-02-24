@@ -2,6 +2,7 @@
 #include <wiringPi.h>
 
 Right::Right(int pin) : pin(pin) {
+    wiringPiSetup();
     pinMode(pin, OUTPUT);
     digitalWrite(pin, LOW); // Turn off initially
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 
 W5::W5(int pin) : pin(pin) {
+    wiringPiSetup();
     pinMode(pin, INPUT);
     pullUpDnControl(pin, PUD_UP);
 }

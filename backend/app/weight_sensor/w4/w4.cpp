@@ -3,6 +3,7 @@
 #include <iostream>
 
 W4::W4(int pin) : pin(pin) {
+    wiringPiSetup();
     pinMode(pin, INPUT);
     pullUpDnControl(pin, PUD_UP);
 }

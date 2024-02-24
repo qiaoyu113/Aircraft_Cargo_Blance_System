@@ -8,7 +8,6 @@
 // #include "../app/led_control/led.hpp"
 // #include "../app/led_control/button.hpp"
 #include "../app/controller/controller.hpp"
-#include <wiringPi.h>
 
 int main() {
     std::cerr << "main is comming" << std::endl;
@@ -32,7 +31,6 @@ int main() {
 
                 std::cerr << "main is comming" << std::endl;
 
-                wiringPiSetup();
                 WebSocketSession(std::move(socket), controller).run();
             }}.detach();
         }
