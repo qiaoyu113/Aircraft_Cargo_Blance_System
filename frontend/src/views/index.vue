@@ -68,7 +68,7 @@ export default {
       }, 2000);
     },
     connect() {
-      this.ws = new WebSocket('ws://127.0.0.1:8078');
+      this.ws = new WebSocket('ws://127.0.0.1:8081');
       this.ws.onmessage = (event) => {
         // 当收到消息时更新message
         const res = JSON.parse(event.data);

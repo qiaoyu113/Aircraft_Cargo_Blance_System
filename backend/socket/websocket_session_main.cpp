@@ -13,12 +13,10 @@ void WebSocketSession::run() {
     try {
         std::cout << "Running WebSocketSession" << std::endl;
         ws.accept();
-        std::cerr << "run" << std::endl;
 
         bool lastButtonState = false; // 新增变量记录上一次按钮状态
 
         for (;;) {
-            std::cerr << "star" << std::endl;
             std::vector<double> currentWeight = controller.readWeight();
 
             // 检查是否至少有一个重量读数非零
