@@ -5,13 +5,13 @@ Led::Led() {
     pin = 7; // GPIO0
     wiringPiSetup();
     pinMode(pin, OUTPUT);
-    digitalWrite(pin, HIGH); // Turn off initially
+    digitalWrite(pin, LOW); // Turn off initially
 }
 
 void Led::turnOn() {
-    digitalWrite(pin, LOW);
+    digitalWrite(pin, HIGH);
 }
 
 void Led::turnOff() {
-    digitalWrite(pin, HIGH);
+    digitalWrite(pin, LOW);
 }

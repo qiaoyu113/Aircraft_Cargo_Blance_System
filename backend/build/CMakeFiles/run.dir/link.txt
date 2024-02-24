@@ -1,0 +1,1 @@
+/usr/bin/c++  -pthread CMakeFiles/run.dir/socket/main.cpp.o CMakeFiles/run.dir/socket/websocket_session_button.cpp.o CMakeFiles/run.dir/app/led_control/led.cpp.o CMakeFiles/run.dir/app/led_control/button.cpp.o -o run  -Wl,-rpath,/usr/local/lib /usr/local/lib/libboost_system.so.1.82.0 -lpthread -lwiringPi -lwiringPi 

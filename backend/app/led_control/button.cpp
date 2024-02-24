@@ -16,6 +16,7 @@
 
 #include "button.hpp"
 #include <wiringPi.h>
+#include <iostream>
 
 Button::Button() {
     pin = 0; // GPIO7
@@ -29,9 +30,11 @@ void Button::setCallback(std::function<void(bool)> callback) {
 }
 
 bool Button::isPressed() {
-    bool pressed = digitalRead(pin) == LOW;
+    bool pressed = digitalRead(pin) == HIGH;
+    // std::cout << "isPressed in button" << (pressed ? "PRESSED" : "NOT PRESSED") << std::endl;
     
     if (callback) {
+        std::cout << "into callback" << std::endl;
         callback(pressed);
     }
 

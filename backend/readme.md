@@ -3,9 +3,21 @@
 g++ -std=c++11 -I../packages/json-develop -o server server.cpp
 2. ./server
 
-### 安装boost和nlohmann
+### 安装boost
 ```
-cd json
+cd boost_1_82_0
+./bootstrap.sh --prefix=/usr/local
+./b2
+sudo ./b2 install
+// until up not keep going...
+cat /usr/include/boost/version.hpp | grep "BOOST_LIB_VERSION"
+// if find the error 
+sudo apt-get install libboost-all-dev
+```
+
+### nlohmann
+```
+cd json-develop
 mkdir build
 cd build/
 cmake ..
@@ -23,7 +35,7 @@ cd build
 #### Run CMake to generate the build system
 cmake ..
 #### Build the project
-cmake --build . / make
+cmake --build . or make
 #### Run the executable
 ./run
 

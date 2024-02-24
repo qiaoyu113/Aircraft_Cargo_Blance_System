@@ -4,7 +4,7 @@
 #include <string>
 #include <thread>
 #include <nlohmann/json.hpp>
-#include "../app/conveyor_status.hpp"
+#include "../app/conveyor_status/conveyor_status.hpp"
 
 using json = nlohmann::json;
 

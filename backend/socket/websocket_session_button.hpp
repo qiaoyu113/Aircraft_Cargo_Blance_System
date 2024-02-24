@@ -20,7 +20,9 @@ public:
 
     void sendButtonState(bool pressed);
 
-    void setButtonCallback(std::function<void(bool)> callback);
+    void setButtonCallback(std::function<void(bool)> callback) {
+        buttonCallback = callback;
+    };
 
 private:
     int counter;
