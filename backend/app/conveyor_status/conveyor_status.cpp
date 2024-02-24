@@ -1,7 +1,7 @@
 // counter_operations.cpp
 
 #include "conveyor_status.hpp"
-#include "../socket/websocket_session.hpp"
+#include "../../socket/websocket_session.hpp"
 
 int counter = 0; // Define the counter variable
 

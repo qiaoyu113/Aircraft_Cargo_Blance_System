@@ -1,7 +1,7 @@
 // websocket_session.cpp
 
 #include "websocket_session.hpp"
-#include "../app/conveyor_status.hpp"
+#include "../app/conveyor_status/conveyor_status.hpp"
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;

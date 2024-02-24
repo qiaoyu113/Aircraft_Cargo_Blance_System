@@ -68,11 +68,12 @@ export default {
       }, 2000);
     },
     connect() {
-      this.ws = new WebSocket('ws://127.0.0.1:8095');
+      this.ws = new WebSocket('ws://127.0.0.1:8072');
       this.ws.onmessage = (event) => {
         // 当收到消息时更新message
         const res = JSON.parse(event.data);
-        if(res.action == 'changeConveyorStatus') {
+        console.log(res);
+        if(res.action == 'button') {
           this.conveyorStatus = res.parameter
         }
       };
