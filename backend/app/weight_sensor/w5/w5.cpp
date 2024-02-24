@@ -2,7 +2,7 @@
 #include <wiringPi.h>
 #include <iostream>
 
-W5::w5(int pin) : pin(pin) {
+W5::W5(int pin) : pin(pin) {
     pin = 0; // GPIO7
     wiringPiSetup();
     pinMode(pin, INPUT);

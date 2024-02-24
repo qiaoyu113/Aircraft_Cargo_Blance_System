@@ -19,12 +19,27 @@ link_directories(/usr/lib)
 #     # app/led_control/button.cpp  # 添加 led_control 的源文件
 # )
 
+# # 添加可执行文件
+# add_executable(run 
+#     socket/main.cpp 
+#     socket/websocket_session_button.cpp ## 真实按钮电灯
+#     app/led_control/led.cpp  # 添加 led_control 的源文件
+#     app/led_control/button.cpp  # 添加 led_control 的源文件
+# )
+
 # 添加可执行文件
 add_executable(run 
     socket/main.cpp 
-    socket/websocket_session_button.cpp ## 真实按钮电灯
-    app/led_control/led.cpp  # 添加 led_control 的源文件
-    app/led_control/button.cpp  # 添加 led_control 的源文件
+    socket/websocket_session_main.cpp ## 通信层
+    app/controller/controller.cpp  # 控制层文件
+    app/stepping_motor/left/left.cpp  # 步进电机左移动
+    app/stepping_motor/pause/pause.cpp  # 步进电机停止移动
+    app/stepping_motor/right/right.cpp  # 步进电机右移动
+    app/weight_sensor/w1/w1.cpp  # 1号测重传感器
+    app/weight_sensor/w2/w2.cpp  # 2号测重传感器
+    app/weight_sensor/w3/w3.cpp  # 3号测重传感器
+    app/weight_sensor/w4/w4.cpp  # 4号测重传感器
+    app/weight_sensor/w5/w5.cpp  # 5号测重传感器
 )
 
 # 包含目录

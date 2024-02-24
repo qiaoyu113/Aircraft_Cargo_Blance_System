@@ -2,7 +2,7 @@
 #include <wiringPi.h>
 #include <iostream>
 
-W2::w2(int pin) : pin(pin) {
+W2::W2(int pin) : pin(pin) {
     pinMode(pin, INPUT);
     pullUpDnControl(pin, PUD_UP);
 }

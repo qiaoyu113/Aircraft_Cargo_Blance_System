@@ -7,7 +7,7 @@
 using json = nlohmann::json;
 
 WebSocketSession::WebSocketSession(tcp::socket socket, Controller& controller)
-    : controller(controller), socket(std::move(socket)), ws(std::move(this->socket)), counter(0) {}
+    : controller(controller), socket(std::move(socket)), ws(std::move(this->socket)){}
 
 void WebSocketSession::run() {
     try {
