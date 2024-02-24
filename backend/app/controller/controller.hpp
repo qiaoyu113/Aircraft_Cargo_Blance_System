@@ -14,7 +14,8 @@
 class Controller {
 public:
     Controller();
-    std::vector<double> readWeight(); // Correct return type
+    void setCallback(std::function<void(bool)> callback);
+    std::vector<double> readWeight();            // Correct return type
     void setpControl(const std::string& status); // Added parameter and corrected name
     void TurnOff();
     void RTP(const std::vector<double>& currentWeight);

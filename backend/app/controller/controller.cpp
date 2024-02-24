@@ -4,7 +4,7 @@
 
 // 初始化定义传送带的GPIO引脚号
 Controller::Controller(): left(29), pause(28), right(27), w1(7), w2(0), w3(2), w4(3), w5(21) {
-    wiringPiSetup();
+    // wiringPiSetup();
 }
 
 void Controller::setCallback(std::function<void(bool)> callback) {
@@ -19,10 +19,16 @@ std::vector<double> Controller::readWeight() {
     double w4_weight = w4.weightReading();
     double w5_weight = w5.weightReading();
 
+    std::cerr << "w1_weight" << w1_weight << std::endl;
+    std::cerr << "w2_weight" << w2_weight << std::endl;
+    std::cerr << "w3_weight" << w3_weight << std::endl;
+    std::cerr << "w4_weight" << w4_weight << std::endl;
+    std::cerr << "w5_weight" << w5_weight << std::endl;
+
     return {w1_weight, w2_weight, w3_weight, w4_weight, w5_weight};
 }
 
-bool Controller::setpControl(const std::string& status) {
+void Controller::setpControl(const std::string& status) {
     if(status == "right"){
         right.turnOn();
         pause.turnOff();

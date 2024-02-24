@@ -8,11 +8,13 @@
 // #include "../app/led_control/led.hpp"
 // #include "../app/led_control/button.hpp"
 #include "../app/controller/controller.hpp"
+#include <wiringPi.h>
 
 int main() {
+    std::cerr << "main is comming" << std::endl;
     try {
         boost::asio::io_context ioc{1};
-        tcp::acceptor acceptor{ioc, {net::ip::make_address("127.0.0.1"), 8072}};
+        tcp::acceptor acceptor{ioc, {net::ip::make_address("127.0.0.1"), 8078}};
 
         for (;;) {
             tcp::socket socket{ioc};
@@ -27,6 +29,10 @@ int main() {
                 // Button button;  // 创建 Button 对象
                 // WebSocketSession(std::move(socket), led, button).run();
                 Controller controller;
+
+                std::cerr << "main is comming" << std::endl;
+
+                wiringPiSetup();
                 WebSocketSession(std::move(socket), controller).run();
             }}.detach();
         }
