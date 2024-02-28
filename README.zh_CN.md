@@ -3,7 +3,7 @@
 ### Author：乔宇 & 刘宇涵
 
 <p align="center">
-    <img alt="logo" src="https://thumbnail1.baidupcs.com/thumbnail/9e9a59a15pa8d5cb3fefde359df646d0?fid=53188319-250528-1116003576250720&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-h1SU32K61OLd%2b3A2cgJRflCX%2blE%3d&expires=8h&chkbd=0&chkv=0&dp-logid=553815427420652523&dp-callid=0&time=1706101200&size=c1792_u1120&quality=90&vuk=53188319&ft=image&autopolicy=1" width="150" height="150" style="margin-bottom: 10px;">
+    <img alt="logo" src="https://postimg.cc/VSfyhWM9" width="150" height="150" style="margin-bottom: 10px;">
 </p>
 
 <p align="center">
@@ -53,6 +53,10 @@ GPIO负责实时控制传送带的移动，接收树莓派的指令来调整传�
 与树莓派通信： 通过使用 WebSocket 或 HTTP 轮询等方式，实时获取树莓派的数据。
 用户控制： 允许用户通过界面发送控制指令，调整传送带位置，查看实时数据。
 
+## 项目预览
+<p align="center">
+    <img alt="logo" src="https://postimg.cc/nM2zsyPG" width="100%">
+</p>
 
 ## 项目框架及结构
 Aircraft_Cargo_Balance_System/
@@ -145,3 +149,8 @@ Aircraft_Cargo_Balance_System/
 |-- LICENSE                       # License information
 ```
 
+## Official Account
+<p align="center">
+    <img alt="logo" src="https://i.postimg.cc/Y4F0hj5v" width="250" height="250" style="margin-bottom: 10px;">
+    <img alt="logo" src="https://i.postimg.cc/DSHmv1MV" width="250" height="250" style="margin-bottom: 10px;">
+</p>
