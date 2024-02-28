@@ -10,20 +10,24 @@
         </div>
       </div>
       <div>
-        <bottomLeftChart />
+        <conveyorChart :conveyorData="conveyorData" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import bottomLeftChart from "@/components/echart/bottom/bottomLeftChart";
+import conveyorChart from "@/components/echart/bottom/conveyorChart";
 export default {
   data() {
     return {};
   },
+  props: {
+    // 声明接收来自父组件的参数
+    conveyorData: Array,
+  },
   components: {
-    bottomLeftChart
+    conveyorChart
   },
   mounted() {
   },

@@ -26,11 +26,11 @@
             <!-- 左侧 -->
             <div>
               <!-- <dv-border-box-12> -->
-              <simulation />
+              <simulation :conveyorData="conveyorData" />
               <!-- </dv-border-box-12> -->
             </div>
             <!-- 右侧 -->
-            <status :conveyorStatus="conveyorStatus"></status>
+            <status :conveyorStatus="conveyorStatus" :balanceRate="balanceRate"></status>
           </div>
         </div>
       </div>
@@ -48,7 +48,9 @@ export default {
     return {
       loading: true,
       ws: null,
-      conveyorStatus:0
+      conveyorStatus:0,
+      balanceRate:0,
+      conveyorData: [0, 0, 0, 0, 0, 0, 0] // 示例数据
     };
   },
   components: {
@@ -86,13 +88,20 @@ export default {
     },
     // conveyor status
     changeConveyorStatus(status) {
-      if (this.ws.readyState === WebSocket.OPEN) {
-        const message = {
-          action: 'changeConveyorStatus',
-          parameter: status
-        };
-        const messageString = JSON.stringify(message);
-        this.ws.send(messageString);
+      // if (this.ws.readyState === WebSocket.OPEN) {
+      //   const message = {
+      //     action: 'changeConveyorStatus',
+      //     parameter: status
+      //   };
+      //   const messageString = JSON.stringify(message);
+      //   this.ws.send(messageString);
+      // }
+      if (status === 'warning') {
+        this.conveyorData = [0, 0, 2, 0, 3, 1, 0];
+        this.balanceRate = 50
+      } else if (status === 'normal') {
+        this.conveyorData = [0, 2, 0, 3, 1, 0, 0];
+        this.balanceRate = 10
       }
     }
   },

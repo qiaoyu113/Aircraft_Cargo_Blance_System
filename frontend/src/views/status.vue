@@ -16,7 +16,7 @@
         <light :status="conveyorStatus"/>
       </div>
       <div>
-        <balance />
+        <balance :balanceRate="balanceRate" />
       </div>
     </div>
   </div>
@@ -33,6 +33,7 @@ export default {
   props: {
     // 声明接收来自父组件的参数
     conveyorStatus: Number,
+    balanceRate: Number
   },
   components: {
     light,

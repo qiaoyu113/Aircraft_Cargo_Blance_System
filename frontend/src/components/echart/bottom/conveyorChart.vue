@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="bottomLeftChart" style="width:900px;height:600px;"></div>
+    <div id="conveyorChart" style="width:900px;height:600px;"></div>
   </div>
 </template>
 
@@ -10,49 +10,61 @@ import 'echarts-gl';
 // const echarts = require('echarts/lib/echarts');
 export default {
   data() {
-    return {};
+    return {
+      chartInstance: null,
+      myChartPieLeft: null
+    };
+  },
+  props: {
+    // 声明接收来自父组件的参数
+    conveyorData: Array,
+  },
+  watch: {
+    // 监听conveyorStatus变化
+    conveyorData: {
+      handler(newVal) {
+        this.$nextTick(() => {
+          this.updateChart(newVal);
+        });
+         // 调用方法更新图表
+      },
+      immediate: true, // 组件加载时立即调用一次
+    }
   },
   mounted() {
-    this.setData(
-      0, 2, 0 ,3, 1, 0, 0, 0, 0, 0, 0, 1,
-    );
   },
   methods: {
-    setData(val1, val2, val3, val4, val5, val6, val7, val8, val9, val10, val11, val12) {
-      let weight1 = [0, 0, val1]
-      let weight2 = [0, 1, val2]
-      let weight3 = [0, 2, val3]
-      let weight4 = [0, 3, val4]
-      let weight5 = [0, 4, val5]
-      let weight6 = [0, 5, val6]
-      let weight7 = [0, 6, val7]
-      let weight8 = [0, 7, val8]
-      let weight9 = [0, 8, val9]
-      let weight10 = [0, 9, val10]
-      let weight11 = [0, 10, val11]
-      let weight12 = [0, 11, val12]
-
+    setData(arr) {
+      let weight1 = [0, 0, arr[0]]
+      let weight2 = [0, 1, arr[1]]
+      let weight3 = [0, 2, arr[2]]
+      let weight4 = [0, 3, arr[3]]
+      let weight5 = [0, 4, arr[4]]
+      let weight6 = [0, 5, arr[5]]
+      let weight7 = [0, 6, arr[6]]
       let data = [
-        // 仅使用12个数据点
-        weight1, weight2, weight3, weight4, weight5, weight6, weight7, weight8, weight9, weight10, weight11, weight12
+        // 仅使用7个数据点
+        weight1, weight2, weight3, weight4, weight5, weight6, weight7
       ];
       this.drawPie(data)
     },
     drawPie(datas) {
       // 基于准备好的dom，初始化echarts实例
-      let myChartPieLeft = echarts.init(
-        document.getElementById("bottomLeftChart")
-      );
+      if (!this.chartInstance) {
+        this.chartInstance = echarts.init(
+          document.getElementById("conveyorChart")
+        );
+      }
 
       //  ----------------------------------------------------------------
-      let hours = ['12a', '1a', '2a', '3a', '4a', '5a', '6a', '7a', '8a', '9a', '10a', '11a'];
+      let hours = ['1a', '2a', '3a', '4a', '5a', '6a', '7a'];
       let days = ['conveyor']; // 仅使用一天
       let data = datas;
 
       let option = {
         tooltip: {},
         visualMap: {
-          max: 20,
+          max: 50,
           inRange: {
             color: [
               '#313695',
@@ -85,6 +97,8 @@ export default {
           boxDepth: 80,
           viewControl: {
             // projection: 'orthographic'
+            alpha: 20, // 绕x轴旋转角度
+            beta: 0, // 绕y轴旋转角度
           },
           light: {
             main: {
@@ -121,12 +135,30 @@ export default {
           }
         ]
       };
-
-      myChartPieLeft.setOption(option);
+      // this.chartInstance.clear()
+      this.chartInstance.setOption(option, true);
       // -----------------------------------------------------------------
       // 响应式变化
-      window.addEventListener("resize", () => myChartPieLeft.resize(), false);
-    }
+      window.addEventListener("resize", () => this.chartInstance.resize(), false);
+      // 重新渲染
+      this.chartInstance.resize()
+    },
+    initChart() {
+      if (!this.chartInstance) { // 检查实例是否已经存在
+        this.chartInstance = echarts.init(document.getElementById("conveyorChart"));
+        this.setData(
+          [0, 0, 0 ,0, 0, 0, 0]
+        );
+      }
+    },
+    updateChart(arr) {
+      // 确保图表实例存在
+      if (!this.chartInstance) {
+        this.initChart();
+      } else {
+        this.setData(arr)
+      }
+    },
   },
   destroyed() {
     window.onresize = null;

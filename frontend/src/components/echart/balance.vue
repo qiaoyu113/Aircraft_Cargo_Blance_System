@@ -12,18 +12,34 @@ export default {
   data() {
     return {};
   },
+  props: {
+    // 声明接收来自父组件的参数
+    balanceRate: Number,
+  },
+  watch: {
+    // 监听conveyorStatus变化
+    balanceRate: {
+      handler(newVal) {
+        this.$nextTick(() => {
+          this.updateChart(newVal);
+        });
+         // 调用方法更新图表
+      },
+      immediate: true, // 组件加载时立即调用一次
+    }
+  },
   mounted() {
     this.setData(
      
     );
   },
   methods: {
-    setData() {
-      this.drawPie()
+    setData(num) {
+      this.drawPie(num)
     },
-    drawPie() {
+    drawPie(num) {
       // 基于准备好的dom，初始化echarts实例
-      let myChartPieLeft = echarts.init(
+      let myChartBalance = echarts.init(
         document.getElementById("balance")
       );
 
@@ -106,7 +122,7 @@ export default {
             },
             data: [
                 {
-                value: 0.35,
+                value: num / 100,
                 name: 'Balance Rating'
                 }
             ]
@@ -114,15 +130,29 @@ export default {
         ]
         };
 
-      myChartPieLeft.setOption(option);
+      myChartBalance.setOption(option, true);
       // -----------------------------------------------------------------
       // 响应式变化
-      window.addEventListener("resize", () => myChartPieLeft.resize(), false);
-    }
+      window.addEventListener("resize", () => myChartBalance.resize(), false);
+    },
+    initChart() {
+      if (!this.myChartBalance) { // 检查实例是否已经存在
+        this.myChartBalance = echarts.init(document.getElementById("balance"));
+        this.setData(30);
+      }
+    },
+    updateChart(num) {
+      // 确保图表实例存在
+      if (!this.myChartBalance) {
+        this.initChart();
+      } else {
+        this.setData(num)
+      }
+    },
   },
   destroyed() {
     window.onresize = null;
-  }
+  },
 };
 </script>
 
