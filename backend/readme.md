@@ -50,18 +50,33 @@ make install
 
 ### Compile Project （CMAKE）
 #### Navigate to the project root directory
+```
 cd backend
+```
 #### Create a build directory
+```
 mkdir build
 cd build
+```
 #### Run CMake to generate the build system
+```
 cmake ..
+```
 #### Build the project
-cmake --build . or make
+```
+cmake --build .
+```
+Or
+```
+make
+```
 #### Run the executable
+```
 ./run
-#### (The packaged build file has been quarantined and will not be uploaded to github ！)
-#### (The packaged Packages include boost and nlohmann file has been quarantined and will not be uploaded to github ！)
+```
+
+##### (The packaged build file has been quarantined and will not be uploaded to github ！)
+##### (The packaged Packages include boost and nlohmann file has been quarantined and will not be uploaded to github ！)
 
 ### if running code in terminal for single file: 
 1. g++ -std=c++11 server.cpp -o server
