@@ -1,5 +1,7 @@
 # Aircraft Cargo auto Blance System
 
+### Author：Yu Qiao & Yuhan Liu
+
 <p align="center">
     <img alt="logo" src="https://thumbnail1.baidupcs.com/thumbnail/9e9a59a15pa8d5cb3fefde359df646d0?fid=53188319-250528-1116003576250720&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-h1SU32K61OLd%2b3A2cgJRflCX%2blE%3d&expires=8h&chkbd=0&chkv=0&dp-logid=553815427420652523&dp-callid=0&time=1706101200&size=c1792_u1120&quality=90&vuk=53188319&ft=image&autopolicy=1" width="150" height="150" style="margin-bottom: 10px;">
 </p>
@@ -33,9 +35,9 @@ Aircraft Cargo Balance System is an open-source system designed for managing air
 1. **Raspberry Pi**
    - **Sensor Interface:** Connects sensors through GPIO interfaces to real-time retrieve cargo weight data.
    - **Data Processing:** Uses Python for data processing, calculating balance conditions and generating weight heatmaps.
-   - **Local Area Network Server:** Implements a server using Flask or FastAPI to provide APIs for access by STM32 and the web frontend.
+   - **Local Area Network Server:** Implements a server using Flask or FastAPI to provide APIs for access by GPIO and the web frontend.
 
-2. **STM32 Microcontroller**
+2. **GPIO Microcontroller**
    - **Connection to Raspberry Pi:** Communicates with the Raspberry Pi through serial communication or other protocols to receive balance commands.
    - **Conveyor Control:** Controls the conveyor belt motor to achieve real-time balance adjustments.
    - **Sensor Interface:** Connects to cargo sensors to obtain real-time cargo position information.
@@ -48,49 +50,91 @@ Aircraft Cargo Balance System is an open-source system designed for managing air
 ## Project Framework and Structure
 ```
 Aircraft_Cargo_Balance_System/
-|-- backend/                  
-|   |-- app/                  
-|   |   |-- __init__.py
-|   |   |-- routes.py         
-|   |   |-- controllers/      
-|   |       |-- __init__.py
-|   |       |-- balance_controller.py   
-|   |-- config/               
-|   |   |-- config.py         
-|   |-- models/               
-|   |   |-- __init__.py
-|   |   |-- cargo_model.py    
-|   |   |-- balance_model.py  
-|   |-- utils/                
-|       |-- __init__.py
-|       |-- calculations.py   
-|-- frontend/                 
-|   |-- public/
-|   |-- src/
-|   |   |-- components/       
-|   |   |   |-- BalanceChart.js    
-|   |   |   |-- ControlPanel.js   
-|   |   |-- pages/            
-|   |   |   |-- Dashboard.js      
-|   |   |-- services/         
-|   |   |   |-- api.js         
-|   |   |-- App.js            
-|   |   |-- index.js          
-|-- stm32/                    
-|   |-- src/                  
-|   |   |-- main.c            
-|   |   |-- communication.c   
-|   |   |-- conveyor.c        
-|-- README.md                 
-|-- LICENSE                   
-```
-
-### boost download link: 
-https://www.boost.org/doc/libs/1_84_0/more/getting_started/unix-variants.html
-### nlohmann download link: 
-https://github.com/nlohmann/json.git
-### install wiringpi
-```
-sudo apt-get update
-sudo apt-get install wiringpi
+|-- backend/                      # Backend application code
+|   |-- app/                      # Application logic
+|   |   |-- controller/           # Controller logic
+|   |   |   |-- controller.cpp    # Implementation of primary controller logic
+|   |   |   |-- controller.hpp    # Header file for controller interface
+|   |   |-- conveyor_status/      # Conveyor status checks
+|   |   |   |-- conveyor_status.cpp  # Implementation of conveyor status
+|   |   |   |-- conveyor_status.hpp  # Header file for conveyor status
+|   |   |-- led_control/          # LED control logic
+|   |   |   |-- button.cpp        # Button interactions for LEDs
+|   |   |   |-- button.hpp        # Header for button control
+|   |   |   |-- led.cpp           # LED behavior logic
+|   |   |   |-- led.hpp           # Header for LED operations
+|   |   |   |-- main.cpp          # Entry point for LED module
+|   |   |-- stepping_motor/       # Stepper motor control
+|   |       |-- left/             # Left movement control
+|   |       |   |-- left.cpp      # Left movement logic
+|   |       |   |-- left.hpp      # Header for left movement
+|   |       |-- pause/            # Pause functionality
+|   |       |   |-- pause.cpp     # Pause logic
+|   |       |   |-- pause.hpp     # Header for pause control
+|   |       |-- right/            # Right movement control
+|   |           |-- right.cpp     # Right movement logic
+|   |           |-- right.hpp     # Header for right movement
+|   |-- weight_sensor/            # Weight sensor data processing
+|   |   |-- w1.cpp                # Weight sensor w1 logic
+|   |   |-- w1.hpp                # Header for w1
+|   |   |-- w2.cpp                # Weight sensor w2 logic
+|   |   |-- w2.hpp                # Header for w2
+|   |   |-- w3.cpp                # Weight sensor w3 logic
+|   |   |-- w3.hpp                # Header for w3
+|   |   |-- w4.cpp                # Weight sensor w4 logic
+|   |   |-- w4.hpp                # Header for w4
+|   |   |-- w5.cpp                # Weight sensor w5 logic
+|   |   |-- w5.hpp                # Header for w5
+|   |-- LED/                      # Standalone LED control logic
+|   |   |-- led.cpp               # LED behavior
+|   |-- Build/                    # Build-related files
+|   |-- Config/                   # Application configuration
+|   |   |-- config.cpp            # Configuration settings
+|   |-- Models/                   # Model modules
+|   |   |-- __init__.cpp          # Initialization
+|   |-- Packages/                 # Dependencies
+|   |-- Socket/                   # Socket communication
+|   |   |-- main.cpp              # Main socket logic
+|   |   |-- server/               # Server communication
+|   |   |   |-- server.cpp        # Server handling
+|   |   |-- websocket_session/    # Websocket sessions
+|   |       |-- websocket_session_button.cpp  # Button sessions
+|   |       |-- websocket_session_button.hpp  # Button session headers
+|   |       |-- websocket_session_main.cpp    # Main session logic
+|   |       |-- websocket_session_main.hpp    # Main session headers
+|   |       |-- websocket_session.cpp         # General session management
+|   |       |-- websocket_session.hpp         # Session definitions
+|   |-- Utils/                    # Utility functions
+|   |   |-- __init__.cpp          # Utility initialization
+|   |   |-- calculations.cpp      # Calculation functions
+|   |-- CMakeLists.txt            # CMake build configuration
+|   |-- readme.md                 # Backend documentation
+|-- frontend/                     # Frontend application code
+|   |-- node_modules/             # npm dependencies
+|   |-- public/                   # Public assets
+|   |-- src/                      # Source code
+|   |   |-- assets/               # Static assets like images, fonts, etc.
+|   |   |-- components/           # Vue components
+|   |   |   |-- echart/           # Chart components
+|   |   |   |   |-- bottom/       # Bottom chart components
+|   |   |   |   |   |-- conveyorChart.vue     # Conveyor chart
+|   |   |   |   |-- balance.vue   # Balance display component
+|   |   |   |   |-- light.vue     # Light control component
+|   |   |-- router/               # Routing configuration
+|   |   |   |-- index.js          # Router setup
+|   |   |-- store/                # Vuex store
+|   |   |   |-- index.js          # Store definition
+|   |   |-- views/                # Vue page components
+|   |       |-- index.vue         # Main component
+|   |       |-- simulation.vue    # Simulation view
+|   |       |-- status.vue        # Status view
+|   |-- App.vue                   # Main Vue application component
+|   |-- main.js                   # Entry point
+|   |-- .gitignore                # Git ignore rules
+|   |-- babel.config.js           # Babel configuration
+|   |-- package-lock.json         # npm lock file
+|   |-- package.json              # npm package definitions
+|   |-- README.md                 # Frontend documentation
+|-- README.md                     # Project overview documentation
+|-- LICENSE                       # License information
 ```
