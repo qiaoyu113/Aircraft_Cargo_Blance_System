@@ -1,4 +1,4 @@
-# Aircraft Cargo auto Blance System
+# Aircraft Cargo Auto Blance System
 
 ### Author：Yu Qiao & Yuhan Liu
 
