@@ -20,10 +20,10 @@ Aircraft Cargo Balance System 是一个用于飞机货物平衡管理的开源�
 
 | 姓名     | 邮箱                  | 贡献                                           | GitHub                          |
 | -------- | --------------------- | ---------------------------------------------- | ------------------------------- |
-| 乔宇    | [qy0803@yeah.net](mailto:qy0803@yeah.net) | 简要描述成员1的主要贡献或职责                | [GitHub用户名1](GitHub链接1)    |
-| 刘宇涵    | [yuhanliu123@outlook.com](mailto:yuhanliu123@outlook.com) | 简要描述成员2的主要贡献或职责                | [GitHub用户名2](GitHub链接2)    |
-| 邓祎灵    | [2840572D@student.gla.ac.uk](mailto:2840572D@student.gla.ac.uk) | 简要描述成员2的主要贡献或职责                | [GitHub用户名2](GitHub链接2)    |
-| 何宸章    | [2949931H@student.gla.ac.uk](mailto:2949931H@student.gla.ac.uk) | 简要描述成员2的主要贡献或职责                | [GitHub用户名2](GitHub链接2)    |
+| 乔宇    | [qy0803@yeah.net](mailto:qy0803@yeah.net) | 负责整个项目软件框架设计，前端整体开发，硬件开发                | [qiaoyu113](https://github.com/qiaoyu113)    |
+| 刘宇涵    | [yuhanliu123@outlook.com](mailto:yuhanliu123@outlook.com) | 负责项目整体硬件框架设计，硬件及软件开发             | [yuhanliu123](https://github.com/yuhanliu123)    |
+| 邓祎灵    | [2840572D@student.gla.ac.uk](mailto:2840572D@student.gla.ac.uk) | ...            | [YiLingDeng-97](https://github.com/YiLingDeng-97)    |
+| 何宸章    | [2949931H@student.gla.ac.uk](mailto:2949931H@student.gla.ac.uk) | ...                | [zzzzzlian](https://github.com/zzzzzlian)    |
 
 
 ## 功能特性

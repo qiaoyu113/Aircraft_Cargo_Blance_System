@@ -20,10 +20,10 @@ Aircraft Cargo Balance System is an open-source system designed for managing air
 
 | Name      | Email                                   | Contribution                                       | GitHub                              |
 | --------- | --------------------------------------- | -------------------------------------------------- | ----------------------------------- |
-| Yu Qiao | [qy0803@yeah.net](mailto:qy0803@yeah.net)        | Brief description of the main contribution by Qiao Yu | [GitHubUsername1](GitHubLink1)    |
-| Yuhang Liu | [yuhanliu123@outlook.com](mailto:yuhanliu123@outlook.com) | Brief description of the main contribution by Liu Yuhang | [GitHubUsername2](GitHubLink2)    |
-| Yiling Deng | [2840572D@student.gla.ac.uk](mailto:2840572D@student.gla.ac.uk) | Brief description of the main contribution by Deng Yiling | [GitHubUsername3](GitHubLink3)    |
-| Chanzhang He | [2949931H@student.gla.ac.uk](mailto:2949931H@student.gla.ac.uk) | Brief description of the main contribution by He Chanzhang | [GitHubUsername4](GitHubLink4)    |
+| Yu Qiao | [qy0803@yeah.net](mailto:qy0803@yeah.net)        | Responsible for the overall project software framework design, front-end overall development, hardware development | [qiaoyu113](https://github.com/qiaoyu113)    |
+| Yuhang Liu | [yuhanliu123@outlook.com](mailto:yuhanliu123@outlook.com) | Responsible for the overall hardware framework design of the project, hardware and software development | [yuhanliu123](https://github.com/yuhanliu123)    |
+| Yiling Deng | [2840572D@student.gla.ac.uk](mailto:2840572D@student.gla.ac.uk) | ... | [YiLingDeng-97](https://github.com/YiLingDeng-97)    |
+| Chanzhang He | [2949931H@student.gla.ac.uk](mailto:2949931H@student.gla.ac.uk) | ... | [zzzzzlian](https://github.com/zzzzzlian)    |
 
 
 ## Key Features
