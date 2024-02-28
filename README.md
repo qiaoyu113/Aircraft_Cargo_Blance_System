@@ -3,7 +3,7 @@
 ### Author：Yu Qiao & Yuhan Liu
 
 <p align="center">
-    <img alt="logo" src="https://postimg.cc/VSfyhWM9" width="150" height="150" style="margin-bottom: 10px;">
+    <img alt="logo" src="https://i.postimg.cc/HL5pVSkN/icon.png" width="150" height="150" style="margin-bottom: 10px;">
 </p>
 
 <p align="center">
@@ -49,7 +49,7 @@ Aircraft Cargo Balance System is an open-source system designed for managing air
 
 ## Overview Projects
 <p align="center">
-    <img alt="logo" src="https://postimg.cc/nM2zsyPG" width="100%">
+    <img alt="Overview" src="https://i.postimg.cc/KvSgWF7w/Wechat-IMG3760.png" width="100%">
 </p>
 
 ## Project Framework and Structure
@@ -145,6 +145,6 @@ Aircraft_Cargo_Balance_System/
 ```
 ## Official Account
 <p align="center">
-    <img alt="logo" src="https://i.postimg.cc/Y4F0hj5v" width="250" height="250" style="margin-bottom: 10px;">
-    <img alt="logo" src="https://i.postimg.cc/DSHmv1MV" width="250" height="250" style="margin-bottom: 10px;">
+    <img alt="ins" src="https://i.postimg.cc/jjg737v4/ins.jpg" width="250" height="250" style="margin-bottom: 10px;">
+    <img alt="tiktlk" src="https://i.postimg.cc/ZqKNLcPq/tik.jpg" width="250" height="250" style="margin-bottom: 10px;">
 </p>
