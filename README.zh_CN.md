@@ -1,5 +1,7 @@
 # 飞机货物自动化平衡管理系统
 
+### Author：乔宇 & 刘宇涵
+
 <p align="center">
     <img alt="logo" src="https://thumbnail1.baidupcs.com/thumbnail/9e9a59a15pa8d5cb3fefde359df646d0?fid=53188319-250528-1116003576250720&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-h1SU32K61OLd%2b3A2cgJRflCX%2blE%3d&expires=8h&chkbd=0&chkv=0&dp-logid=553815427420652523&dp-callid=0&time=1706101200&size=c1792_u1120&quality=90&vuk=53188319&ft=image&autopolicy=1" width="150" height="150" style="margin-bottom: 10px;">
 </p>
@@ -37,8 +39,8 @@ Aircraft Cargo Balance System 是一个用于飞机货物平衡管理的开源�
 数据处理： 使用 Python 进行数据处理，计算平衡情况，生成重量热力图。
 局域网服务器： 使用 Flask 或 FastAPI 框架搭建服务器，提供 API 供STM32和网页端访问。
 
-2. STM32 微控制器
-STM32负责实时控制传送带的移动，接收树莓派的指令来调整传送带的位置，确保货物保持平衡。
+2. GPIO 微控制器
+GPIO负责实时控制传送带的移动，接收树莓派的指令来调整传送带的位置，确保货物保持平衡。
 
 连接树莓派： 通过串口通信或其他通信协议，接收树莓派发送的平衡指令。
 传送带控制： 控制传送带的电机，实现实时平衡调整。
@@ -53,41 +55,93 @@ STM32负责实时控制传送带的移动，接收树莓派的指令来调整传
 
 
 ## 项目框架及结构
-```
 Aircraft_Cargo_Balance_System/
-|-- backend/                  # 树莓派端代码
-|   |-- app/                  # Flask或FastAPI应用代码
-|   |   |-- __init__.py
-|   |   |-- routes.py         # API路由
-|   |   |-- controllers/      # 控制器，处理业务逻辑
-|   |       |-- __init__.py
-|   |       |-- balance_controller.py   # 平衡控制器
-|   |-- config/               # 配置文件
-|   |   |-- config.py         # 数据库和其他配置
-|   |-- models/               # 数据库模型
-|   |   |-- __init__.py
-|   |   |-- cargo_model.py    # 货物模型
-|   |   |-- balance_model.py  # 平衡信息模型
-|   |-- utils/                # 工具函数
-|       |-- __init__.py
-|       |-- calculations.py   # 计算平衡等实用函数
-|-- frontend/                 # 网页端代码
-|   |-- public/
-|   |-- src/
-|   |   |-- components/       # React组件
-|   |   |   |-- BalanceChart.js    # 重量热力图组件
-|   |   |   |-- ControlPanel.js   # 控制面板组件
-|   |   |-- pages/            # 页面组件
-|   |   |   |-- Dashboard.js      # 仪表盘页面
-|   |   |-- services/         # 前端服务
-|   |   |   |-- api.js         # 与后端API通信
-|   |   |-- App.js            # 主应用组件
-|   |   |-- index.js          # 应用入口
-|-- stm32/                    # STM32端代码
-|   |-- src/                  # STM32源代码
-|   |   |-- main.c            # 主程序入口
-|   |   |-- communication.c   # 通信模块
-|   |   |-- conveyor.c        # 传送带控制模块
-|-- README.md                 # 项目说明文件
-|-- LICENSE                   # 许可证文件
+|-- backend/                      # Backend application code
+|   |-- app/                      # Application logic
+|   |   |-- controller/           # Controller logic
+|   |   |   |-- controller.cpp    # Implementation of primary controller logic
+|   |   |   |-- controller.hpp    # Header file for controller interface
+|   |   |-- conveyor_status/      # Conveyor status checks
+|   |   |   |-- conveyor_status.cpp  # Implementation of conveyor status
+|   |   |   |-- conveyor_status.hpp  # Header file for conveyor status
+|   |   |-- led_control/          # LED control logic
+|   |   |   |-- button.cpp        # Button interactions for LEDs
+|   |   |   |-- button.hpp        # Header for button control
+|   |   |   |-- led.cpp           # LED behavior logic
+|   |   |   |-- led.hpp           # Header for LED operations
+|   |   |   |-- main.cpp          # Entry point for LED module
+|   |   |-- stepping_motor/       # Stepper motor control
+|   |       |-- left/             # Left movement control
+|   |       |   |-- left.cpp      # Left movement logic
+|   |       |   |-- left.hpp      # Header for left movement
+|   |       |-- pause/            # Pause functionality
+|   |       |   |-- pause.cpp     # Pause logic
+|   |       |   |-- pause.hpp     # Header for pause control
+|   |       |-- right/            # Right movement control
+|   |           |-- right.cpp     # Right movement logic
+|   |           |-- right.hpp     # Header for right movement
+|   |-- weight_sensor/            # Weight sensor data processing
+|   |   |-- w1.cpp                # Weight sensor w1 logic
+|   |   |-- w1.hpp                # Header for w1
+|   |   |-- w2.cpp                # Weight sensor w2 logic
+|   |   |-- w2.hpp                # Header for w2
+|   |   |-- w3.cpp                # Weight sensor w3 logic
+|   |   |-- w3.hpp                # Header for w3
+|   |   |-- w4.cpp                # Weight sensor w4 logic
+|   |   |-- w4.hpp                # Header for w4
+|   |   |-- w5.cpp                # Weight sensor w5 logic
+|   |   |-- w5.hpp                # Header for w5
+|   |-- LED/                      # Standalone LED control logic
+|   |   |-- led.cpp               # LED behavior
+|   |-- Build/                    # Build-related files
+|   |-- Config/                   # Application configuration
+|   |   |-- config.cpp            # Configuration settings
+|   |-- Models/                   # Model modules
+|   |   |-- __init__.cpp          # Initialization
+|   |-- Packages/                 # Dependencies
+|   |-- Socket/                   # Socket communication
+|   |   |-- main.cpp              # Main socket logic
+|   |   |-- server/               # Server communication
+|   |   |   |-- server.cpp        # Server handling
+|   |   |-- websocket_session/    # Websocket sessions
+|   |       |-- websocket_session_button.cpp  # Button sessions
+|   |       |-- websocket_session_button.hpp  # Button session headers
+|   |       |-- websocket_session_main.cpp    # Main session logic
+|   |       |-- websocket_session_main.hpp    # Main session headers
+|   |       |-- websocket_session.cpp         # General session management
+|   |       |-- websocket_session.hpp         # Session definitions
+|   |-- Utils/                    # Utility functions
+|   |   |-- __init__.cpp          # Utility initialization
+|   |   |-- calculations.cpp      # Calculation functions
+|   |-- CMakeLists.txt            # CMake build configuration
+|   |-- readme.md                 # Backend documentation
+|-- frontend/                     # Frontend application code
+|   |-- node_modules/             # npm dependencies
+|   |-- public/                   # Public assets
+|   |-- src/                      # Source code
+|   |   |-- assets/               # Static assets like images, fonts, etc.
+|   |   |-- components/           # Vue components
+|   |   |   |-- echart/           # Chart components
+|   |   |   |   |-- bottom/       # Bottom chart components
+|   |   |   |   |   |-- conveyorChart.vue     # Conveyor chart
+|   |   |   |   |-- balance.vue   # Balance display component
+|   |   |   |   |-- light.vue     # Light control component
+|   |   |-- router/               # Routing configuration
+|   |   |   |-- index.js          # Router setup
+|   |   |-- store/                # Vuex store
+|   |   |   |-- index.js          # Store definition
+|   |   |-- views/                # Vue page components
+|   |       |-- index.vue         # Main component
+|   |       |-- simulation.vue    # Simulation view
+|   |       |-- status.vue        # Status view
+|   |-- App.vue                   # Main Vue application component
+|   |-- main.js                   # Entry point
+|   |-- .gitignore                # Git ignore rules
+|   |-- babel.config.js           # Babel configuration
+|   |-- package-lock.json         # npm lock file
+|   |-- package.json              # npm package definitions
+|   |-- README.md                 # Frontend documentation
+|-- README.md                     # Project overview documentation
+|-- LICENSE                       # License information
 ```
+

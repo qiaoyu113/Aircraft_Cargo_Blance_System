@@ -47,6 +47,11 @@ Aircraft Cargo Balance System is an open-source system designed for managing air
    - **Communication with Raspberry Pi:** Uses WebSocket or HTTP polling to fetch real-time data from the Raspberry Pi.
    - **User Control:** Enables users to send control commands through the interface to adjust the conveyor belt position and view real-time data.
 
+## Overview Projects
+<p align="center">
+    <img alt="logo" src="https://i.postimg.cc/nM2zsyPG/Wechat-IMG3760.png" width="100%">
+</p>
+
 ## Project Framework and Structure
 ```
 Aircraft_Cargo_Balance_System/
@@ -138,3 +143,8 @@ Aircraft_Cargo_Balance_System/
 |-- README.md                     # Project overview documentation
 |-- LICENSE                       # License information
 ```
+## Official Account
+<p align="center">
+    <img alt="logo" src="https://i.postimg.cc/Y4F0hj5v/ins.jpg" width="250" height="250" style="margin-bottom: 10px;">
+    <img alt="logo" src="https://i.postimg.cc/DSHmv1MV/tik.jpg" width="250" height="250" style="margin-bottom: 10px;">
+</p>
