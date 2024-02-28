@@ -79,9 +79,11 @@ make
 ##### (The packaged Packages include boost and nlohmann file has been quarantined and will not be uploaded to github ！)
 
 ### if running code in terminal for single file: 
+```
 1. g++ -std=c++11 server.cpp -o server
 g++ -std=c++11 -I../packages/json-develop -o server server.cpp
 2. ./server
+```
 
 ## Project Framework and Structure
 ```
