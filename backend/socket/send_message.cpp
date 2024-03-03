@@ -15,7 +15,7 @@ MessageSender::MessageSender() {}
 // }
 
 void MessageSender::setSendFunction(const std::function<void(const std::string&)>& sendFunction) {
-    std::cout << "setSendFunction" << sendFunction << std::endl;
+    std::cout << "setSendFunction" << std::endl;
     this->sendFunction = sendFunction;
 }
 

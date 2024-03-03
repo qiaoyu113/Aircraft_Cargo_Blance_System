@@ -2,7 +2,7 @@
 #include "controller.hpp"
 #include <wiringPi.h>
 
-double accLimit=5;
+double accLimit=1;
 
 // 初始化定义传送带的GPIO引脚号
 Controller::Controller(): left(29), pause(28), right(27), w1(24), w2(0), w3(2), w4(3), w5(25) {
@@ -59,45 +59,47 @@ void Controller::RTP(const std::vector<double>& currentWeight) {
     
     double weightAll=currentWeight[0]+currentWeight[1]+currentWeight[2]+currentWeight[3]+currentWeight[4];
     double d=2;
-    double weightSystem=5;
+    double weightSystem=0;
     double rotationInertia=((weightAll+weightSystem)*4*4*d*d)/12;
     double torqueLeft=9.8*currentWeight[0]*2*d+9.8*currentWeight[1]*d;
     double torqueRight=9.8*currentWeight[4]*2*d+9.8*currentWeight[3]*d;
 
     if ((currentWeight[0]+currentWeight[1])>(currentWeight[3]+currentWeight[4])){
         double angleAcc=(torqueLeft-torqueRight)/rotationInertia;
+        std::cout << "Action:lefet " << angleAcc << std::endl;
         if (angleAcc<=accLimit){
             setpControl("pause", 0);
         }
         else{
-            if (currentWeight[0]!=0){
-                setControl("alarm",0);
-                setControl("pause",0);
+            if (currentWeight[4]!=0){
+                setpControl("alarm",0);
+                setpControl("pause",0);
             }
             else{
-                setControl("right",0);
+                setpControl("right",0);
             }
         }
     }
 
     if ((currentWeight[0]+currentWeight[1])<(currentWeight[3]+currentWeight[4])){
         double angleAcc=(torqueRight-torqueLeft)/rotationInertia;
+        std::cout << "Action:right " << angleAcc << std::endl;
         if (angleAcc<=accLimit){
             setpControl("pause", 0);
         }
         else{
-            if (currentWeight[4]!=0){
-                setControl("alarm",0);
-                setControl("pause",0);
+            if (currentWeight[0]!=0){
+                setpControl("alarm",0);
+                setpControl("pause",0);
             }
             else{
-                setControl("left",0);
+                setpControl("left",0);
             }
         }
     }
 
     if ((currentWeight[0]+currentWeight[1])==(currentWeight[3]+currentWeight[4])){
-      setControl("pause",0);
+      setpControl("pause",0);
     }
 
     // // 对每个传感器的读数独立判断
