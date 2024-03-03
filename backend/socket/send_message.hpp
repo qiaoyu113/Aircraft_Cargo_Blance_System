@@ -3,6 +3,7 @@
 #ifndef SEND_MESSAGE_HPP
 #define SEND_MESSAGE_HPP
 
+#include <boost/beast.hpp>
 #include <nlohmann/json.hpp>
 #include <functional>
 #include "websocket_session_main.hpp" // 包含WebSocketSession的定义
