@@ -1,4 +1,4 @@
-// websocket_session_button.hpp
+// websocket_session_main.hpp
 
 #ifndef WEBSOCKET_SESSION_MAIN_HPP
 #define WEBSOCKET_SESSION_MAIN_HPP
@@ -7,6 +7,7 @@
 #include <iostream>
 #include "../app/controller/controller.hpp"
 #include "send_message.hpp"
+using json = nlohmann::json;
 
 namespace net = boost::asio;
 using tcp = net::ip::tcp;
@@ -32,7 +33,7 @@ private:
     tcp::socket socket;
     websocket::stream<tcp::socket> ws;
     std::function<void(bool)> buttonCallback;
-    MessageSender messageSender; // 添加MessageSender成员变量
+    MessageSender& messageSender; // 添加MessageSender成员变量
 };
 
 #endif // WEBSOCKET_SESSION_HPP
