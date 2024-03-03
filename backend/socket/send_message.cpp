@@ -14,6 +14,7 @@ MessageSender::MessageSender() {}
 // }
 
 void MessageSender::setSendFunction(const std::function<void(const std::string&)>& sendFunction) {
+    std::cout << "setSendFunction" << sendFunction << std::endl;
     this->sendFunction = sendFunction;
 }
 
@@ -29,7 +30,7 @@ void MessageSender::sendMessage(const std::string& action, const json& parameter
     response["action"] = action;
     response["parameter"] = parameter;
     // ws.write(net::buffer(response.dump()));
-    
+
     // ws.get().write(boost::asio::buffer(response.dump()));
     sendFunction(response.dump());
 }
