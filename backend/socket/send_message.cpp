@@ -13,5 +13,6 @@ void MessageSender::sendMessage(const std::string& action, const json& parameter
     json response;
     response["action"] = action;
     response["parameter"] = parameter;
-    ws.write(net::buffer(response.dump()));
+    // ws.write(net::buffer(response.dump()));
+    ws.get().write(boost::asio::buffer(response.dump()));
 }
