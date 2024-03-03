@@ -7,6 +7,7 @@
 #include <nlohmann/json.hpp>
 #include <functional>
 #include "websocket_session_main.hpp" // 包含WebSocketSession的定义
+#include <memory>
 
 using json = nlohmann::json;
 namespace beast = boost::beast;
@@ -22,7 +23,7 @@ public:
 
 private:
     // 修改成员变量类型
-    websocket::stream<boost::asio::basic_stream_socket<boost::asio::ip::tcp>> ws;
+    std::reference_wrapper<websocket::stream<boost::asio::ip::tcp::socket>> ws; // 使用reference_wrapper包装引用
 };
 
 
