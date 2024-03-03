@@ -1,7 +1,7 @@
 // balance_rate.cpp
 #include "balance_rate.hpp"
 
-BalanceRate::BalanceRate(MessageSender& sender) : messageSender(sender) {}
+BalanceRate::BalanceRate() : messageSender() {}
 
 void BalanceRate::changeBalanceRate(int parameter) {
     int newCounter = parameter;

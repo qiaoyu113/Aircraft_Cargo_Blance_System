@@ -7,7 +7,18 @@
 using json = nlohmann::json;
 
 WebSocketSession::WebSocketSession(tcp::socket socket, Controller& controller)
-    : controller(controller), socket(std::move(socket)), ws(std::move(this->socket)), messageSender(ws) {}
+    : controller(controller), socket(std::move(socket)), ws(std::move(this->socket)), messageSender() {
+        // 初始化MessageSender
+        // messageSender.initialize(std::move(this->socket));
+
+        // 设置MessageSender的发送函数
+        messageSender.setSendFunction([this](const std::string& message) {
+            // 确保这里是线程安全的，或者仅从运行WebSocket服务的同一线程调用
+            if(ws.is_open()) {
+                ws.write(boost::asio::buffer(message));
+            }
+        });
+    }
 
 
 void WebSocketSession::run() {

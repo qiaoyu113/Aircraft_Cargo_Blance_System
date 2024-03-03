@@ -7,13 +7,6 @@ Left::Left(int pin) : pin(pin) {
     digitalWrite(pin, LOW); // Turn off initially
 }
 
-void Left::setMsg(MessageSender& messageSender) {
-    if (!initialized) {
-        conveyorStatus.setMessageSender(messageSender); // Set the MessageSender object if not initialized
-        initialized = true;
-    }
-}
-
 void Left::turnOn() {
     digitalWrite(pin, HIGH);
     conveyorStatus.changeConveyorStatus(1); // Use ConveyorStatus object
@@ -21,5 +14,5 @@ void Left::turnOn() {
 
 void Left::turnOff() {
     digitalWrite(pin, LOW);
-    // conveyorStatus.changeConveyorStatus(0); // 使用ConveyorStatus对象
+    conveyorStatus.changeConveyorStatus(0); // 使用ConveyorStatus对象
 }

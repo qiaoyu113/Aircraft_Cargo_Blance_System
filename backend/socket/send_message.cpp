@@ -7,12 +7,29 @@ namespace websocket = beast::websocket;
 namespace asio = boost::asio;
 using tcp = asio::ip::tcp;
 
-MessageSender::MessageSender(websocket::stream<boost::asio::basic_stream_socket<boost::asio::ip::tcp>>& ws) : ws(ws) {}
+MessageSender::MessageSender() {}
+
+// void MessageSender::initialize(tcp::socket&& socket) {
+//     ws = std::make_unique<websocket::stream<tcp::socket>>(std::move(socket));
+// }
+
+void MessageSender::setSendFunction(const std::function<void(const std::string&)>& sendFunction) {
+    this->sendFunction = sendFunction;
+}
 
 void MessageSender::sendMessage(const std::string& action, const json& parameter) {
+    // if (!ws) {
+    //     throw std::runtime_error("WebSocket stream not initialized.");
+    // }
+    if (!sendFunction) {
+        throw std::runtime_error("Send function not set.");
+    }
+
     json response;
     response["action"] = action;
     response["parameter"] = parameter;
     // ws.write(net::buffer(response.dump()));
-    ws.get().write(boost::asio::buffer(response.dump()));
+    
+    // ws.get().write(boost::asio::buffer(response.dump()));
+    sendFunction(response.dump());
 }
