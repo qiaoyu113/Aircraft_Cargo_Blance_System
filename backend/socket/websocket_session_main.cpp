@@ -45,13 +45,18 @@ void WebSocketSession::run() {
             }
 
             // 如果重量发生变化且至少有一个重量读数非零，进入if判断
-            if (weightChanged && hasValue) {
+            // if (weightChanged && hasValue) {
+            if (hasValue) {
                 std::cout << "Detected weights: ";
                 for (double weight : currentWeight) {
                     std::cout << weight << " ";
                 }
                 std::cout << std::endl;
-
+                // 传值传感器到前端
+                json response;
+                response["action"] = 'visualization';
+                response["parameter"] = currentWeight;
+                ws.write(net::buffer(response.dump()));
                 // 如果有重量，调用real-time processing进行逻辑处理
                 controller.RTP(currentWeight);
             } else {

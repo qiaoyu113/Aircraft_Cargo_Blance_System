@@ -86,8 +86,12 @@ export default {
         } else if(res.action == 'balanceRate') {
           this.balanceRate = res.parameter
         // 监听w1传感器的数值
-        } else if(res.action == 'w1') {
-          this.$set(this.conveyorData, 0, res.parameter)
+        } else if(res.action == 'visualization') {
+          this.$set(this.conveyorData, 0, res.parameter[0])
+          this.$set(this.conveyorData, 1, res.parameter[1])
+          this.$set(this.conveyorData, 2, res.parameter[2])
+          this.$set(this.conveyorData, 3, res.parameter[3])
+          this.$set(this.conveyorData, 4, res.parameter[4])
         }
       };
       this.ws.onopen = () => {
