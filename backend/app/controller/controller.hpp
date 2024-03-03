@@ -10,6 +10,7 @@
 #include "../weight_sensor/w3/w3.hpp"
 #include "../weight_sensor/w4/w4.hpp"
 #include "../weight_sensor/w5/w5.hpp"
+#include "../socket/send_message.hpp"
 
 class Controller {
 public:
@@ -25,6 +26,7 @@ private:
     Pause pause;
     Left left;
     std::function<void(bool)> callback;
+    MessageSender messageSender; 
     // 重量传感器对象作为成员变量
     W1 w1;
     W2 w2;
