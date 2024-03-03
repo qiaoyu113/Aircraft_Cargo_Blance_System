@@ -1,16 +1,16 @@
-// counter_operations.cpp
-
+// conveyor_status.cpp
 #include "conveyor_status.hpp"
-#include "../../socket/websocket_session.hpp"
 
-int counter = 0; // Define the counter variable
+ConveyorStatus::ConveyorStatus() {}
 
-int WebSocketSession::changeConveyorStatus(const std::string& parameter) {
-    if(parameter == "warning") {
-        counter = 0;
-    } else {
-        counter = 1;
+void ConveyorStatus::changeConveyorStatus(int parameter) { // 添加 void 返回类型
+    int newCounter = parameter;
+
+    // 只有当newCounter的值与lastCounter不同时，才执行发送逻辑
+    if (newCounter != lastCounter) {
+        auto& messageSender = MessageSender::getInstance();
+        messageSender.sendMessage("conveyorStatus", newCounter);
+
+        lastCounter = newCounter; // 更新lastCounter为当前的newCounter值
     }
-
-    return counter;
 }

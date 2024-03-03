@@ -1,10 +1,18 @@
-// conveyor_status.hpp
+// ConveyorStatus.hpp
 
-#ifndef CONVEYOR_STATUS_H
-#define CONVEYOR_STATUS_H
+#ifndef CONVEYOR_STATUS_HPP
+#define CONVEYOR_STATUS_HPP
 
-#include <string>
+#include "../../socket/send_message.hpp"
 
-int changeConveyorStatus(const std::string& parameter);
+class ConveyorStatus {
+public:
+    ConveyorStatus(); // 不需要 MessageSender 参数的构造函数
+    void changeConveyorStatus(int parameter);
+
+private:
+    MessageSender messageSender; 
+    int lastCounter = 0; 
+};
 
 #endif // CONVEYOR_STATUS_HPP

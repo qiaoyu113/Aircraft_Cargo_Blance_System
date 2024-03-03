@@ -4,18 +4,13 @@
         <button @click="changeConveyorStatus('warning')">warning</button>
         <button @click="changeConveyorStatus('normal')">normal</button>
       <dv-loading v-if="loading">Loading...</dv-loading>
-      <div v-else class="host-body">
+      <div v-else :class="platform == 'Linux' ? 'linux-body' : 'host-body'">
           <div class="nav">
             <div class="nav-text">
               <span class="wel">Welcome to </span>
               <span> Aircraft Cargo Blance System</span>
             </div>
-            <dv-decoration-2 :reverse="false" style="width: 300px;
-              height: 5px;
-              position: relative;
-              top: 160px;
-              left: 40px;
-              z-index: 1000;" />
+            <dv-decoration-2 :reverse="false" :style="platform == 'Linux' ? 'width: 900px; height: 50px; position: relative; top: 360px; left: 200px; z-index: 1000;' : 'width: 300px; height: 5px; position: relative; top: 160px; left: 40px; z-index: 1000;'" />
             <div class="nav-img"></div>
             <div class="nav-shadow"></div>
           </div>
@@ -47,10 +42,11 @@ export default {
   data() {
     return {
       loading: true,
+      platform: 'others',
       ws: null,
       conveyorStatus:0,
       balanceRate:0,
-      conveyorData: [0, 0, 0, 0, 0, 0, 0] // 示例数据
+      conveyorData: [0, 0, 0, 0, 0] // 示例数据
     };
   },
   components: {
@@ -62,6 +58,11 @@ export default {
   },
   created() {
     this.connect();
+    if(navigator.platform == 'Linux x86_64') {
+      this.platform = 'Linux'
+    } else {
+      this.platform = 'others'
+    }
   },
   methods: {
     cancelLoading() {
@@ -70,13 +71,27 @@ export default {
       }, 2000);
     },
     connect() {
-      this.ws = new WebSocket('ws://127.0.0.1:8090');
+      this.ws = new WebSocket('ws://1.tcp.vip.cpolar.cn:22939');
       this.ws.onmessage = (event) => {
         // 当收到消息时更新message
         const res = JSON.parse(event.data);
         console.log(res);
+        // 监听按钮时间
         if(res.action == 'button') {
           this.conveyorStatus = res.parameter
+        // 接收传送带状态
+        } else if(res.action == 'conveyorStatus') {
+          this.conveyorStatus = res.parameter
+        // 接收重力平衡数值
+        } else if(res.action == 'balanceRate') {
+          this.balanceRate = res.parameter
+        // 监听w1传感器的数值
+        } else if(res.action == 'visualization') {
+          this.$set(this.conveyorData, 0, res.parameter[0])
+          this.$set(this.conveyorData, 1, res.parameter[1])
+          this.$set(this.conveyorData, 2, res.parameter[2])
+          this.$set(this.conveyorData, 3, res.parameter[3])
+          this.$set(this.conveyorData, 4, res.parameter[4])
         }
       };
       this.ws.onopen = () => {
@@ -97,10 +112,10 @@ export default {
       //   this.ws.send(messageString);
       // }
       if (status === 'warning') {
-        this.conveyorData = [0, 0, 2, 0, 3, 1, 0];
+        this.conveyorData = [0, 0, 2, 0, 3];
         this.balanceRate = 50
       } else if (status === 'normal') {
-        this.conveyorData = [0, 2, 0, 3, 1, 0, 0];
+        this.conveyorData = [0, 2, 0, 3, 1];
         this.balanceRate = 10
       }
     }
