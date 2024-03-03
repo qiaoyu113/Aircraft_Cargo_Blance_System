@@ -19,8 +19,8 @@ void WebSocketSession::run() {
         ws.accept();
 
         // 设置MessageSender的发送函数
-        messageSender.setSendFunction([this](const std::string& message) {
-            // 确保这里是线程安全的，或者仅从运行WebSocket服务的同一线程调用
+        auto& ms = MessageSender::getInstance();
+        ms.setSendFunction([this](const std::string& message) {
             if(ws.is_open()) {
                 ws.write(boost::asio::buffer(message));
             }
