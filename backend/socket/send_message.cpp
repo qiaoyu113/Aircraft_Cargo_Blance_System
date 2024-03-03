@@ -1,6 +1,7 @@
 // send_message.cpp
 #include "send_message.hpp"
 #include <nlohmann/json.hpp>
+
 using json = nlohmann::json;
 namespace beast = boost::beast;
 namespace websocket = beast::websocket;

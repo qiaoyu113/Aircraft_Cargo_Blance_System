@@ -6,6 +6,7 @@
 #include <boost/beast.hpp>
 #include <nlohmann/json.hpp>
 #include <functional>
+#include <iostream>
 #include <memory>
 
 using json = nlohmann::json;
