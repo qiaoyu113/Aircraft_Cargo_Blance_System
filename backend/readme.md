@@ -75,6 +75,12 @@ make
 ./run
 ```
 
+#### Close the tcp
+```
+sudo lsof -i :22
+sudo kill -9 ID
+```
+
 ##### (The packaged build file has been quarantined and will not be uploaded to github ！)
 ##### (The packaged Packages include boost and nlohmann file has been quarantined and will not be uploaded to github ！)
 

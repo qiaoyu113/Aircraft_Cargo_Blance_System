@@ -44,7 +44,7 @@ void WebSocketSession::run() {
                 int param = 0;
                 if(param < 1) {
                     json response;
-                    response["action"] = 'w1';
+                    response["action"] = "w1";
                     response["parameter"] = 2;
                     ws.write(net::buffer(response.dump()));
                     param = 1;
