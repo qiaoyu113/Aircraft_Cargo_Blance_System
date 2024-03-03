@@ -4,6 +4,8 @@
 // #include "websocket_session_button.hpp"
 #include "websocket_session_main.hpp"
 #include <boost/asio.hpp>
+#include <boost/asio/signal_set.hpp>
+#include <iostream>
 #include <thread>
 // #include "../app/led_control/led.hpp"
 // #include "../app/led_control/button.hpp"
@@ -13,7 +15,12 @@ int main() {
     std::cerr << "main is comming" << std::endl;
     try {
         boost::asio::io_context ioc{1};
-        tcp::acceptor acceptor{ioc, {net::ip::make_address("127.0.0.1"), 8090}};
+        boost::asio::signal_set signals(ioc, SIGINT, SIGTERM); // 监听SIGINT和SIGTERM信号
+        signals.async_wait([&](const boost::system::error_code& /*error*/, int /*signal_number*/) {
+            ioc.stop(); // 当捕获到信号时，停止io_context
+        });
+
+        tcp::acceptor acceptor{ioc, {boost::asio::ip::make_address("127.0.0.1"), 22}};
 
         for (;;) {
             tcp::socket socket{ioc};

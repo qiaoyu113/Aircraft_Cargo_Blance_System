@@ -154,4 +154,147 @@
       }
     }
   }
+
+  .linux-body {
+    .nav {
+      width: 100%;
+      display: flex;
+      position: relative;
+      top: 0;
+      flex-direction: column;
+      background: var(--datav-body-bg);
+      width: 100%;
+      height: 790px;
+      .nav-text{
+        z-index: 1;
+        transform-origin: 0 0;
+        transform: scale(.5);
+        top: 330px;
+        left: 200px;
+        position: absolute;
+        user-select: none;
+        cursor: pointer;
+        font-size: 11rem;
+        .wel{
+          color:#AEE4FC;
+          font-weight: bold;
+        }
+        span{
+          color: #66D3FB;
+          font-weight: bold;
+        }
+      }
+      .nav-img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-image: url('../assets/nav-img.png');
+      }
+    }
+    .nav-shadow{
+      background: linear-gradient(180deg,transparent,#171b22);
+      height: 50px;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+      bottom: 0;
+    }
+    .title {
+      position: relative;
+      width: 900px;
+      text-align: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      .title-text {
+        font-size: 2.4rem;
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translate(-50%);
+      }
+
+      .title-bototm {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translate(-50%);
+      }
+    }
+
+    // 平行四边形
+    .react-left {
+      cursor: pointer;
+      font-size: 1.3rem;
+      width: 300px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      transform: skewX(-45deg);
+
+      .react-after {
+        position: absolute;
+        right: -25px;
+        top: 0px;
+        height: 50px;
+        width: 50px;
+        background-color: #0f1325;
+        transform: skewX(45deg);
+      }
+
+      .text {
+        display: inline-block;
+        transform: skewX(45deg);
+      }
+    }
+
+    .react-right {
+      cursor: pointer;
+      font-size: 1.3rem;
+      width: 300px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      transform: skewX(45deg);
+
+      .react-before {
+        position: absolute;
+        left: -25px;
+        top: 0px;
+        height: 50px;
+        width: 50px;
+        background-color: #0f1325;
+        transform: skewX(-45deg);
+
+      }
+
+      .text {
+        display: inline-block;
+        transform: skewX(-45deg);
+      }
+    }
+
+
+    .body-box {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg,transparent,#171b22);
+
+      //下方区域的布局
+      .content-box {
+        display: grid;
+        grid-template-columns: 2fr 3fr 5fr 3fr 2fr;
+      }
+
+      // 底部数据
+      .bototm-box {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+      }
+    }
+  }
 }

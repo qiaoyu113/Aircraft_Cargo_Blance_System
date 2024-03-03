@@ -4,18 +4,13 @@
         <button @click="changeConveyorStatus('warning')">warning</button>
         <button @click="changeConveyorStatus('normal')">normal</button>
       <dv-loading v-if="loading">Loading...</dv-loading>
-      <div v-else class="host-body">
+      <div v-else :class="platform == 'Linux' ? 'linux-body' : 'host-body'">
           <div class="nav">
             <div class="nav-text">
               <span class="wel">Welcome to </span>
               <span> Aircraft Cargo Blance System</span>
             </div>
-            <dv-decoration-2 :reverse="false" style="width: 300px;
-              height: 5px;
-              position: relative;
-              top: 160px;
-              left: 40px;
-              z-index: 1000;" />
+            <dv-decoration-2 :reverse="false" :style="platform == 'Linux' ? 'width: 900px; height: 50px; position: relative; top: 360px; left: 200px; z-index: 1000;' : 'width: 300px; height: 5px; position: relative; top: 160px; left: 40px; z-index: 1000;'" />
             <div class="nav-img"></div>
             <div class="nav-shadow"></div>
           </div>
@@ -47,6 +42,7 @@ export default {
   data() {
     return {
       loading: true,
+      platform: 'others',
       ws: null,
       conveyorStatus:0,
       balanceRate:0,
@@ -62,6 +58,11 @@ export default {
   },
   created() {
     this.connect();
+    if(navigator.platform == 'Linux x86_64') {
+      this.platform = 'Linux'
+    } else {
+      this.platform = 'others'
+    }
   },
   methods: {
     cancelLoading() {
@@ -70,7 +71,7 @@ export default {
       }, 2000);
     },
     connect() {
-      this.ws = new WebSocket('ws://127.0.0.1:8090');
+      this.ws = new WebSocket('ws://5.tcp.vip.cpolar.cn:11922');
       this.ws.onmessage = (event) => {
         // 当收到消息时更新message
         const res = JSON.parse(event.data);
