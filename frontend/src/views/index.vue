@@ -79,7 +79,7 @@ export default {
         if(res.action == 'button') {
           this.conveyorStatus = res.parameter
         } else if(res.action == 'w1') {
-          this.conveyorData[0] = res.parameter
+          this.$set(this.conveyorData, 0, res.parameter)
         }
       };
       this.ws.onopen = () => {
