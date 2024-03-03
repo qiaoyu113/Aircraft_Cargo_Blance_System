@@ -7,7 +7,8 @@
 class Left {
 public:
     Left(int pin);
-    void turnOn(MessageSender& messageSender); 
+    void setMsg(MessageSender& messageSender);
+    void turnOn(); 
     void turnOff();
 private:
     int pin;
