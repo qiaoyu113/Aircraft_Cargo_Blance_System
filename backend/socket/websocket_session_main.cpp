@@ -10,6 +10,13 @@ WebSocketSession::WebSocketSession(tcp::socket socket, Controller& controller)
     : controller(controller), socket(std::move(socket)), ws(std::move(this->socket)), messageSender() {
         // 初始化MessageSender
         // messageSender.initialize(std::move(this->socket));
+    }
+
+
+void WebSocketSession::run() {
+    try {
+        std::cout << "Running WebSocketSession" << std::endl;
+        ws.accept();
 
         // 设置MessageSender的发送函数
         messageSender.setSendFunction([this](const std::string& message) {
@@ -18,13 +25,6 @@ WebSocketSession::WebSocketSession(tcp::socket socket, Controller& controller)
                 ws.write(boost::asio::buffer(message));
             }
         });
-    }
-
-
-void WebSocketSession::run() {
-    try {
-        std::cout << "Running WebSocketSession" << std::endl;
-        ws.accept();
 
         std::vector<double> lastWeight; // 新增变量记录上一次的重量
 
