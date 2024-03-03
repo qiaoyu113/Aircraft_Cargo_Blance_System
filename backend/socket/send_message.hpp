@@ -23,6 +23,8 @@ public:
     // 初始化函数，确保在使用前正确初始化websocket
     void initialize(tcp::socket&& socket);
 
+    static MessageSender& getInstance();
+
 private:
     // 修改成员变量类型
     // std::reference_wrapper<websocket::stream<boost::asio::ip::tcp::socket>> ws; // 使用reference_wrapper包装引用
