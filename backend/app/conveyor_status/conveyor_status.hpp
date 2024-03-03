@@ -7,11 +7,12 @@
 
 class ConveyorStatus {
 public:
-    ConveyorStatus(MessageSender& sender);
+    ConveyorStatus(); // 不需要 MessageSender 参数的构造函数
+    void setMessageSender(MessageSender& sender); // 设置 MessageSender 的方法
     void changeConveyorStatus(int parameter);
 
 private:
-    MessageSender& messageSender; 
+    MessageSender* messageSender; 
     int lastCounter = 0; 
 };
 

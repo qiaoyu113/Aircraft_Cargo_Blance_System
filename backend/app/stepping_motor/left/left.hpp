@@ -2,15 +2,17 @@
 #define LEFT_HPP
 
 #include "../../conveyor_status/conveyor_status.hpp"
+#include "../../../../socket/send_message.hpp"
 
 class Left {
 public:
-    Left(int pin); // Constructor now takes a pin number
-    void turnOn();
+    Left(int pin);
+    void turnOn(MessageSender& messageSender); 
     void turnOff();
 private:
     int pin;
     ConveyorStatus conveyorStatus;
+    bool initialized = false;
 };
 
 #endif // LEFT_HPP
