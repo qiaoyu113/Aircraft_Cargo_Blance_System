@@ -46,7 +46,7 @@ export default {
       ws: null,
       conveyorStatus:0,
       balanceRate:0,
-      conveyorData: [0, 0, 0, 0, 0, 0, 0] // 示例数据
+      conveyorData: [0, 0, 0, 0, 0] // 示例数据
     };
   },
   components: {
@@ -112,10 +112,10 @@ export default {
       //   this.ws.send(messageString);
       // }
       if (status === 'warning') {
-        this.conveyorData = [0, 0, 2, 0, 3, 1, 0];
+        this.conveyorData = [0, 0, 2, 0, 3];
         this.balanceRate = 50
       } else if (status === 'normal') {
-        this.conveyorData = [0, 2, 0, 3, 1, 0, 0];
+        this.conveyorData = [0, 2, 0, 3, 1];
         this.balanceRate = 10
       }
     }
