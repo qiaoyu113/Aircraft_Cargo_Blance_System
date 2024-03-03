@@ -2,7 +2,7 @@
 #define LEFT_HPP
 
 #include "../../conveyor_status/conveyor_status.hpp"
-#include "../../../../socket/send_message.hpp"
+#include "../../../socket/send_message.hpp"
 
 class Left {
 public:

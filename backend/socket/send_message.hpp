@@ -6,7 +6,6 @@
 #include <boost/beast.hpp>
 #include <nlohmann/json.hpp>
 #include <functional>
-#include "websocket_session_main.hpp" // 包含WebSocketSession的定义
 #include <memory>
 
 using json = nlohmann::json;
