@@ -39,8 +39,16 @@ void WebSocketSession::run() {
                 // 如果有重量，调用real-time processing进行逻辑处理
                 controller.RTP(currentWeight);
             } else {
-                controller.TurnOff();
-                std::cout << "No weights detected." << std::endl;
+                // controller.TurnOff();
+                // std::cout << "No weights detected." << std::endl;
+                int param = 0;
+                if(param < 1) {
+                    json response;
+                    response["action"] = 'w1';
+                    response["parameter"] = 2;
+                    ws.write(net::buffer(response.dump()));
+                    param = 1;
+                }
             }
 
             // 可以在这里添加一个短暂的延时来减少CPU的使用
