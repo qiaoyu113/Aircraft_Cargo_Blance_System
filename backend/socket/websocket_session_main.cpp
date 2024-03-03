@@ -16,6 +16,8 @@ void WebSocketSession::run() {
 
         bool lastButtonState = false; // 新增变量记录上一次按钮状态
 
+        int param = 0; // 模拟计时
+        int tt = 0;
         for (;;) {
             std::vector<double> currentWeight = controller.readWeight();
 
@@ -41,14 +43,14 @@ void WebSocketSession::run() {
             } else {
                 // controller.TurnOff();
                 // std::cout << "No weights detected." << std::endl;
-                int param = 0;
-                if(param < 1) {
+                if(param != tt) {
                     json response;
                     response["action"] = "w1";
-                    response["parameter"] = 2;
+                    response["parameter"] = tt;
                     ws.write(net::buffer(response.dump()));
-                    param = 1;
+                    param = tt;
                 }
+                tt++;
             }
 
             // 可以在这里添加一个短暂的延时来减少CPU的使用

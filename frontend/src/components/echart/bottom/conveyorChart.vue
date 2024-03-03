@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     setData(arr) {
+      console.log('arr', arr);
       let weight1 = [0, 0, arr[0]]
       let weight2 = [0, 1, arr[1]]
       let weight3 = [0, 2, arr[2]]
