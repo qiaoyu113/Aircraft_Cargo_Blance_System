@@ -10,7 +10,7 @@
 #include "../weight_sensor/w3/w3.hpp"
 #include "../weight_sensor/w4/w4.hpp"
 #include "../weight_sensor/w5/w5.hpp"
-#include "../socket/send_message.hpp"
+#include "../../socket/send_message.hpp"
 
 class Controller {
 public:

@@ -18,7 +18,7 @@ class MessageSender {
 public:
     // 默认构造函数
     MessageSender();
-    // void sendMessage(const std::string& action, const json& parameter);
+    void sendMessage(const std::string& action, const json& parameter);
     void setSendFunction(const std::function<void(const std::string&)>& sendFunction);
     // 初始化函数，确保在使用前正确初始化websocket
     void initialize(tcp::socket&& socket);
