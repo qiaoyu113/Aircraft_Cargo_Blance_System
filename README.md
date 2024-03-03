@@ -34,7 +34,7 @@ Aircraft Cargo Balance System is an open-source system designed for managing air
 ## Technical Architecture
 1. **Raspberry Pi**
    - **Sensor Interface:** Connects sensors through GPIO interfaces to real-time retrieve cargo weight data.
-   - **Data Processing:** Uses Python for data processing, calculating balance conditions and generating weight heatmaps.
+   - **Data Processing:** Uses C++ for data processing, calculating balance conditions and generating weight heatmaps.
    - **Local Area Network Server:** Implements a server using Flask or FastAPI to provide APIs for access by GPIO and the web frontend.
 
 2. **GPIO Microcontroller**
