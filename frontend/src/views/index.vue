@@ -76,8 +76,10 @@ export default {
         // 当收到消息时更新message
         const res = JSON.parse(event.data);
         console.log(res);
+        // 监听按钮时间
         if(res.action == 'button') {
           this.conveyorStatus = res.parameter
+        // 监听w1传感器的数值
         } else if(res.action == 'w1') {
           this.$set(this.conveyorData, 0, res.parameter)
         }
