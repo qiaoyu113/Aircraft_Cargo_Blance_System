@@ -1,19 +1,15 @@
-// counter_operations.cpp
-#include <nlohmann/json.hpp>
+// conveyor_status.cpp
 #include "conveyor_status.hpp"
-#include "../../socket/websocket_session.hpp"
 
-int counter = 0; // Define the counter variable
+ConveyorStatus::ConveyorStatus(MessageSender& sender) : messageSender(sender) {}
 
-int WebSocketSession::changeConveyorStatus(const std::string& parameter) {
-    json response;
-    if(parameter == 0) {
-        counter = 0;
-    } else {
-        counter = 1;
+void ConveyorStatus::changeConveyorStatus(int parameter) { // 添加 void 返回类型
+    int newCounter = parameter;
+
+    // 只有当newCounter的值与lastCounter不同时，才执行发送逻辑
+    if (newCounter != lastCounter) {
+        messageSender.sendMessage("conveyorStatus", {{"parameter", newCounter}});
+
+        lastCounter = newCounter; // 更新lastCounter为当前的newCounter值
     }
-
-    response["action"] = 'conveyorStatus';
-    response["parameter"] = counter;
-    ws.write(net::buffer(response.dump()));
 }

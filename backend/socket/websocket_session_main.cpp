@@ -7,7 +7,7 @@
 using json = nlohmann::json;
 
 WebSocketSession::WebSocketSession(tcp::socket socket, Controller& controller)
-    : controller(controller), socket(std::move(socket)), ws(std::move(this->socket)){}
+    : controller(controller), socket(std::move(socket)), ws(std::move(this->socket), messageSender(ws)){}
 
 void WebSocketSession::run() {
     try {
@@ -55,9 +55,7 @@ void WebSocketSession::run() {
         std::cerr << "错误：" << e.what() << std::endl;
     }
 }
-//                     #include <nlohmann/json.hpp>
-//                     json response;
-//                     response["action"] = 'w1';
-//                     response["parameter"] = tt;
-//                     ws.write(net::buffer(response.dump()));
-//                     param = tt;
+
+void WebSocketSession::sendMessage(const std::string& action, const json& parameter) {
+    messageSender.sendMessage(action, parameter);
+}

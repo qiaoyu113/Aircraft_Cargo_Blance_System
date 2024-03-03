@@ -79,6 +79,12 @@ export default {
         // 监听按钮时间
         if(res.action == 'button') {
           this.conveyorStatus = res.parameter
+        // 接收传送带状态
+        } else if(res.action == 'conveyorStatus') {
+          this.conveyorStatus = res.parameter
+        // 接收重力平衡数值
+        } else if(res.action == 'balanceRate') {
+          this.balanceRate = res.parameter
         // 监听w1传感器的数值
         } else if(res.action == 'w1') {
           this.$set(this.conveyorData, 0, res.parameter)
