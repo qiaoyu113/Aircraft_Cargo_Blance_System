@@ -33,3 +33,8 @@ void MessageSender::sendMessage(const std::string& action, const json& parameter
     // ws.get().write(boost::asio::buffer(response.dump()));
     sendFunction(response.dump());
 }
+
+MessageSender& MessageSender::getInstance() {
+    static MessageSender instance;
+    return instance;
+}
