@@ -6,7 +6,6 @@
 #include <boost/beast.hpp>
 #include <iostream>
 #include "../app/controller/controller.hpp"
-#include "../app/controller/controller.hpp"
 #include "send_message.hpp"
 
 namespace net = boost::asio;
