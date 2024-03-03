@@ -54,7 +54,7 @@ void WebSocketSession::run() {
                 std::cout << std::endl;
                 // 传值传感器到前端
                 json response;
-                response["action"] = 'visualization';
+                response["action"] = "visualization";
                 response["parameter"] = currentWeight;
                 ws.write(net::buffer(response.dump()));
                 // 如果有重量，调用real-time processing进行逻辑处理
