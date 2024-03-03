@@ -32,7 +32,8 @@ add_executable(run
     socket/main.cpp 
     socket/websocket_session_main.cpp ## 通信层
     app/controller/controller.cpp  # 控制层文件
-    socket/send_message.cpp  # 控制层文件
+    app/conveyor_status/conveyor_status.cpp  # 步进电机状态
+    socket/send_message.cpp  # 消息队列
     app/stepping_motor/left/left.cpp  # 步进电机左移动
     app/stepping_motor/pause/pause.cpp  # 步进电机停止移动
     app/stepping_motor/right/right.cpp  # 步进电机右移动
