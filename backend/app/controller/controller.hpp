@@ -28,7 +28,6 @@ private:
     Pause pause;
     Left left;
     std::function<void(bool, const std::vector<int>&)> callback; // 更新回调函数的定义
-    void onWeightChange(int sensorId, int weight);
     MessageSender messageSender; 
     // 重量传感器对象作为成员变量
     // W1 w1;
