@@ -57,40 +57,34 @@ void WeightSensor::initPin() {
 }
 
 int WeightSensor::readSensor() {
-    // 实现readSensor函数的代码，根据您提供的readSensor函数修改
-    // 注意：这里需要调整代码来适配类成员变量的使用
-    // ...
-    // 调用callback，传递weight值
     int i;
-    gpioWrite(hx711->SCK, PI_LOW);
-    while(gpioRead(hx711->SCK));
-    hx711->value = 0;
-    while(gpioRead(hx711->SDA));
-    time_sleep(0.1);           // 延时100ms
-    for(i=0; i<24; i++){
-        gpioWrite(hx711->SCK, PI_HIGH);
-        while(gpioRead(hx711->SCK) == 0) gpioDelay(1000);
-        hx711->value = hx711->value << 1;
-        gpioWrite(hx711->SCK, PI_LOW);
-        while(gpioRead(hx711->SCK));
-        if(gpioRead(hx711->SDA)){
-            hx711->value++;
+    gpioWrite(hx711.SCK, PI_LOW);
+    while(gpioRead(hx711.SCK));
+    hx711.value = 0;
+    while(gpioRead(hx711.SDA));
+    time_sleep(0.1); // 延时100ms
+    for(i = 0; i < 24; i++) {
+        gpioWrite(hx711.SCK, PI_HIGH);
+        while(!gpioRead(hx711.SCK)) gpioDelay(1000);
+        hx711.value <<= 1;
+        gpioWrite(hx711.SCK, PI_LOW);
+        while(gpioRead(hx711.SCK));
+        if(gpioRead(hx711.SDA)) {
+            hx711.value++;
         }
-        gpioWrite(hx711->SCK, PI_LOW);
     }
-    gpioWrite(hx711->SCK, PI_HIGH);
-    // value->value = value->value ^ 0x800000;
-    gpioWrite(hx711->SCK, PI_LOW);
+    gpioWrite(hx711.SCK, PI_HIGH);
+    gpioWrite(hx711.SCK, PI_LOW);
 
-    if((hx711->EN == 1) && (hx711->value < 25000)){
-        hx711->EN = 0;
-        hx711->calibration = hx711->value;
+    if((hx711.EN == 1) && (hx711.value < 25000)) {
+        hx711.EN = 0;
+        hx711.calibration = hx711.value;
     } else {
-        i = (hx711->value - hx711->calibration + 50) / hx711->coefficient;
+        i = (hx711.value - hx711.calibration + 50) / hx711.coefficient;
     }
-    if(i < 5000) hx711->weight = i;
-    printf("重量为：%d g\n", hx711->weight);
-    return hx711->weight;
+    if(i < 5000) hx711.weight = i;
+
+    return hx711.weight;
 }
 
 void WeightSensor::weightReading() {
