@@ -6,23 +6,8 @@
 double accLimit=1;
 
 // 初始化定义传送带的GPIO引脚号
-Controller::Controller(): left(29), pause(28), right(27), w1(24), w2(0), w3(2), w4(3), w5(25) {
+Controller::Controller(): left(29), pause(28), right(27), w1(24, 27), w2(0, 1), w3(2, 5), w4(3, 4), w5(25,23) {
     // wiringPiSetup();
-    // 为每个WeightSensor注册回调函数
-    w1.setCallback([this](bool detected) { this->onWeightDetected(1, detected); });
-    w2.setCallback([this](bool detected) { this->onWeightDetected(2, detected); });
-    w3.setCallback([this](bool detected) { this->onWeightDetected(3, detected); });
-    w4.setCallback([this](bool detected) { this->onWeightDetected(4, detected); });
-    w5.setCallback([this](bool detected) { this->onWeightDetected(5, detected); });
-}
-
-void Controller::onWeightDetected(int sensorIndex, bool detected) {
-    std::vector<double> weights = readWeight();
-    if (detected) {
-        if (callback) {
-            callback(true, weights);
-        }
-    }
 }
 
 void Controller::setCallback(std::function<void(bool, const std::vector<double>&)> callback) {
@@ -45,15 +30,24 @@ std::vector<double> Controller::readWeight() {
 
     std::vector<double> weights = {w1_weight, w2_weight, w3_weight, w4_weight, w5_weight};
     
-    // 检查是否所有读数都不为0
-    bool allNonZero = std::none_of(weights.begin(), weights.end(), [](double weight) {
-        return weight == 0.0;
-    });
+    // 检查当前读数是否与上一次读数相同
+    bool isSameAsLast = weights.size() == lastWeights.size() && 
+                        std::equal(weights.begin(), weights.end(), weights.begin());
 
-    // 如果所有读数都不为0，则执行回调
-    if (allNonZero) {
-        TurnOff();
+    if (!isSameAsLast) {
+        // 如果当前读数与上一次不同，则执行回调，传递true和当前重量
+        if (callback) {
+            callback(true, weights);
+        }
+    } else {
+        // 如果当前读数与上一次相同，则执行回调，传递false和当前重量
+        if (callback) {
+            callback(false, weights);
+        }
     }
+
+    // 更新上一次的重量读数为当前读数
+    lastWeights = weights;
 
     return weights;
 }

@@ -28,23 +28,30 @@ void WebSocketSession::run() {
 
         std::vector<double> lastWeight; // 新增变量记录上一次的重量
 
-        for (;;) {
+        // 为controller设置回调函数
+        controller.setCallback([this](bool weightDetected, const std::vector<double>& currentWeight) {
+            if (weightDetected) {
+                std::cout << "Weight detected." << std::endl;
+                // 构建JSON响应并通过WebSocket发送
+                json response = {
+                    {"action", "visualization"},
+                    {"parameter", currentWeight}
+                };
+                ws.write(boost::asio::buffer(response.dump()));
+                // 调用real-time processing进行逻辑处理
+                controller.RTP(currentWeight);
+            }
+        });
+
+        // 使用无限循环来保持会话活跃，但实际的重量变化处理逻辑将由回调函数负责
+        while (true) {
+            controller.readWeight(); // 检测重量变化并可能触发回调
+            std::this_thread::sleep_for(std::chrono::seconds(1)); // 简单的延时来减少CPU负载
+        }
+
+        // for (;;) {
             // std::vector<double> currentWeight = controller.readWeight();
             
-            // 为controller设置回调函数
-            controller.setCallback([this](bool weightDetected, const std::vector<double>& currentWeight) {
-                if (weightDetected) {
-                    std::cout << "Weight detected." << std::endl;
-                    // 构建JSON响应并通过WebSocket发送
-                    json response = {
-                        {"action", "visualization"},
-                        {"parameter", currentWeight}
-                    };
-                    ws.write(boost::asio::buffer(response.dump()));
-                    // 调用real-time processing进行逻辑处理
-                    controller.RTP(currentWeight);
-                }
-            });
 
             // // 检查当前的重量和上一次的重量是否相同
             // bool weightChanged = (currentWeight != lastWeight);
@@ -80,8 +87,8 @@ void WebSocketSession::run() {
             // }
 
             // 可以在这里添加一个短暂的延时来减少CPU的使用
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        }
+        //     std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // }
 
     } catch (std::exception const& e) {
         std::cerr << "错误：" << e.what() << std::endl;

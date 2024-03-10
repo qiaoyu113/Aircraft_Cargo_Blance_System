@@ -40,11 +40,7 @@ WeightSensor::WeightSensor(int pinSCK, int pinSDA) {
     initPin();
 }
 
-void WeightSensor::setCallback(std::function<void(int)> callback) {
-    this->callback = callback;
-}
-
-void WeightSensor::setPin() {
+void WeightSensor::setPin(int pinSCK, int pinSDA) {
     hx711.EN = 1;
     hx711.coefficient = 415; // 根据实际情况调整
 }
@@ -55,46 +51,44 @@ void WeightSensor::initPin() {
     gpioSetPullUpDown(hx711.SDA, PI_PUD_UP);
 }
 
-void WeightSensor::start() {
-    // 实现start函数的代码，根据您提供的start函数修改
+void WeightSensor::readSensor() {
+    // 实现readSensor函数的代码，根据您提供的readSensor函数修改
     // 注意：这里需要调整代码来适配类成员变量的使用
     // ...
     // 调用callback，传递weight值
     int i;
-    gpioWrite(value->SCK, PI_LOW);
-    while(gpioRead(value->SCK));
-    value->value = 0;
-    while(gpioRead(value->SDA));
+    gpioWrite(hx711->SCK, PI_LOW);
+    while(gpioRead(hx711->SCK));
+    hx711->value = 0;
+    while(gpioRead(hx711->SDA));
     time_sleep(0.1);           // 延时100ms
     for(i=0; i<24; i++){
-        gpioWrite(value->SCK, PI_HIGH);
-        while(gpioRead(value->SCK) == 0) gpioDelay(1000);
-        value->value = value->value << 1;
-        gpioWrite(value->SCK, PI_LOW);
-        while(gpioRead(value->SCK));
-        if(gpioRead(value->SDA)){
-            value->value++;
+        gpioWrite(hx711->SCK, PI_HIGH);
+        while(gpioRead(hx711->SCK) == 0) gpioDelay(1000);
+        hx711->value = hx711->value << 1;
+        gpioWrite(hx711->SCK, PI_LOW);
+        while(gpioRead(hx711->SCK));
+        if(gpioRead(hx711->SDA)){
+            hx711->value++;
         }
-        gpioWrite(value->SCK, PI_LOW);
+        gpioWrite(hx711->SCK, PI_LOW);
     }
-    gpioWrite(value->SCK, PI_HIGH);
+    gpioWrite(hx711->SCK, PI_HIGH);
     // value->value = value->value ^ 0x800000;
-    gpioWrite(value->SCK, PI_LOW);
+    gpioWrite(hx711->SCK, PI_LOW);
 
-    if((value->EN == 1) && (value->value < 25000)){
-        value->EN = 0;
-        value->calibration = value->value;
+    if((hx711->EN == 1) && (hx711->value < 25000)){
+        hx711->EN = 0;
+        hx711->calibration = hx711->value;
     } else {
-        i = (value->value - value->calibration + 50) / value->coefficient;
+        i = (hx711->value - hx711->calibration + 50) / hx711->coefficient;
     }
-    if(i < 5000) value->weight = i;
-    printf("重量为：%d g\n", value->weight);
-    if (callback) {
-        callback(value->weight);
-    }
+    if(i < 5000) hx711->weight = i;
+    printf("重量为：%d g\n", hx711->weight);
+    return hx711->weight;
 }
 
 bool WeightSensor::weightReading() {
-    start(); // 调用start以读取重量
-    return true; // 根据实际情况返回是否检测到重量的标志
+    int weight = readSensor();
+    return weight; // 根据实际情况返回是否检测到重量的标志
 }
