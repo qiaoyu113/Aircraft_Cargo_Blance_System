@@ -19,6 +19,7 @@ public:
     void setCallback(std::function<void(bool, const std::vector<double>&)> callback);
     std::vector<double> readWeight();            // Correct return type
     void setpControl(const std::string& status, int sensorIndex); // Added parameter and corrected name
+    void onWeightDetected(int sensorIndex, bool detected);
     void TurnOff();
     void RTP(const std::vector<double>& currentWeight);
 private:

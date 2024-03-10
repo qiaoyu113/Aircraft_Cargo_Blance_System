@@ -44,12 +44,12 @@ std::vector<double> Controller::readWeight() {
     std::vector<double> weights = {w1_weight, w2_weight, w3_weight, w4_weight, w5_weight};
     
     // 检查是否所有读数都不为0
-    bool allZero = std::none_of(weights.begin(), weights.end(), [](double weight) {
+    bool allNonZero = std::none_of(weights.begin(), weights.end(), [](double weight) {
         return weight == 0.0;
     });
 
     // 如果所有读数都不为0，则执行回调
-    if (allZero) {
+    if (allNonZero) {
         TurnOff();
     }
 
