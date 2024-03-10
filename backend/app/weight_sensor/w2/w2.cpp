@@ -6,8 +6,7 @@
 W2::W2(int pin) : pin(pin) {
     // wiringPiSetup();
     if (gpioInitialise() < 0) {
-        std::cerr << "pigpio initialization failed." << std::endl;
-        return 1;
+        throw std::runtime_error("pigpio initialization failed");
     }
     // pinMode(pin, INPUT);
     // pullUpDnControl(pin, PUD_DOWN);

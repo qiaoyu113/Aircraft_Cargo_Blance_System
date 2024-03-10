@@ -55,8 +55,7 @@
 
 int main() {
     if (gpioInitialise() < 0) {
-        std::cerr << "pigpio initialization failed." << std::endl;
-        return 1;
+        throw std::runtime_error("pigpio initialization failed");
     }
 
     gpioSetMode(led, PI_OUTPUT); // 设置LED引脚为输出

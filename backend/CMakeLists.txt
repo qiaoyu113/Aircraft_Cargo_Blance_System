@@ -56,9 +56,15 @@ target_include_directories(run PRIVATE
 target_link_libraries(run PRIVATE 
     ${Boost_LIBRARIES}
     pthread
-    wiringPi
-    -lwiringPi
+    pigpio
 )
+
+# target_link_libraries(run PRIVATE 
+#     ${Boost_LIBRARIES}
+#     pthread
+#     wiringPi
+#     -lwiringPi
+# )
 
 # target_link_libraries(button 
 #     ${Boost_LIBRARIES}
