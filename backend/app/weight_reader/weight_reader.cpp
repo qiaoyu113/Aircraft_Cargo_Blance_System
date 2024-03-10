@@ -14,8 +14,8 @@ struct hx711_pin{
 };
 
 void set_pin(struct hx711_pin *value){
-    value->SCK = 2;             // 根据实际连接修改
-    value->SDA = 3;             // 根据实际连接修改
+    value->SCK = 27;             // 根据实际连接修改
+    value->SDA = 22;             // 根据实际连接修改
     value->EN = 1;
     value->coefficient = 415;
 }
