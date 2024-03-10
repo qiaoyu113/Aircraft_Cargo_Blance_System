@@ -36,14 +36,14 @@ class WeightSensor {
 public:
     WeightSensor(int pinSCK, int pinSDA);
     // void setCallback(std::function<void(int)> callback); // 修改回调函数的参数类型为int
-    bool weightReading();
-
+    int weightReading();
+    
 private:
     hx711_pin hx711;
-    // std::function<void(int)> callback; // 修改回调函数的参数类型为int
+    std::function<void(int)> callback; // 如果您计划使用回调
     void initPin();
-    void start();
-    void setPin();
+    int readSensor(); // 确保返回类型与方法实现匹配
+    void setPin(int pinSCK, int pinSDA); // 匹配声明与定义
 };
 
 #endif // WEIGHTSENSOR_HPP
