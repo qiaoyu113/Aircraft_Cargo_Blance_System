@@ -1,6 +1,7 @@
 #include <iostream>
 #include "controller.hpp"
-#include <wiringPi.h>
+// #include <wiringPi.h>
+#include <pigpio.h>
 
 // 初始化定义传送带的GPIO引脚号
 Controller::Controller(): left(29), pause(28), right(27), w1(24), w2(0), w3(2), w4(3), w5(25) {
