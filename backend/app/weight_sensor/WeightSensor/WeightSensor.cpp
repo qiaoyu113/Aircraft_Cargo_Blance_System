@@ -40,11 +40,11 @@ WeightSensor::WeightSensor(int pinSCK, int pinSDA) {
     initPin();
 }
 
-void WeightSensor::setCallback(std::function<void(float)> callback) {
+void WeightSensor::setCallback(std::function<void(int)> callback) {
     this->callback = callback;
 }
 
-void WeightSensor::setPin(int pinSCK, int pinSDA) {
+void WeightSensor::setPin() {
     hx711.EN = 1;
     hx711.coefficient = 415; // 根据实际情况调整
 }
@@ -55,7 +55,7 @@ void WeightSensor::initPin() {
     gpioSetPullUpDown(hx711.SDA, PI_PUD_UP);
 }
 
-void WeightSensor::readSensor() {
+int WeightSensor::readSensor() {
     // 实现readSensor函数的代码，根据您提供的readSensor函数修改
     // 注意：这里需要调整代码来适配类成员变量的使用
     // ...
@@ -92,7 +92,7 @@ void WeightSensor::readSensor() {
     return hx711->weight;
 }
 
-bool WeightSensor::weightReading() {
+int WeightSensor::weightReading() {
     std::thread([this]() {
         float lastWeight = -1; // 初始值设为一个不可能的重量，确保第一次总是触发回调
         while (true) {

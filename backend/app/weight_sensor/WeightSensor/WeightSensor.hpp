@@ -43,7 +43,7 @@ private:
     std::function<void(int)> callback; // 如果您计划使用回调
     void initPin();
     int readSensor(); // 确保返回类型与方法实现匹配
-    void setPin(int pinSCK, int pinSDA); // 匹配声明与定义
+    void setPin(); // 匹配声明与定义
 };
 
 #endif // WEIGHTSENSOR_HPP
