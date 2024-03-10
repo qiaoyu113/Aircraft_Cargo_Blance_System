@@ -1,8 +1,8 @@
 <template>
   <div id="index">
     <dv-full-screen-container class="bg">
-        <button @click="changeConveyorStatus('warning')">warning</button>
-        <button @click="changeConveyorStatus('normal')">normal</button>
+      <!-- <button @click="changeConveyorStatus('warning')">warning</button>
+      <button @click="changeConveyorStatus('normal')">normal</button> -->
       <dv-loading v-if="loading">Loading...</dv-loading>
       <div v-else :class="platform == 'Linux' ? 'linux-body' : 'host-body'">
           <div class="nav">

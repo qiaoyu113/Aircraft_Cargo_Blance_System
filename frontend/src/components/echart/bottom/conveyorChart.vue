@@ -41,11 +41,9 @@ export default {
       let weight3 = [0, 2, arr[2]]
       let weight4 = [0, 3, arr[3]]
       let weight5 = [0, 4, arr[4]]
-      let weight6 = [0, 5, arr[5]]
-      let weight7 = [0, 6, arr[6]]
       let data = [
         // 仅使用7个数据点
-        weight1, weight2, weight3, weight4, weight5, weight6, weight7
+        weight1, weight2, weight3, weight4, weight5
       ];
       this.drawPie(data)
     },
@@ -58,7 +56,7 @@ export default {
       }
 
       //  ----------------------------------------------------------------
-      let hours = ['1a', '2a', '3a', '4a', '5a', '6a', '7a'];
+      let hours = ['1a', '2a', '3a', '4a', '5a'];
       let days = ['conveyor']; // 仅使用一天
       let data = datas;
 
@@ -148,7 +146,7 @@ export default {
       if (!this.chartInstance) { // 检查实例是否已经存在
         this.chartInstance = echarts.init(document.getElementById("conveyorChart"));
         this.setData(
-          [0, 0, 0 ,0, 0, 0, 0]
+          [0, 0, 0 ,0, 0]
         );
       }
     },
