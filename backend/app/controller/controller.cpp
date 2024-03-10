@@ -44,7 +44,7 @@ std::vector<double> Controller::readWeight() {
     std::vector<double> weights = {w1_weight, w2_weight, w3_weight, w4_weight, w5_weight};
     
     // 检查是否所有读数都不为0
-    bool allZero = std::all_of(weights.begin(), weights.end(), [](double weight) {
+    bool allZero = std::none_of(weights.begin(), weights.end(), [](double weight) {
         return weight == 0.0;
     });
 
@@ -53,7 +53,7 @@ std::vector<double> Controller::readWeight() {
         TurnOff();
     }
 
-    return weights
+    return weights;
 }
 
 void Controller::setpControl(const std::string& status, int sensorIndex) {

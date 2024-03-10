@@ -28,9 +28,6 @@ void WebSocketSession::run() {
 
         std::vector<double> lastWeight; // 新增变量记录上一次的重量
 
-        // controller 实例化
-        Controller controller();
-
         for (;;) {
             // std::vector<double> currentWeight = controller.readWeight();
             
