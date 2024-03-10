@@ -42,6 +42,7 @@ add_executable(run
     app/weight_sensor/w3/w3.cpp  # 3号测重传感器
     app/weight_sensor/w4/w4.cpp  # 4号测重传感器
     app/weight_sensor/w5/w5.cpp  # 5号测重传感器
+    app/weight_sensor/WeightSensor/WeightSensor.cpp  # 5号测重传感器
 )
 
 # 包含目录
