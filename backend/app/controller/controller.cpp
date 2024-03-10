@@ -6,7 +6,7 @@
 double accLimit=1;
 
 // 初始化定义传送带的GPIO引脚号
-Controller::Controller(): left(29), pause(28), right(27), w1(24, 27), w2(0, 1), w3(2, 5), w4(3, 4), w5(25,23) {
+Controller::Controller(): left(29), pause(28), right(27), w1(24, 27), w2(0, 1), w3(2, 5), w4(3, 4), w5(25,23), lastWeights(5, 0), currentWeights(5, 0) {
     // wiringPiSetup();
 }
 
@@ -14,7 +14,7 @@ void Controller::setCallback(std::function<void(bool, const std::vector<int>&)> 
     this->callback = callback;
 }
 
-std::vector<int> Controller::readWeight() {
+void Controller::readWeight() {
     // 为每个 WeightSensor 实例设置回调
     w1.setCallback([this](int weight) { this->onWeightChange(1, weight); });
     w2.setCallback([this](int weight) { this->onWeightChange(2, weight); });
@@ -56,22 +56,21 @@ void onWeightChange(int sensorId, int weight) {
     
     // 检查当前读数是否与上一次读数相同
     bool isSameAsLast = currentWeights.size() == lastWeights.size() && 
-                        std::equal(currentWeights.begin(), currentWeights.end(), currentWeights.begin());
+                    std::equal(currentWeights.begin(), currentWeights.end(), lastWeights.begin());
 
     if (!isSameAsLast) {
         // 如果当前读数与上一次不同，则执行回调，传递true和当前重量
         if (callback) {
             callback(true, currentWeights);
         }
+        // 更新上一次的重量读数为当前读数
+        lastWeights = currentWeights;
     } else {
         // 如果当前读数与上一次相同，则执行回调，传递false和当前重量
         if (callback) {
             callback(false, currentWeights);
         }
     }
-
-    // 更新上一次的重量读数为当前读数
-    lastWeights = currentWeights;
 }
 
 void Controller::setpControl(const std::string& status, int sensorIndex) {
