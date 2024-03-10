@@ -50,8 +50,8 @@
 #include <thread>
 #include <chrono>
 
-#define led 4     // 使用BCM编号，比如GPIO 4作为输出LED
-#define button 7  // 使用BCM编号，比如GPIO 7作为输入按钮
+#define led 7     // 使用BCM编号，比如GPIO 4作为输出LED
+#define button 23  // 使用BCM编号，比如GPIO 7作为输入按钮
 
 int main() {
     if (gpioInitialise() < 0) {
@@ -62,10 +62,10 @@ int main() {
     gpioSetMode(led, PI_OUTPUT); // 设置LED引脚为输出
     gpioWrite(led, 1); // 设置LED初始状态为关闭（逻辑高电平）
     gpioSetMode(button, PI_INPUT); // 设置按钮引脚为输入
-    gpioSetPullUpDown(button, PI_PUD_UP); // 为按钮设置上拉电阻
+    gpioSetPullUpDown(button, PI_PUD_DOWN); // 为按钮设置上拉电阻
 
     while (true) {
-        if (gpioRead(button) == 0) { // 如果检测到按钮被按下（逻辑低电平）
+        if (gpioRead(button) == PI_HIGH) { // 如果检测到按钮被按下（逻辑低电平）
             // std::this_thread::sleep_for(std::chrono::milliseconds(20)); // 消除按钮的机械抖动干扰
             // if (gpioRead(button) == 0) { // 再次检测确认按钮确实被按下
             //     std::cout << "Button Pressed" << std::endl;
@@ -74,7 +74,7 @@ int main() {
 			std::cout << "Button Pressed" << std::endl;
         } else {
             // gpioWrite(led, 0); // 没有检测到按钮按下，关闭LED（逻辑低电平）
-			std::cout << "Button no Pressed" << std::endl;
+			// std::cout << "Button no Pressed" << std::endl;
         }
         // 可以根据需要添加延时，但因为已经使用了消抖逻辑，这里可能不需要
     }
