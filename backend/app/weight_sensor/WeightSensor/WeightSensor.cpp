@@ -92,7 +92,7 @@ int WeightSensor::readSensor() {
     return hx711->weight;
 }
 
-int WeightSensor::weightReading() {
+void WeightSensor::weightReading() {
     std::thread([this]() {
         float lastWeight = -1; // 初始值设为一个不可能的重量，确保第一次总是触发回调
         while (true) {

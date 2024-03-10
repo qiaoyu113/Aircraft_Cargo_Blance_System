@@ -36,7 +36,7 @@ class WeightSensor {
 public:
     WeightSensor(int pinSCK, int pinSDA);
     void setCallback(std::function<void(int)> callback); // 修改回调函数的参数类型为int
-    int weightReading();
+    void weightReading();
     
 private:
     hx711_pin hx711;
