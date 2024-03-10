@@ -40,6 +40,10 @@ WeightSensor::WeightSensor(int pinSCK, int pinSDA) {
     initPin();
 }
 
+void WeightSensor::setCallback(std::function<void(float)> callback) {
+    this->callback = callback;
+}
+
 void WeightSensor::setPin(int pinSCK, int pinSDA) {
     hx711.EN = 1;
     hx711.coefficient = 415; // 根据实际情况调整
@@ -89,6 +93,19 @@ void WeightSensor::readSensor() {
 }
 
 bool WeightSensor::weightReading() {
-    int weight = readSensor();
-    return weight; // 根据实际情况返回是否检测到重量的标志
+    std::thread([this]() {
+        float lastWeight = -1; // 初始值设为一个不可能的重量，确保第一次总是触发回调
+        while (true) {
+            float currentWeight = readWeight(); // 读取当前重量，需要根据实际情况实现 readWeight 方法
+            if (currentWeight != lastWeight) {
+                if (callback) {
+                    callback(currentWeight); // 当重量变化时调用回调函数
+                }
+                lastWeight = currentWeight; // 更新最后的重量记录
+            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(500)); // 调整检测频率
+        }
+    }).detach(); // 分离线程，让它独立运行
+    // int weight = readSensor();
+    // return weight; // 根据实际情况返回是否检测到重量的标志
 }

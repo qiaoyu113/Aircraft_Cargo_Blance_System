@@ -35,7 +35,7 @@ struct hx711_pin {
 class WeightSensor {
 public:
     WeightSensor(int pinSCK, int pinSDA);
-    // void setCallback(std::function<void(int)> callback); // 修改回调函数的参数类型为int
+    void setCallback(std::function<void(int)> callback); // 修改回调函数的参数类型为int
     int weightReading();
     
 private:

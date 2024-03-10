@@ -16,17 +16,18 @@
 class Controller {
 public:
     Controller();
-    void setCallback(std::function<void(bool, const std::vector<double>&)> callback);
-    std::vector<double> readWeight();            // Correct return type
+    void setCallback(std::function<void(bool, const std::vector<int>&)> callback);
+    std::vector<int> readWeight();            // Correct return type
     void setpControl(const std::string& status, int sensorIndex); // Added parameter and corrected name
     void TurnOff();
-    void RTP(const std::vector<double>& currentWeight);
+    void RTP(const std::vector<int>& currentWeight);
 private:
     int pin;
     Right right;
     Pause pause;
     Left left;
-    std::function<void(bool, const std::vector<double>&)> callback; // 更新回调函数的定义
+    std::function<void(bool, const std::vector<int>&)> callback; // 更新回调函数的定义
+    void onWeightChange(int sensorId, int weight)
     MessageSender messageSender; 
     // 重量传感器对象作为成员变量
     // W1 w1;
@@ -35,7 +36,8 @@ private:
     // W4 w4;
     // W5 w5;
     WeightSensor w1, w2, w3, w4, w5;
-    std::vector<double> lastWeights; // 用来存储上一次的重量读数
+    std::vector<int> lastWeights; // 用来存储上一次的重量读数
+    std::vector<int> currentWeights; // 当前的重量，初始化为足够大以存储所有传感器的重量
 };
 
 #endif // CONTROLLER_HPP
