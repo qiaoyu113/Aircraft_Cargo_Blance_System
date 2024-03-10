@@ -6,9 +6,24 @@
 // 初始化定义传送带的GPIO引脚号
 Controller::Controller(): left(29), pause(28), right(27), w1(24), w2(0), w3(2), w4(3), w5(25) {
     // wiringPiSetup();
+    // 为每个WeightSensor注册回调函数
+    w1.setCallback([this](bool detected) { this->onWeightDetected(1, detected); });
+    w2.setCallback([this](bool detected) { this->onWeightDetected(2, detected); });
+    w3.setCallback([this](bool detected) { this->onWeightDetected(3, detected); });
+    w4.setCallback([this](bool detected) { this->onWeightDetected(4, detected); });
+    w5.setCallback([this](bool detected) { this->onWeightDetected(5, detected); });
 }
 
-void Controller::setCallback(std::function<void(bool)> callback) {
+void Controller::onWeightDetected(int sensorIndex, bool detected) {
+    std::vector<double> weights = readWeight();
+    if (detected) {
+        if (callback) {
+            callback(true, weights);
+        }
+    }
+}
+
+void Controller::setCallback(std::function<void(bool, const std::vector<double>&)> callback) {
     this->callback = callback;
 }
 
@@ -26,7 +41,19 @@ std::vector<double> Controller::readWeight() {
     // std::cerr << "w4_weight" << w4_weight << std::endl;
     // std::cerr << "w5_weight" << w5_weight << std::endl;
 
-    return {w1_weight, w2_weight, w3_weight, w4_weight, w5_weight};
+    std::vector<double> weights = {w1_weight, w2_weight, w3_weight, w4_weight, w5_weight};
+    
+    // 检查是否所有读数都不为0
+    bool allZero = std::all_of(weights.begin(), weights.end(), [](double weight) {
+        return weight == 0.0;
+    });
+
+    // 如果所有读数都不为0，则执行回调
+    if (allZero) {
+        TurnOff();
+    }
+
+    return weights
 }
 
 void Controller::setpControl(const std::string& status, int sensorIndex) {
