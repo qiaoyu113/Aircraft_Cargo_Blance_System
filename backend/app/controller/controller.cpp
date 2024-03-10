@@ -42,7 +42,7 @@ void Controller::readWeight() {
     // std::cerr << "w5_weight" << w5_weight << std::endl;
 }
 
-void onWeightChange(int sensorId, int weight) {
+void Controller::onWeightChange(int sensorId, int weight) {
     // 处理重量变化
     // 这里可以根据 sensorId 和 weight 来执行特定逻辑
     std::cout << "Sensor " << sensorId << " weight changed to " << weight << std::endl;
