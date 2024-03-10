@@ -29,6 +29,7 @@
 #include "WeightSensor.hpp"
 #include <iostream>
 #include <stdexcept>
+#include <thread>
 
 WeightSensor::WeightSensor(int pinSCK, int pinSDA) {
     hx711.SCK = pinSCK;
@@ -96,7 +97,7 @@ void WeightSensor::weightReading() {
     std::thread([this]() {
         float lastWeight = -1; // 初始值设为一个不可能的重量，确保第一次总是触发回调
         while (true) {
-            float currentWeight = readWeight(); // 读取当前重量，需要根据实际情况实现 readWeight 方法
+            float currentWeight = readSensor(); // 读取当前重量，需要根据实际情况实现 readSensor 方法
             if (currentWeight != lastWeight) {
                 if (callback) {
                     callback(currentWeight); // 当重量变化时调用回调函数
