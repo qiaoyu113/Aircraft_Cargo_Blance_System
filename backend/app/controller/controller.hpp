@@ -19,6 +19,7 @@ public:
     void setCallback(std::function<void(bool, const std::vector<int>&)> callback);
     void readWeight();            // Correct return type
     void setpControl(const std::string& status, int sensorIndex); // Added parameter and corrected name
+    void onWeightChange(int sensorId, int weight); // 将onWeightChange添加为成员函数
     void TurnOff();
     void RTP(const std::vector<int>& currentWeight);
 private:
@@ -36,8 +37,8 @@ private:
     // W4 w4;
     // W5 w5;
     WeightSensor w1, w2, w3, w4, w5;
-    std::vector<int> lastWeights; // 用来存储上一次的重量读数
-    std::vector<int> currentWeights; // 当前的重量，初始化为足够大以存储所有传感器的重量
+    std::vector<int> lastWeights;
+    std::vector<int> currentWeights; 
 };
 
 #endif // CONTROLLER_HPP
