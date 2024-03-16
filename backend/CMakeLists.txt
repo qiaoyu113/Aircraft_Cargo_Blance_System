@@ -62,8 +62,9 @@ add_executable(run
 )    
 
 # 添加测试可执行文件
-add_executable(test 
+add_executable(all_tests 
     tests/weight_sensor_test.cpp ## 测重传感器测试文件
+    app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
 )
 
 # 应用程序run的包含目录
@@ -82,7 +83,7 @@ target_link_libraries(run PRIVATE
 )
 
 # 测试的包含目录
-target_include_directories(test PRIVATE 
+target_include_directories(all_tests PRIVATE 
     ${Boost_INCLUDE_DIRS}
     ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
     ${CMAKE_CURRENT_SOURCE_DIR}  # 包含项目根目录
@@ -91,14 +92,14 @@ target_include_directories(test PRIVATE
 )
 
 # 测试的包含目录
-target_link_libraries(test PRIVATE 
+target_link_libraries(all_tests PRIVATE 
     ${Boost_LIBRARIES}
     pthread
     pigpio
 )
 
 # 添加测试到CTest
-add_test(NAME WeightSensorTest COMMAND weight_sensor_test)
+add_test(NAME AllTests COMMAND all_tests)
 
 
 # target_link_libraries(run PRIVATE 
