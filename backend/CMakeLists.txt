@@ -27,6 +27,12 @@ link_directories(/usr/lib)
 #     app/led_control/button.cpp  # 添加 led_control 的源文件
 # )
 
+# 启用测试
+enable_testing()
+
+# 查找Boost，确保包括unit_test_framework
+find_package(Boost REQUIRED COMPONENTS system unit_test_framework)
+
 # 添加可执行文件
 add_executable(run 
     socket/main.cpp 
@@ -42,12 +48,15 @@ add_executable(run
     app/weight_sensor/w3/w3.cpp  # 3号测重传感器
     app/weight_sensor/w4/w4.cpp  # 4号测重传感器
     app/weight_sensor/w5/w5.cpp  # 5号测重传感器
-    app/weight_sensor/WeightSensor/WeightSensor.cpp  # 5号测重传感器
+    app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
+    # 添加测试可执行文件
+    tests/weight_sensor_test.cpp ## 测重传感器测试文件
 )
 
 # 包含目录
 target_include_directories(run PRIVATE 
     ${Boost_INCLUDE_DIRS}
+    ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
     ${CMAKE_CURRENT_SOURCE_DIR}  # 包含项目根目录
     ${CMAKE_CURRENT_SOURCE_DIR}/packages/json-develop  # 包含 nlohmann_json 头文件目录
     ${CMAKE_CURRENT_SOURCE_DIR}/led_control  # 包含 led_control 头文件目录
@@ -72,3 +81,6 @@ target_link_libraries(run PRIVATE
 #     pthread
 #     wiringPi
 # )
+
+# 添加测试到CTest
+add_test(NAME WeightSensorTest COMMAND weight_sensor_test)
