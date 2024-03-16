@@ -104,3 +104,8 @@ void WeightSensor::weightReading() {
     // int weight = readSensor();
     // return weight; // 根据实际情况返回是否检测到重量的标志
 }
+
+int WeightSensor::read_sensor_test() {
+    int weight = readSensor();
+    return weight;
+}

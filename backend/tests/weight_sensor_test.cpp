@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_CASE(test_weight_sensor_reading)
     WeightSensor ws(17, 18);
 
     // 这里你可以模拟GPIO读取的结果，然后调用readSensor方法
-    int weight = ws.readSensor();
+    int weight = ws.read_sensor_test();
     
     // 假设你有一个预期的重量值，你可以用BOOST_CHECK_EQUAL来检查
     BOOST_CHECK_GE(weight, 0); // 这里的expected_weight应该为正值
