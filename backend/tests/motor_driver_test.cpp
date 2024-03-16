@@ -9,7 +9,7 @@
  * - ...
  */
 
-#define BOOST_TEST_MODULE MotorDriverTest
+// #define BOOST_TEST_MODULE MotorDriverTest
 #include <boost/test/unit_test.hpp>
 #include "../app/motor_driver/motor_driver.hpp"
 

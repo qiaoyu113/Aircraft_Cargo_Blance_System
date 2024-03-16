@@ -27,15 +27,15 @@ public:
     void stop(); // Stop the motor
     // 测试：获取当前方向
     int getCurrentDirection() const;
-
-private:
-    const int stepPin;
-    const int dirPin;
-
+    
     // Direction constants
     static const int DIR_FORWARD = PI_HIGH;
     static const int DIR_BACKWARD = PI_LOW;
     static const int DIR_STOP = -1;
+
+private:
+    const int stepPin;
+    const int dirPin;
 
     // Current direction of the motor
     volatile int currentDirection;
