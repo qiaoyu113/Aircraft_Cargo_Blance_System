@@ -1,5 +1,15 @@
-// websocket_session.hpp
+/**
+ * @file   websocket_session.hpp
+ * @brief  socket session connection singleton file
+ * 
+ * @author Yu Qiao
+ * @date   2024-02-10
+ *
+ * Additional notes:
+ * - ...
+ */
 
+// websocket_session.hpp
 #pragma once
 
 #include <boost/beast.hpp>

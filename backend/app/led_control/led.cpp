@@ -1,3 +1,14 @@
+/**
+ * @file   led.cpp
+ * @brief  Led executive file
+ *
+ * @author Yu Qiao
+ * @date   2024-02-02
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #include "led.hpp"
 #include <wiringPi.h>
 

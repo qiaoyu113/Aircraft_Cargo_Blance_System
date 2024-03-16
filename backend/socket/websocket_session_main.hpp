@@ -1,3 +1,14 @@
+/**
+ * @file   websocket_session_main.hpp
+ * @brief  The final version of the main file for production use
+ * 
+ * @author Yu Qiao
+ * @date   2024-02-20
+ *
+ * Additional notes:
+ * - ...
+ */
+
 // websocket_session_main.hpp
 
 #ifndef WEBSOCKET_SESSION_MAIN_HPP

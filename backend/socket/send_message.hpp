@@ -1,4 +1,13 @@
-// send_message.hpp
+/**
+ * @file   send_message.hpp
+ * @brief  It is responsible for sending the reading of the gravity sensor to the remote server through the socket in real time
+ *
+ * @author Yu Qiao
+ * @date   2024-02-12
+ *
+ * Additional notes:
+ * - ...
+ */
 
 #ifndef SEND_MESSAGE_HPP
 #define SEND_MESSAGE_HPP

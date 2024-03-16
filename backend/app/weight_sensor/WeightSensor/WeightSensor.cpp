@@ -26,6 +26,17 @@
 //     return weightDetected;
 // }
 
+/**
+ * @file   WeightSensor.cpp
+ * @brief  Gravity sensor code file
+ *
+ * @author Yuhan Liu
+ * @date   2024-02-20
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #include "WeightSensor.hpp"
 #include <iostream>
 #include <stdexcept>
@@ -103,4 +114,9 @@ void WeightSensor::weightReading() {
     }).detach(); // 分离线程，让它独立运行
     // int weight = readSensor();
     // return weight; // 根据实际情况返回是否检测到重量的标志
+}
+
+int WeightSensor::read_sensor_test() {
+    int weight = readSensor();
+    return weight;
 }

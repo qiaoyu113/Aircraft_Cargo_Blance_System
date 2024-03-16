@@ -16,6 +16,18 @@
 
 // #endif // WEIGHTSENSOR_HPP
 
+
+/**
+ * @file   WeightSensor.hpp
+ * @brief  Gravity sensor code file
+ *
+ * @author Yuhan Liu
+ * @date   2024-02-20
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #ifndef WEIGHTSENSOR_HPP
 #define WEIGHTSENSOR_HPP
 
@@ -37,6 +49,7 @@ public:
     WeightSensor(int pinSCK, int pinSDA);
     void setCallback(std::function<void(int)> callback); // 修改回调函数的参数类型为int
     void weightReading();
+    int read_sensor_test();
     
 private:
     hx711_pin hx711;
