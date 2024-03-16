@@ -1,4 +1,13 @@
-// main.cpp
+/**
+ * @file   main.cpp
+ * @brief  main file for basic functions
+ *
+ * @author Yu Qiao
+ * @date   2024-02-01
+ *
+ * Additional notes:
+ * - ...
+ */
 
 // #include "websocket_session.hpp"
 // #include "websocket_session_button.hpp"

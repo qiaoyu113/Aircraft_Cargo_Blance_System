@@ -26,6 +26,17 @@
 //     return weightDetected;
 // }
 
+/**
+ * @file   WeightSensor.cpp
+ * @brief  Gravity sensor code file
+ *
+ * @author Yuhan Liu
+ * @date   2024-02-20
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #include "WeightSensor.hpp"
 #include <iostream>
 #include <stdexcept>

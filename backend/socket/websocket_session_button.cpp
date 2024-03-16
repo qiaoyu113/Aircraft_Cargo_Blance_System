@@ -1,3 +1,15 @@
+/**
+ * @file   websocket_session_button.cpp
+ * @brief  The main file executed by the gravity sensor is simulated by the button
+ * 
+ * @author Yu Qiao
+ * @date   2024-02-03
+ *
+ * Additional notes:
+ * - ...
+ */
+
+
 // websocket_session_button.cpp
 #include "websocket_session_button.hpp"
 #include <nlohmann/json.hpp>

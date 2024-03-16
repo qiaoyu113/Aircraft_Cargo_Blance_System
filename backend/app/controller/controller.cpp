@@ -1,3 +1,14 @@
+/**
+ * @file   contoller.cpp
+ * @brief  Total control center, through which all sensors and stepper motors are empowered
+ *
+ * @author Yu Qiao
+ * @date   2024-02-16
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #include <iostream>
 #include "controller.hpp"
 // #include <wiringPi.h>

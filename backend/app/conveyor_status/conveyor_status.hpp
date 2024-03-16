@@ -1,3 +1,14 @@
+/**
+ * @file   conveyor_status.cpp
+ * @brief  Determine the status of the conveyor belt and send it to the server
+ *
+ * @author Yu Qiao
+ * @date   2024-02-26
+ *
+ * Additional notes:
+ * - ...
+ */
+
 // ConveyorStatus.hpp
 
 #ifndef CONVEYOR_STATUS_HPP

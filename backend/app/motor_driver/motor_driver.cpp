@@ -1,3 +1,14 @@
+/**
+ * @file   motor_driver.cpp
+ * @brief  Stepper motor execution file
+ *
+ * @author Yuhan Liu
+ * @date   2024-03-02
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #include <iostream>
 #include <pigpio.h>
 #include <unistd.h>

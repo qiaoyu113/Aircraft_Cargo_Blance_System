@@ -1,3 +1,14 @@
+/**
+ * @file   WeightSensor.cpp
+ * @brief  Gravity sensor code file
+ *
+ * @author Yuhan Liu
+ * @date   2024-02-21
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <pigpio.h>

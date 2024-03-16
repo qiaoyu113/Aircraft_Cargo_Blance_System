@@ -16,6 +16,18 @@
 
 // #endif // WEIGHTSENSOR_HPP
 
+
+/**
+ * @file   WeightSensor.hpp
+ * @brief  Gravity sensor code file
+ *
+ * @author Yuhan Liu
+ * @date   2024-02-20
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #ifndef WEIGHTSENSOR_HPP
 #define WEIGHTSENSOR_HPP
 

@@ -14,6 +14,17 @@
 
 // button.cpp
 
+/**
+ * @file   button.cpp
+ * @brief  Button executive file
+ *
+ * @author Yuhan Liu
+ * @date   2024-02-02
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #include "button.hpp"
 #include <wiringPi.h>
 #include <iostream>

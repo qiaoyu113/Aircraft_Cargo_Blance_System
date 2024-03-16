@@ -1,3 +1,14 @@
+/**
+ * @file   server.cpp
+ * @brief  socket connection configuration file
+ * 
+ * @author Yu Qiao
+ * @date   2024-02-10
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #include <boost/beast.hpp>
 #include <boost/asio.hpp>
 #include <iostream>

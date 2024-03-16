@@ -1,3 +1,14 @@
+/**
+ * @file   websocket_session.cpp
+ * @brief  socket session connection singleton file
+ * 
+ * @author Yu Qiao
+ * @date   2024-02-10
+ *
+ * Additional notes:
+ * - ...
+ */
+
 // websocket_session.cpp
 
 #include "websocket_session.hpp"

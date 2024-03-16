@@ -1,3 +1,14 @@
+/**
+ * @file   weight_sensor_test.cpp
+ * @brief  Unit test of gravity sensor
+ *
+ * @author Yu Qiao
+ * @date   2024-03-15
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #define BOOST_TEST_MODULE WeightSensorTest
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/unit_test.hpp>
