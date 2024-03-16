@@ -17,16 +17,8 @@
 double accLimit=1;
 
 // 初始化定义传送带的GPIO引脚号
-Controller::Controller(): 
-    motor(29, 1),  // 替换为实际的引脚号(stepPinRight, dirPinRight)
-    w1(24, 27),
-    w2(0, 1),
-    w3(2, 5),
-    w4(3, 4),
-    w5(25,23),
-    lastWeights(5, 0),
-    currentWeights(5, 0) {
-        // wiringPiSetup();
+Controller::Controller(): left(29), pause(28), right(27), w1(24, 27), w2(0, 1), w3(2, 5), w4(3, 4), w5(25,23), lastWeights(5, 0), currentWeights(5, 0) {
+    // wiringPiSetup();
 }
 
 void Controller::setCallback(std::function<void(bool, const std::vector<int>&)> callback) {
@@ -97,11 +89,17 @@ void Controller::setpControl(const std::string& status, int sensorIndex) {
     std::cout << "Sensor " << sensorIndex << " triggered action: " << status << std::endl;
 
     if(status == "right"){
-        motor.startMoving(StepperMotor::DIR_FORWARD);
+        right.turnOn();
+        pause.turnOff();
+        left.turnOff();
     } else if (status == "pause") {
-        motor.stop();
+        right.turnOff();
+        pause.turnOn();
+        left.turnOff();
     } else if (status == "left") {
-        motor.startMoving(StepperMotor::DIR_BACKWARD);
+        right.turnOff();
+        pause.turnOff();
+        left.turnOn();
     }
 }
 
@@ -187,5 +185,7 @@ void Controller::RTP(const std::vector<int>& currentWeight) {
 }
 
 void Controller::TurnOff() {
-    motor.stop();
+    right.turnOff();
+    pause.turnOff();
+    left.turnOff();
 }

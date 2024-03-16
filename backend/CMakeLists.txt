@@ -50,21 +50,25 @@ add_executable(run
     app/controller/controller.cpp  # 控制层文件
     app/conveyor_status/conveyor_status.cpp  # 步进电机状态
     socket/send_message.cpp  # 消息队列
-    app/stepping_motor/left/left.cpp  # 步进电机左移动
-    app/stepping_motor/pause/pause.cpp  # 步进电机停止移动
-    app/stepping_motor/right/right.cpp  # 步进电机右移动
-    app/weight_sensor/w1/w1.cpp  # 1号测重传感器
-    app/weight_sensor/w2/w2.cpp  # 2号测重传感器
-    app/weight_sensor/w3/w3.cpp  # 3号测重传感器
-    app/weight_sensor/w4/w4.cpp  # 4号测重传感器
-    app/weight_sensor/w5/w5.cpp  # 5号测重传感器
+    # app/stepping_motor/left/left.cpp  # 步进电机左移动
+    # app/stepping_motor/pause/pause.cpp  # 步进电机停止移动
+    # app/stepping_motor/right/right.cpp  # 步进电机右移动
+    # app/weight_sensor/w1/w1.cpp  # 1号测重传感器
+    # app/weight_sensor/w2/w2.cpp  # 2号测重传感器
+    # app/weight_sensor/w3/w3.cpp  # 3号测重传感器
+    # app/weight_sensor/w4/w4.cpp  # 4号测重传感器
+    # app/weight_sensor/w5/w5.cpp  # 5号测重传感器
+    # app/weight_sensor/w5/w5.cpp  # 5号测重传感器
     app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
+    app/motor_driver/motor_driver.cpp  # 步进电机
 )    
 
 # 添加测试可执行文件
 add_executable(all_tests 
     tests/weight_sensor_test.cpp ## 测重传感器测试文件
     app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
+    tests/motor_driver_test.cpp ## 步进电机测试文件
+    app/motor_driver/motor_driver.cpp  # 步进电机
 )
 
 # 应用程序run的包含目录
