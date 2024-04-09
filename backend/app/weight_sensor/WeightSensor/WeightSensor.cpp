@@ -83,9 +83,9 @@ int WeightSensor::readSensor() {
         if(gpioRead(hx711.SDA)) {
             hx711.value++;
         }
+        gpioWrite(hx711.SCK, PI_LOW);
     }
     gpioWrite(hx711.SCK, PI_HIGH);
-    gpioWrite(hx711.SCK, PI_LOW);
 
     if((hx711.EN == 1) && (hx711.value < 25000)) {
         hx711.EN = 0;
