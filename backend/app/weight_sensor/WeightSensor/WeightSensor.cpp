@@ -78,8 +78,8 @@ int WeightSensor::readSensor() {
     time_sleep(0.1); // 延时100ms
     for(i = 0; i < 24; i++) {
         gpioWrite(hx711.SCK, PI_HIGH);
-        while(!gpioRead(hx711.SCK)) gpioDelay(1000);
-        hx711.value <<= 1;
+        while(gpioRead(hx711.SCK) == 0) gpioDelay(1000);
+        hx711.value = hx711.value << 1;
         gpioWrite(hx711.SCK, PI_LOW);
         while(gpioRead(hx711.SCK));
         if(gpioRead(hx711.SDA)) {
@@ -89,13 +89,13 @@ int WeightSensor::readSensor() {
     }
     gpioWrite(hx711.SCK, PI_HIGH);
 
-    if((hx711.EN == 1) && (hx711.value < 2500)) {
+    if((hx711.EN == 1) && (hx711.value > 2500)) {
         hx711.EN = 0;
         hx711.calibration = hx711.value;
     } else {
         i = (hx711.value - hx711.calibration + 50) / hx711.coefficient;
     }
-    if(i < 5000 && i >= 0) {
+    if(i < 5000) {
       hx711.weight = i;
     }
     std::cout << ">>>>>>>>>>>>>>>>>>>>>hx711.weight: " << hx711.weight << std::endl;
