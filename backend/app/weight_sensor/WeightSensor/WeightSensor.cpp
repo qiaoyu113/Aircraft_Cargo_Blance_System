@@ -98,13 +98,6 @@ int WeightSensor::readSensor() {
     if(i < 5000) {
       hx711.weight = i;
     }
-    std::cout << ">>>>>>>>>>>>>>>>>>>>>hx711.weight: " << hx711.weight << std::endl;
-    std::cout << ">>>>>>>>>>>>>>>>>>>>>i: " << i << std::endl;
-    if ( hx711.weight<0) {
-        std::cout << ">>>>>>>>>>>>>>>>>>>>>hx711.value: " << hx711.value << std::endl;
-        std::cout << ">>>>>>>>>>>>>>>>>>>>>calibration: " << hx711.calibration << std::endl;
-        std::cout << ">>>>>>>>>>>>>>>>>>>>>coefficient: " << hx711.coefficient << std::endl;
-    }
     return hx711.weight;
 }
 
