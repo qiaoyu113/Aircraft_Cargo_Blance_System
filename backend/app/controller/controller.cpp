@@ -120,55 +120,54 @@ void Controller::RTP(const std::vector<int>& currentWeight) {
     double torqueLeft=9.8*currentWeight[0]*2*d+9.8*currentWeight[1]*d;
     double torqueRight=9.8*currentWeight[4]*2*d+9.8*currentWeight[3]*d;
 
-    // if ((currentWeight[0]+currentWeight[1])>(currentWeight[3]+currentWeight[4])) {
-    //     if (weightAll==0){
-    //         setpControl("pause", 0);
-    //     } 
-    //     else{
-    //         double angleAcc=(torqueLeft-torqueRight)/rotationInertia;
-    //         std::cout << "Action: left" << angleAcc << std::endl;
-    //         if (angleAcc<=accLimit){
-    //             setpControl("pause", 0);
-    //         }
-    //         else{
-    //             if (currentWeight[4]!=0){
-    //                 setpControl("alarm",0);
-    //                 setpControl("pause",0);
-    //             }
-    //             else{
-    //                 setpControl("right",0);
-    //             }
-    //         }
-    //     }
-    // }
+    if ((currentWeight[0]+currentWeight[1])>(currentWeight[3]+currentWeight[4])) {
+        if (weightAll==0){
+            setpControl("pause", 0);
+        } 
+        else{
+            double angleAcc=(torqueLeft-torqueRight)/rotationInertia;
+            std::cout << "Action: left" << angleAcc << std::endl;
+            if (angleAcc<=accLimit){
+                setpControl("pause", 0);
+            }
+            else{
+                if (currentWeight[4]!=0){
+                    setpControl("alarm",0);
+                    setpControl("pause",0);
+                }
+                else{
+                    setpControl("right",0);
+                }
+            }
+        }
+    }
 
-    // if ((currentWeight[0]+currentWeight[1])<(currentWeight[3]+currentWeight[4])) {
-    //     if (weightAll==0){
-    //         setpControl("pause", 0);
-    //     } 
-    //     else{
-    //         double angleAcc=(torqueRight-torqueLeft)/rotationInertia;
-    //         std::cout << "Action:right " << angleAcc << std::endl;
-    //         if (angleAcc<=accLimit){
-    //             setpControl("pause", 0);
-    //         }
-    //         else{
-    //             if (currentWeight[0]!=0){
-    //                 setpControl("alarm",0);
-    //                 setpControl("pause",0);
-    //             }
-    //             else{
-    //                 setpControl("left",0);
-    //             }
-    //         }
-    //     }
-    // }
+    if ((currentWeight[0]+currentWeight[1])<(currentWeight[3]+currentWeight[4])) {
+        if (weightAll==0){
+            setpControl("pause", 0);
+        } 
+        else{
+            double angleAcc=(torqueRight-torqueLeft)/rotationInertia;
+            std::cout << "Action:right " << angleAcc << std::endl;
+            if (angleAcc<=accLimit){
+                setpControl("pause", 0);
+            }
+            else{
+                if (currentWeight[0]!=0){
+                    setpControl("alarm",0);
+                    setpControl("pause",0);
+                }
+                else{
+                    setpControl("left",0);
+                }
+            }
+        }
+    }
 
-    // if ((currentWeight[0]+currentWeight[1])==(currentWeight[3]+currentWeight[4])){
-    //   setpControl("pause",0);
-    // }
+    if ((currentWeight[0]+currentWeight[1])==(currentWeight[3]+currentWeight[4])){
+      setpControl("pause",0);
+    }
 
-    setpControl("right",0);
 
     // // 对每个传感器的读数独立判断
     // if (currentWeight[0] > 0) {
