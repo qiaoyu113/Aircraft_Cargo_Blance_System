@@ -96,7 +96,12 @@ int WeightSensor::readSensor() {
     if(i < 5000 && i >= 0) {
       hx711.weight = i;
     }
-
+    printf(">>>>>>>>>>>>>>>>>>>>>hx711.weight:", hx711.weight);
+    if ( hx711.weight<0) {
+        printf(">>>>>>>>>>>>>>>>>>>>>hx711.weight:", hx711.value);
+        printf(">>>>>>>>>>>>>>>>>>>>>hx711.weight:", hx711.calibration);
+        printf(">>>>>>>>>>>>>>>>>>>>>hx711.weight:", hx711.coefficient);
+    }
     return hx711.weight;
 }
 
