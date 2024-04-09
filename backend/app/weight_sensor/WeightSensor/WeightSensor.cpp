@@ -63,7 +63,7 @@ void WeightSensor::setPin() {
 
 void WeightSensor::initPin() {
     std::cout << "---------hx711.SCK: " << hx711.SCK << std::endl;
-    std::cout << "---------hx711.SDA: " << hx711.SSDACK << std::endl;
+    std::cout << "---------hx711.SDA: " << hx711.SDA << std::endl;
     gpioSetMode(hx711.SCK, PI_OUTPUT);
     gpioSetMode(hx711.SDA, PI_INPUT);
     gpioSetPullUpDown(hx711.SDA, PI_PUD_UP);
