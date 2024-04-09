@@ -87,13 +87,15 @@ int WeightSensor::readSensor() {
     }
     gpioWrite(hx711.SCK, PI_HIGH);
 
-    if((hx711.EN == 1) && (hx711.value < 25000)) {
+    if((hx711.EN == 1) && (hx711.value < 2500)) {
         hx711.EN = 0;
         hx711.calibration = hx711.value;
     } else {
         i = (hx711.value - hx711.calibration + 50) / hx711.coefficient;
     }
-    if(i < 5000) hx711.weight = i;
+    if(i < 5000) && (i >= 0) {
+      hx711.weight = i;
+    }
 
     return hx711.weight;
 }
