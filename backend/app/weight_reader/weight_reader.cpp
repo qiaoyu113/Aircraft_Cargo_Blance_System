@@ -31,8 +31,8 @@ struct hx711_pin {
 };
 
 void set_pin(struct hx711_pin *value) {
-    value->SCK = 25;
-    value->SDA = 24;
+    value->SCK = 16;
+    value->SDA = 12;
     value->EN = 1;
     value->coefficient = 415;
 }
