@@ -31,8 +31,8 @@ struct hx711_pin {
 };
 
 void set_pin(struct hx711_pin *value) {
-    value->SCK = 20;
-    value->SDA = 21;
+    value->SCK = 25;
+    value->SDA = 24;
     value->EN = 1;
     value->coefficient = 415;
 }
@@ -78,7 +78,7 @@ void start(struct hx711_pin *value) {
     }
     if(i < 5000) value->weight = i;
     // value->weight = i;
-    // printf("重量为：%d g\n", value->weight);
+    printf("重量为：%d g\n", value->weight);
 }
 
 int setup(struct hx711_pin *value) {
