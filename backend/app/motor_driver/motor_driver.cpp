@@ -41,6 +41,10 @@ StepperMotor::~StepperMotor() {
 
 void StepperMotor::startMoving(int direction) {
     setDirection(direction);
+    if (direction != DIR_STOP) {
+        // 启动电机
+        runMotor(500); // 传递合适的延迟参数，或根据需要调整
+    }
 }
 
 void StepperMotor::stop() {
