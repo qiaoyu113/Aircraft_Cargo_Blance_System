@@ -62,8 +62,6 @@ void WeightSensor::setPin() {
 }
 
 void WeightSensor::initPin() {
-    std::cout << "---------hx711.SCK: " << hx711.SCK << std::endl;
-    std::cout << "---------hx711.SDA: " << hx711.SDA << std::endl;
     gpioSetMode(hx711.SCK, PI_OUTPUT);
     gpioSetMode(hx711.SDA, PI_INPUT);
     gpioSetPullUpDown(hx711.SDA, PI_PUD_UP);
@@ -106,6 +104,7 @@ void WeightSensor::weightReading() {
         float lastWeight = -1; // 初始值设为一个不可能的重量，确保第一次总是触发回调
         while (true) {
             float currentWeight = readSensor(); // 读取当前重量，需要根据实际情况实现 readSensor 方法
+            std::cout << "------currentWeight------还在循环: " << currentWeight << std::endl;
             if (currentWeight != lastWeight) {
                 if (callback) {
                     callback(currentWeight); // 当重量变化时调用回调函数
