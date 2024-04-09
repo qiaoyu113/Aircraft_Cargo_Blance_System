@@ -62,6 +62,8 @@ void WeightSensor::setPin() {
 }
 
 void WeightSensor::initPin() {
+    std::cout << "---------hx711.SCK: " << hx711.SCK << std::endl;
+    std::cout << "---------hx711.SDA: " << hx711.SSDACK << std::endl;
     gpioSetMode(hx711.SCK, PI_OUTPUT);
     gpioSetMode(hx711.SDA, PI_INPUT);
     gpioSetPullUpDown(hx711.SDA, PI_PUD_UP);
@@ -96,11 +98,12 @@ int WeightSensor::readSensor() {
     if(i < 5000 && i >= 0) {
       hx711.weight = i;
     }
-    printf(">>>>>>>>>>>>>>>>>>>>>hx711.weight:", hx711.weight);
+    std::cout << ">>>>>>>>>>>>>>>>>>>>>hx711.weight: " << hx711.weight << std::endl;
+    std::cout << ">>>>>>>>>>>>>>>>>>>>>i: " << i << std::endl;
     if ( hx711.weight<0) {
-        printf(">>>>>>>>>>>>>>>>>>>>>hx711.weight:", hx711.value);
-        printf(">>>>>>>>>>>>>>>>>>>>>hx711.weight:", hx711.calibration);
-        printf(">>>>>>>>>>>>>>>>>>>>>hx711.weight:", hx711.coefficient);
+        std::cout << ">>>>>>>>>>>>>>>>>>>>>hx711.value: " << hx711.value << std::endl;
+        std::cout << ">>>>>>>>>>>>>>>>>>>>>calibration: " << hx711.calibration << std::endl;
+        std::cout << ">>>>>>>>>>>>>>>>>>>>>coefficient: " << hx711.coefficient << std::endl;
     }
     return hx711.weight;
 }
