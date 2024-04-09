@@ -18,12 +18,12 @@ double accLimit=1;
 
 // 初始化定义传送带的GPIO引脚号
 Controller::Controller(): 
-    motor(17, 19),  // 替换为实际的引脚号(stepPinRight, dirPinRight)
-    w1(24, 27),
-    w2(0, 1),
-    w3(2, 5),
-    w4(3, 4),
-    w5(25,23),
+    motor(19, 17),  // 替换为实际的引脚号(stepPinRight, dirPinRight)
+    w1(22, 27),
+    w2(6, 5),
+    w3(21, 20),
+    w4(16, 12),
+    w5(25, 24),
     lastWeights(5, 0),
     currentWeights(5, 0) {
         // wiringPiSetup();
