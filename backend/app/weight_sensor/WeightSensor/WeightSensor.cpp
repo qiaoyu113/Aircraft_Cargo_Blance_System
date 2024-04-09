@@ -93,7 +93,7 @@ int WeightSensor::readSensor() {
     } else {
         i = (hx711.value - hx711.calibration + 50) / hx711.coefficient;
     }
-    if(i < 5000) && (i >= 0) {
+    if(i < 5000 && i >= 0) {
       hx711.weight = i;
     }
 
