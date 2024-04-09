@@ -111,7 +111,7 @@ void WeightSensor::weightReading() {
                 }
                 lastWeight = currentWeight; // 更新最后的重量记录
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(500)); // 调整检测频率
+            std::this_thread::sleep_for(std::chrono::milliseconds(1500)); // 调整检测频率
         }
     }).detach(); // 分离线程，让它独立运行
     // int weight = readSensor();
