@@ -18,7 +18,7 @@ double accLimit=1;
 
 // 初始化定义传送带的GPIO引脚号
 Controller::Controller(): 
-    motor(29, 1),  // 替换为实际的引脚号(stepPinRight, dirPinRight)
+    motor(17, 19),  // 替换为实际的引脚号(stepPinRight, dirPinRight)
     w1(24, 27),
     w2(0, 1),
     w3(2, 5),

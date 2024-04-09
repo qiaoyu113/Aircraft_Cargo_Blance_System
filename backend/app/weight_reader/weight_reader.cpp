@@ -31,8 +31,8 @@ struct hx711_pin {
 };
 
 void set_pin(struct hx711_pin *value) {
-    value->SCK = 27;
-    value->SDA = 22;
+    value->SCK = 20;
+    value->SDA = 21;
     value->EN = 1;
     value->coefficient = 415;
 }
@@ -67,13 +67,18 @@ void start(struct hx711_pin *value) {
     std::cerr << "value->value:" << value->value << std::endl;
 
     if((value->EN == 1) && (value->value > 2500)) {
+        printf("EN == 1");
         value->EN = 0;
         value->calibration = value->value;
     } else {
+        // printf("value:", value->value);
+        // printf("calibration:", value->calibration);
+        // printf("coefficient:", value->coefficient);
         i = (value->value - value->calibration + 50) / value->coefficient;
     }
     if(i < 5000) value->weight = i;
-    printf("重量为：%d g\n", value->weight);
+    // value->weight = i;
+    // printf("重量为：%d g\n", value->weight);
 }
 
 int setup(struct hx711_pin *value) {
