@@ -17,7 +17,6 @@
 #include <iostream>
 #include <pigpio.h>
 #include <unistd.h>
-#include "../../socket/gpio_lock.hpp"
 
 class StepperMotor {
 public:

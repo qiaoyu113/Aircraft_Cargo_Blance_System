@@ -51,7 +51,7 @@ void WebSocketSession::run() {
                 ws.write(boost::asio::buffer(response.dump()));
                 // 调用real-time processing进行逻辑处理
                 controller.RTP(currentWeight);
-                controller.readWeight();
+                // controller.readWeight();
             }
         });
 

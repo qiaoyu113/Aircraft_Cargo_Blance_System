@@ -22,6 +22,8 @@
 #include <iostream>
 #include <pigpio.h>
 #include <unistd.h>
+#include "../../socket/gpio_lock.hpp"
+
 
 StepperMotor::StepperMotor(int stepPin, int dirPin) 
     : stepPin(stepPin), dirPin(dirPin), currentDirection(DIR_STOP) {
@@ -58,7 +60,7 @@ void StepperMotor::setDirection(int direction) {
 void StepperMotor::runMotor(int delayUs) {
     while (true) {
         if (currentDirection == DIR_STOP) break;
-        std::lock_guard<std::mutex> lock(gpioMutex);
+        // std::lock_guard<std::mutex> lock(gpioMutex);
         gpioWrite(dirPin, currentDirection);
         gpioWrite(stepPin, 1);
         usleep(delayUs);

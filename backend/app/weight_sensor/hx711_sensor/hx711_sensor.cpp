@@ -6,7 +6,7 @@
 #include <thread>
 
 using namespace std;
-using std::chrono::seconds;
+using std::chrono::milliseconds;
 using namespace HX711;
 
 WeightSensor::WeightSensor(int pinSCK, int pinSDA) 
@@ -39,7 +39,7 @@ void WeightSensor::initSensor() {
 
 float WeightSensor::readWeight() {
     std::lock_guard<std::mutex> lock(gpioMutex);
-    const Mass weightMass = hx.weight(seconds(1));
+    const Mass weightMass = hx.weight(milliseconds(400));
     string m = weightMass.toString(Mass::Unit::G);
 
     // 将字符串转换为浮点数
