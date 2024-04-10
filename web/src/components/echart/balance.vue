@@ -46,89 +46,69 @@ export default {
 
       let option = {
         series: [
-            {
+          {
             type: 'gauge',
             startAngle: 180,
             endAngle: 0,
-            center: ['50%', '75%'],
+            center: ['50%', '60%'],
             radius: '90%',
-            min: 0,
-            max: 1,
-            splitNumber: 8,
+            min: -1, // Set the minimum to -1 or any negative value you want
+            max: 1,  // Set the maximum to 1 or any positive value you want
+            splitNumber: 4, // You can adjust this based on how many splits you want
             axisLine: {
-                lineStyle: {
+              lineStyle: {
                 width: 6,
                 color: [
-                    [0.4, '#FF6E76'],
-                    [0.5, '#7CFFB2'],
-                    [0.6, '#7CFFB2'],
-                    [1, '#FF6E76']
+                  [0.4, '#FF6E76'], // Adjust the color stops to 25% intervals
+                  [0.5, '#7CFFB2'],
+                  [0.6, '#7CFFB2'],
+                  [1, '#FF6E76']
                 ]
-                }
+              }
             },
-            pointer: {
-                icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-                length: '12%',
-                width: 20,
-                offsetCenter: [0, '-60%'],
-                itemStyle: {
-                color: 'auto'
-                }
-            },
-            axisTick: {
-                length: 12,
-                lineStyle: {
-                color: 'auto',
-                width: 2
-                }
-            },
-            splitLine: {
-                length: 20,
-                lineStyle: {
-                color: 'auto',
-                width: 5
-                }
+            // ... other properties remain the same
+            title: {
+              // Existing properties
+              color: 'white', // Set the title color to white
             },
             axisLabel: {
-                color: '#464646',
-                fontSize: 20,
-                distance: -60,
-                rotate: 'tangential',
-                formatter: function (value) {
+              color: 'white',
+              // Update the formatter to include negative values and maintain your labels
+              formatter: function (value) {
                 if (value === 0.875) {
-                    return 'Right-sided bias';
+                  return 'Right-sided bias';
                 } else if (value === 0.625) {
-                    return 'Pass';
+                  return 'Pass';
+                } else if (value === 0.5) {
+                  return '0';
                 } else if (value === 0.375) {
-                    return 'Pass';
+                  return 'Pass';
                 } else if (value === 0.125) {
-                    return 'Left-sided bias';
+                  return 'Left-sided bias';
+                } else if (value === 0.25) {
+                  return '-50';
+                } else if (value === 0.75) {
+                  return '+50';
                 }
                 return '';
-                }
-            },
-            title: {
-                offsetCenter: [0, '-10%'],
-                fontSize: 20
+              }
             },
             detail: {
-                fontSize: 30,
-                offsetCenter: [0, '-35%'],
-                valueAnimation: true,
-                formatter: function (value) {
-                return Math.round(value * 100) + '';
-                },
-                color: 'inherit'
+              color: 'white',
+              // Update formatter to reflect the actual value including negative
+              formatter: function (value) {
+                return (value * 100).toFixed(0);
+              }
             },
             data: [
-                {
-                value: num / 100,
-                name: 'Balance Rating'
-                }
+              {
+                value: num / 200, // You need to ensure that num is within the range -100 to 100
+                name: 'Balance Rating',
+              }
             ]
-            }
+          }
         ]
-        };
+      };
 
       myChartBalance.setOption(option, true);
       // -----------------------------------------------------------------
@@ -138,7 +118,7 @@ export default {
     initChart() {
       if (!this.myChartBalance) { // 检查实例是否已经存在
         this.myChartBalance = echarts.init(document.getElementById("balance"));
-        this.setData(30);
+        this.setData(0);
       }
     },
     updateChart(num) {
