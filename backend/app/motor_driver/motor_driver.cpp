@@ -73,7 +73,7 @@ void StepperMotor::runMotor(int delayUs) {
         auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
 
         // 如果已经过了1秒，退出循环
-        if (elapsedTime >= 1000)
+        if (elapsedTime >= 500)
             break;
     }
 }

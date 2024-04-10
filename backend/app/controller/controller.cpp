@@ -14,7 +14,7 @@
 // #include <wiringPi.h>
 #include <pigpio.h>
 
-double accLimit=1;
+double accLimit=1.2;
 
 // 初始化定义传送带的GPIO引脚号
 Controller::Controller(): 
