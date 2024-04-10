@@ -12,10 +12,12 @@
 // #define BOOST_TEST_MODULE MotorDriverTest
 #include <boost/test/unit_test.hpp>
 #include "../app/motor_driver/motor_driver.hpp"
+#include "../socket/gpio_lock.hpp"
 
 BOOST_AUTO_TEST_CASE(testMotorStartAndStop) {
     int stepPin = 19; // 假设的STEP引脚
     int dirPin = 17;  // 假设的DIR引脚
+    std::mutex gpioMutex; // 实际定义互斥锁
 
     StepperMotor motor(stepPin, dirPin);
 
