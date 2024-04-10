@@ -67,8 +67,8 @@ add_executable(run
 # 添加测试可执行文件
 add_executable(all_tests 
     tests/weight_sensor_test.cpp ## 测重传感器测试文件
-    # app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
-    app/weight_sensor/hx711_sensor/hx711_sensor.cpp  # 测重传感器
+    app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
+    # app/weight_sensor/hx711_sensor/hx711_sensor.cpp  # 测重传感器
     tests/motor_driver_test.cpp ## 步进电机测试文件
     app/motor_driver/motor_driver.cpp  # 步进电机
 )
@@ -86,6 +86,7 @@ target_link_libraries(run PRIVATE
     ${Boost_LIBRARIES}
     pthread
     pigpio
+    hx711
 )
 
 # 测试的包含目录
