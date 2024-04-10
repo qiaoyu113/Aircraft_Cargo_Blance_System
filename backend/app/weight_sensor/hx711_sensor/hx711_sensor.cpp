@@ -38,6 +38,7 @@ void WeightSensor::initSensor() {
 // }
 
 float WeightSensor::readWeight() {
+    std::lock_guard<std::mutex> lock(gpioMutex);
     const Mass weightMass = hx.weight(seconds(1));
     string m = weightMass.toString(Mass::Unit::G);
 

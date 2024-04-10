@@ -1,5 +1,6 @@
 #include <functional>
 #include "../../../include/common.h" // 确保引入了 AdvancedHX711 类的定义
+#include "../../../socket/gpio_lock.hpp"
 
 class WeightSensor {
 public:

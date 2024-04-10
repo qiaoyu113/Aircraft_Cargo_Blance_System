@@ -19,9 +19,11 @@
 // #include "../app/led_control/led.hpp"
 // #include "../app/led_control/button.hpp"
 #include "../app/controller/controller.hpp"
+#include "gpio_lock.hpp"
 
 int main() {
     std::cerr << "main is comming" << std::endl;
+    std::mutex gpioMutex; // 实际定义互斥锁
     try {
         boost::asio::io_context ioc{1};
         boost::asio::signal_set signals(ioc, SIGINT, SIGTERM); // 监听SIGINT和SIGTERM信号
