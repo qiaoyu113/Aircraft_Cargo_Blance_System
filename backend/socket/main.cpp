@@ -19,6 +19,8 @@
 // #include "../app/led_control/led.hpp"
 // #include "../app/led_control/button.hpp"
 #include "../app/controller/controller.hpp"
+#include "gpio_lock.hpp"
+std::mutex gpioMutex; // 实际定义互斥锁
 
 int main() {
     std::cerr << "main is comming" << std::endl;
@@ -29,7 +31,7 @@ int main() {
             ioc.stop(); // 当捕获到信号时，停止io_context
         });
 
-        tcp::acceptor acceptor{ioc, {boost::asio::ip::make_address("127.0.0.1"), 22}};
+        tcp::acceptor acceptor{ioc, {boost::asio::ip::make_address("127.0.0.1"), 8022}};
 
         for (;;) {
             tcp::socket socket{ioc};

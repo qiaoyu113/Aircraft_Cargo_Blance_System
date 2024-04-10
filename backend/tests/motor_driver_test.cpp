@@ -9,9 +9,11 @@
  * - ...
  */
 
-#define BOOST_TEST_MODULE MotorDriverTest
+// #define BOOST_TEST_MODULE MotorDriverTest
 #include <boost/test/unit_test.hpp>
 #include "../app/motor_driver/motor_driver.hpp"
+#include "../socket/gpio_lock.hpp"
+std::mutex gpioMutex; // 全局定义
 
 BOOST_AUTO_TEST_CASE(testMotorStartAndStop) {
     int stepPin = 19; // 假设的STEP引脚

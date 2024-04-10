@@ -76,25 +76,26 @@ int WeightSensor::readSensor() {
     time_sleep(0.1); // 延时100ms
     for(i = 0; i < 24; i++) {
         gpioWrite(hx711.SCK, PI_HIGH);
-        while(!gpioRead(hx711.SCK)) gpioDelay(1000);
-        hx711.value <<= 1;
+        while(gpioRead(hx711.SCK) == 0) gpioDelay(1000);
+        hx711.value = hx711.value << 1;
         gpioWrite(hx711.SCK, PI_LOW);
         while(gpioRead(hx711.SCK));
         if(gpioRead(hx711.SDA)) {
             hx711.value++;
         }
+        gpioWrite(hx711.SCK, PI_LOW);
     }
     gpioWrite(hx711.SCK, PI_HIGH);
-    gpioWrite(hx711.SCK, PI_LOW);
 
-    if((hx711.EN == 1) && (hx711.value < 25000)) {
+    if((hx711.EN == 1) && (hx711.value > 2500)) {
         hx711.EN = 0;
         hx711.calibration = hx711.value;
     } else {
         i = (hx711.value - hx711.calibration + 50) / hx711.coefficient;
     }
-    if(i < 5000) hx711.weight = i;
-
+    if(i < 5000) {
+      hx711.weight = i;
+    }
     return hx711.weight;
 }
 
@@ -103,13 +104,14 @@ void WeightSensor::weightReading() {
         float lastWeight = -1; // 初始值设为一个不可能的重量，确保第一次总是触发回调
         while (true) {
             float currentWeight = readSensor(); // 读取当前重量，需要根据实际情况实现 readSensor 方法
+            std::cout << "------currentWeight------还在循环: " << currentWeight << std::endl;
             if (currentWeight != lastWeight) {
                 if (callback) {
                     callback(currentWeight); // 当重量变化时调用回调函数
                 }
                 lastWeight = currentWeight; // 更新最后的重量记录
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(500)); // 调整检测频率
+            std::this_thread::sleep_for(std::chrono::milliseconds(1500)); // 调整检测频率
         }
     }).detach(); // 分离线程，让它独立运行
     // int weight = readSensor();

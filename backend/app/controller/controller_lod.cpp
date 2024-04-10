@@ -124,7 +124,7 @@ void Controller::RTP(const std::vector<int>& currentWeight) {
         } 
         else{
             double angleAcc=(torqueLeft-torqueRight)/rotationInertia;
-            std::cout << "Action:lefet " << angleAcc << std::endl;
+            // std::cout << "Action:lefet " << angleAcc << std::endl;
             if (angleAcc<=accLimit){
                 setpControl("pause", 0);
             }
@@ -146,7 +146,7 @@ void Controller::RTP(const std::vector<int>& currentWeight) {
         } 
         else{
             double angleAcc=(torqueRight-torqueLeft)/rotationInertia;
-            std::cout << "Action:right " << angleAcc << std::endl;
+            // std::cout << "Action:right " << angleAcc << std::endl;
             if (angleAcc<=accLimit){
                 setpControl("pause", 0);
             }

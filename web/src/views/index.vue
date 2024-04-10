@@ -71,7 +71,8 @@ export default {
       }, 2000);
     },
     connect() {
-      this.ws = new WebSocket('ws://1.tcp.vip.cpolar.cn:22939');
+      // this.ws = new WebSocket('ws://1.tcp.vip.cpolar.cn:22939');
+      this.ws = new WebSocket('ws://2a5e9011.r7.cpolar.top');
       this.ws.onmessage = (event) => {
         // 当收到消息时更新message
         const res = JSON.parse(event.data);
@@ -92,6 +93,7 @@ export default {
           this.$set(this.conveyorData, 2, res.parameter[2])
           this.$set(this.conveyorData, 3, res.parameter[3])
           this.$set(this.conveyorData, 4, res.parameter[4])
+          this.calculateController(res.parameter)
         }
       };
       this.ws.onopen = () => {
@@ -101,24 +103,95 @@ export default {
         console.error('WebSocket Error:', error);
       };
     },
-    // conveyor status
-    changeConveyorStatus(status) {
-      // if (this.ws.readyState === WebSocket.OPEN) {
-      //   const message = {
-      //     action: 'changeConveyorStatus',
-      //     parameter: status
-      //   };
-      //   const messageString = JSON.stringify(message);
-      //   this.ws.send(messageString);
-      // }
-      if (status === 'warning') {
-        this.conveyorData = [0, 0, 2, 0, 3];
-        this.balanceRate = 50
-      } else if (status === 'normal') {
-        this.conveyorData = [0, 2, 0, 3, 1];
-        this.balanceRate = 10
+    // calculateController
+    calculateController(currentWeight) {
+      this.calculateConveyorStatus(currentWeight);
+      this.calculateBalanceRate(currentWeight);
+    },
+    // calculate conveyor balance rate
+    calculateBalanceRate(values) {
+      // 假设values是一个有5个元素的数组
+      if (values.length !== 5) {
+        console.error('The array must contain exactly 5 values.');
+        return;
       }
-    }
+
+      // 定义每个数值的权重，这里我们假设都相等
+      const weights = [1, 1, 1, 1, 1]; // 可以根据需要调整权重
+      
+      // 为左侧、中心和右侧分配加权值
+      // 我们将数组的第一个和第二个数值视为负值，第三个数值视为0，第四个和第五个数值视为正值
+      let weightedSum = (values[0] * -weights[0]) +
+                        (values[1] * -weights[1]) +
+                        (values[2] * 0) +
+                        (values[3] * weights[3]) +
+                        (values[4] * weights[4]);
+
+      // 计算加权和的总权重
+      let totalWeight = weights.reduce((a, b) => a + b, 0);
+
+      // 计算加权平均值
+      let weightedAverage = weightedSum / totalWeight;
+
+      // 由于ECharts仪表盘的值是从-1到1，我们需要将加权平均值归一化到这个范围内
+      // 假设values数组中的数值已经是按比例分配的，且最小值和最大值分别为-1和1
+      // 如果数值不在这个范围内，则需要相应地调整归一化过程
+
+      // 返回仪表盘的值
+      this.balanceRate = weightedAverage
+    },
+    // calculate conveyor status light
+    calculateConveyorStatus(currentWeight) {
+      if (currentWeight.length !== 5) {
+          console.error("Error: Expected 5 weight readings.");
+          return;
+      }
+      const weightAll = currentWeight.reduce((acc, curr) => acc + curr, 0);
+      const d = 2;
+      const weightSystem = 0;
+      const rotationInertia = ((weightAll + weightSystem) * 4 * 4 * d * d) / 12;
+      const torqueLeft = 9.8 * currentWeight[0] * 2 * d + 9.8 * currentWeight[1] * d;
+      const torqueRight = 9.8 * currentWeight[4] * 2 * d + 9.8 * currentWeight[3] * d;
+      const accLimit = 1.2; // Assuming accLimit is predefined
+
+      if (currentWeight[0] + currentWeight[1] > currentWeight[3] + currentWeight[4]) {
+          if (weightAll === 0) {
+              this.conveyorStatus = 0;
+          } else {
+              const angleAcc = (torqueLeft - torqueRight) / rotationInertia;
+              if (angleAcc <= accLimit) {
+                  this.conveyorStatus = 0;
+              } else {
+                  if (currentWeight[4] !== 0) {
+                      this.conveyorStatus = 0;
+                  } else {
+                      this.conveyorStatus = 1;
+                  }
+              }
+          }
+      }
+
+      if (currentWeight[0] + currentWeight[1] < currentWeight[3] + currentWeight[4]) {
+          if (weightAll === 0) {
+              this.conveyorStatus = 0;
+          } else {
+              const angleAcc = (torqueRight - torqueLeft) / rotationInertia;
+              if (angleAcc <= accLimit) {
+                  this.conveyorStatus = 0;
+              } else {
+                  if (currentWeight[0] !== 0) {
+                      this.conveyorStatus = 0;
+                  } else {
+                      this.conveyorStatus = 1;
+                  }
+              }
+          }
+      }
+
+      if (currentWeight[0] + currentWeight[1] === currentWeight[3] + currentWeight[4]) {
+          this.conveyorStatus = 0;
+      }
+    },
   },
   beforeDestroy() {
     // 组件销毁前关闭WebSocket连接

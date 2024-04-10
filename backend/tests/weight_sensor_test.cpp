@@ -10,8 +10,9 @@
  */
 
 #define BOOST_TEST_MODULE WeightSensorTest
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include "../app/weight_sensor/WeightSensor/WeightSensor.hpp"
+// #include "../app/weight_sensor/hx711_sensor/hx711_sensor.cpp"
 
 // Mock the pigpio functions if needed
 // ...

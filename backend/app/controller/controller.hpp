@@ -21,7 +21,8 @@
 // #include "../weight_sensor/w3/w3.hpp"
 // #include "../weight_sensor/w4/w4.hpp"
 // #include "../weight_sensor/w5/w5.hpp"
-#include "../weight_sensor/WeightSensor/WeightSensor.hpp"
+// #include "../weight_sensor/WeightSensor/WeightSensor.hpp"
+#include "../weight_sensor/hx711_sensor/hx711_sensor.hpp"
 #include "../../socket/send_message.hpp"
 #include "../motor_driver/motor_driver.hpp"
 

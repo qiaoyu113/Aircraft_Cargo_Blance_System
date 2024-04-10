@@ -14,16 +14,16 @@
 // #include <wiringPi.h>
 #include <pigpio.h>
 
-double accLimit=1;
+double accLimit=1.2;
 
 // 初始化定义传送带的GPIO引脚号
 Controller::Controller(): 
-    motor(29, 1),  // 替换为实际的引脚号(stepPinRight, dirPinRight)
-    w1(24, 27),
-    w2(0, 1),
-    w3(2, 5),
-    w4(3, 4),
-    w5(25,23),
+    motor(19, 17),  // 替换为实际的引脚号(stepPinRight, dirPinRight)
+    w1(22, 27),
+    w2(6, 5),
+    w3(21, 20),
+    w4(16, 12),
+    w5(25, 24),
     lastWeights(5, 0),
     currentWeights(5, 0) {
         // wiringPiSetup();
@@ -126,7 +126,7 @@ void Controller::RTP(const std::vector<int>& currentWeight) {
         } 
         else{
             double angleAcc=(torqueLeft-torqueRight)/rotationInertia;
-            std::cout << "Action:lefet " << angleAcc << std::endl;
+            // std::cout << "Action: left" << angleAcc << std::endl;
             if (angleAcc<=accLimit){
                 setpControl("pause", 0);
             }
@@ -148,7 +148,7 @@ void Controller::RTP(const std::vector<int>& currentWeight) {
         } 
         else{
             double angleAcc=(torqueRight-torqueLeft)/rotationInertia;
-            std::cout << "Action:right " << angleAcc << std::endl;
+            // std::cout << "Action:right " << angleAcc << std::endl;
             if (angleAcc<=accLimit){
                 setpControl("pause", 0);
             }
@@ -167,6 +167,7 @@ void Controller::RTP(const std::vector<int>& currentWeight) {
     if ((currentWeight[0]+currentWeight[1])==(currentWeight[3]+currentWeight[4])){
       setpControl("pause",0);
     }
+
 
     // // 对每个传感器的读数独立判断
     // if (currentWeight[0] > 0) {
