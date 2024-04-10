@@ -30,20 +30,20 @@ StepperMotor::StepperMotor(int stepPin, int dirPin)
     }
     gpioSetMode(this->stepPin, PI_OUTPUT);
     gpioSetMode(this->dirPin, PI_OUTPUT);
-    motorThread = std::thread(&StepperMotor::runMotor, this, 500);
+    motorThread = std::thread(&StepperMotor::runMotor, this, 1000);
 }
 
 StepperMotor::~StepperMotor() {
     stop(); // Ensure the motor is stopped
     motorThread.join(); // Wait for the thread to finish
-    gpioTerminate();
+    // gpioTerminate();
 }
 
 void StepperMotor::startMoving(int direction) {
     setDirection(direction);
     if (direction != DIR_STOP) {
         // 启动电机
-        runMotor(500); // 传递合适的延迟参数，或根据需要调整
+        runMotor(1000); // 传递合适的延迟参数，或根据需要调整
     }
 }
 

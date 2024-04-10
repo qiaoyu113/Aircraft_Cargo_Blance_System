@@ -10,6 +10,7 @@ public:
 
 private:
     HX711::AdvancedHX711 hx; // 使用 AdvancedHX711 类
+    // HX711::SimpleHX711 hx; // 使用 AdvancedHX711 类
     std::function<void(float)> callback;
     void initSensor();
     float readWeight();

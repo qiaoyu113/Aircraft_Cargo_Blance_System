@@ -42,7 +42,7 @@ void WebSocketSession::run() {
         // 为controller设置回调函数
         controller.setCallback([this](bool weightDetected, const std::vector<int>& currentWeight) {
             if (weightDetected) {
-                std::cout << "Weight detected." << std::endl;
+                // std::cout << "Weight detected." << std::endl;
                 // 构建JSON响应并通过WebSocket发送
                 json response = {
                     {"action", "visualization"},
@@ -51,6 +51,7 @@ void WebSocketSession::run() {
                 ws.write(boost::asio::buffer(response.dump()));
                 // 调用real-time processing进行逻辑处理
                 controller.RTP(currentWeight);
+                controller.readWeight();
             }
         });
 

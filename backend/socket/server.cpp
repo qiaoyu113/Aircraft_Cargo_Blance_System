@@ -45,8 +45,8 @@ void websocket_session(tcp::socket socket) {
                 std::string parameter = jsonObject["parameter"];
 
                 // 打印解析后的数据
-                std::cout << "Action: " << action << std::endl;
-                std::cout << "Parameter: " << parameter << std::endl;
+                // std::cout << "Action: " << action << std::endl;
+                // std::cout << "Parameter: " << parameter << std::endl;
 
                 // 根据接收到的消息来增加或减少计数器
                 int param = 0;
