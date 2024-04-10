@@ -58,6 +58,7 @@ void StepperMotor::setDirection(int direction) {
 }
 
 void StepperMotor::runMotor(int delayUs) {
+    auto startTime = std::chrono::steady_clock::now();
     while (true) {
         if (currentDirection == DIR_STOP) break;
         // std::lock_guard<std::mutex> lock(gpioMutex);
@@ -66,6 +67,14 @@ void StepperMotor::runMotor(int delayUs) {
         usleep(delayUs);
         gpioWrite(stepPin, 0);
         usleep(delayUs);
+
+        // 计算已经经过的时间
+        auto currentTime = std::chrono::steady_clock::now();
+        auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
+
+        // 如果已经过了1秒，退出循环
+        if (elapsedTime >= 1000)
+            break;
     }
 }
 

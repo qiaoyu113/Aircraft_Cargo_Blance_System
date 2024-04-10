@@ -72,7 +72,7 @@ export default {
     },
     connect() {
       // this.ws = new WebSocket('ws://1.tcp.vip.cpolar.cn:22939');
-      this.ws = new WebSocket('ws://2043050c.r9.vip.cpolar.cn');
+      this.ws = new WebSocket('ws://2a5e9011.r7.cpolar.top');
       this.ws.onmessage = (event) => {
         // 当收到消息时更新message
         const res = JSON.parse(event.data);
