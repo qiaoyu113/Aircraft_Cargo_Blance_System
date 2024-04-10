@@ -14,7 +14,10 @@
 </p>
 
 ## Project Introduction
-Aircraft Cargo Balance System is an open-source system designed for managing aircraft cargo balance. This system aims to assist airlines and cargo operators in efficiently planning and managing the distribution of cargo on airplanes, ensuring a proper balance during flights to enhance flight safety and fuel efficiency.
+In modern aviation logistics, effective management of aircraft cargo balance is crucial for ensuring flight safety and fuel efficiency. An imbalanced load can increase fuel consumption and may impact the aircraft's flight performance and safety. Faced with this challenge, the "Aircraft Cargo Auto Balance System" was conceived to provide an automated, efficient solution for optimizing the distribution and balance of aircraft cargo.
+
+## Motivation
+The inspiration for this project stems from the growing demand for aircraft cargo management systems in the market, as well as the limitations of existing solutions. By employing the latest sensor technologies and advanced data processing algorithms, the "Aircraft Cargo Auto Balance System" aims to offer a solution that is more accurate and reliable than traditional manual balancing methods.
 
 ## Project Members
 
@@ -35,22 +38,50 @@ Aircraft Cargo Balance System is an open-source system designed for managing air
 1. **Raspberry Pi**
    - **Sensor Interface:** Connects sensors through GPIO interfaces to real-time retrieve cargo weight data.
    - **Data Processing:** Uses C++ for data processing, calculating balance conditions and generating weight heatmaps.
-   - **Local Area Network Server:** Implements a server using Flask or FastAPI to provide APIs for access by GPIO and the web frontend.
+   - **Local Area Network Server:** The system utilizes tunneling to map a public network address to a local IP, thereby enabling web frontend access via the public network address. This setup facilitates a WebSocket connection, allowing for real-time API access by both GPIO components and the web frontend.
 
 2. **GPIO Microcontroller**
-   - **Connection to Raspberry Pi:** Communicates with the Raspberry Pi through serial communication or other protocols to receive balance commands.
+   - **Connection to Raspberry Pi:** The hardware interfaces with the Raspberry Pi via GPIO connections. Once connected, communication with the hardware is managed through mutual exclusion locks, allowing for on-demand communication based on specific needs and commands.
    - **Conveyor Control:** Controls the conveyor belt motor to achieve real-time balance adjustments.
    - **Sensor Interface:** Connects to cargo sensors to obtain real-time cargo position information.
 
 3. **Web Frontend**
    - **Frontend Interface:** Built with Vue to create a user-friendly interface displaying real-time cargo balance status and weight heatmaps.
-   - **Communication with Raspberry Pi:** Uses WebSocket or HTTP polling to fetch real-time data from the Raspberry Pi.
-   - **User Control:** Enables users to send control commands through the interface to adjust the conveyor belt position and view real-time data.
+   - **Communication with Raspberry Pi:** Uses WebSocket to fetch real-time data from the Raspberry Pi.
+   - **User Display:** Utilizes real-time readings from the weight sensors to provide feedback to the frontend, offering users a more intuitive view of the balance through heat distribution maps and balance values.
 
 ## Overview Projects
+The Aircraft Cargo Auto Balance System is engineered with precision to ensure seamless integration and communication between its components. The heart of the system is a Raspberry Pi, which serves as the central processing unit, orchestrating the flow of commands and data.
+<p align="center">
+    <img alt="Overview" src="https://i.postimg.cc/wvkPNz0Y/Wechat-IMG4222.png" width="100%">
+</p>
+
+- **Raspberry Pi:** This compact yet powerful board is the command center of our system. It is directly connected to a breadboard that hosts an array of critical components.
+
+- **Load Cells:** Attached to the Raspberry Pi via a set of HX711 amplifiers are multiple load cells. These precision instruments are responsible for measuring the weight of cargo, relaying this data back to the Raspberry Pi for processing.
+
+- **Stepper Motor**: The stepper motor, driven by a TB6600 microstep driver, translates the Raspberry Pi's commands into mechanical movement. This setup is vital for adjusting the conveyor belt's position, ensuring that cargo is balanced correctly within the aircraft.
+
+- **Power Supply:** A robust sealed lead-acid battery supplies the necessary power to the motor driver, ensuring reliable and continuous operation of the system's moving parts.
+
+- **GPIO Connections:** The Raspberry Pi leverages its GPIO pins to establish a direct line of communication with the HX711 amplifiers. This facilitates a high-speed data bus, which is critical for real-time weight sensing and balance adjustments.
+
+- **Mutual Exclusion Locks:** To maintain data integrity and communication efficiency, mutual exclusion locks are implemented. These locks manage the access to the Raspberry Pi's resources, ensuring that each communication instance is handled without interference.
+
+- **Communication Protocols:** The system employs a mix of serial communication and other custom protocols designed to optimize the communication speed and reliability between the Raspberry Pi and the hardware components.
+
+
 <p align="center">
     <img alt="Overview" src="https://i.postimg.cc/KvSgWF7w/Wechat-IMG3760.png" width="100%">
 </p>
+
+The image illustrates a sophisticated user interface of the Aircraft Cargo Balance System, showcasing the seamless translation of intricate hardware sensor data into an intuitive and visually engaging display.
+
+- **Gravity Balance Visualization:** This part of the interface presents a 3D bar graph that dynamically represents the aircraft's cargo weight distribution in real-time. Each bar's height indicates the weight measured by the corresponding load cell, providing a visual representation of the aircraft's center of gravity. This feature offers users an immediate visual cue to the balance status, enabling quick adjustments as necessary.
+
+- **Conveyor Status Indicators:** These indicators deliver at-a-glance insights into the operational status of the conveyor system. The icons switch between different states—such as idle, running, or alert—to inform the user of the current functioning condition. This real-time status update ensures that users are promptly notified of any issues requiring attention.
+
+- **Balance Rating Dial:** The balance rating is depicted as a dial gauge, giving users an analog visualization of the aircraft's lateral balance. It offers a quick reference to whether the aircraft leans towards the left or right side, and how significant the imbalance is. 
 
 ## Project Framework and Structure
 ```
