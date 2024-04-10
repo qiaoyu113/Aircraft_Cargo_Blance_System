@@ -59,14 +59,16 @@ add_executable(run
     # app/weight_sensor/w4/w4.cpp  # 4号测重传感器
     # app/weight_sensor/w5/w5.cpp  # 5号测重传感器
     # app/weight_sensor/w5/w5.cpp  # 5号测重传感器
-    app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
+    # app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
+    app/weight_sensor/hx711_sensor/hx711_sensor.cpp  # 测重传感器
     app/motor_driver/motor_driver.cpp  # 步进电机
 )    
 
 # 添加测试可执行文件
 add_executable(all_tests 
     tests/weight_sensor_test.cpp ## 测重传感器测试文件
-    app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
+    # app/weight_sensor/WeightSensor/WeightSensor.cpp  # 测重传感器
+    app/weight_sensor/hx711_sensor/hx711_sensor.cpp  # 测重传感器
     tests/motor_driver_test.cpp ## 步进电机测试文件
     app/motor_driver/motor_driver.cpp  # 步进电机
 )
