@@ -19,10 +19,10 @@
 
 BOOST_AUTO_TEST_CASE(test_weight_sensor_initialization)
 {
-    // 使用一个模拟或真实的GPIO引脚号来初始化WeightSensor对象
-    WeightSensor ws(17, 18); // 假设17和18是用于测试的SCK和SDA引脚
+    // Initialize the WeightSensor object with a mock or real GPIO pin number
+    WeightSensor ws(17, 18); // Assume that 17 and 18 are the SCK and SDA pins used for testing
 
-    // 测试初始化是否成功，例如是否抛出异常等
+    // Test whether the initialization was successful, such as whether an exception was thrown
     BOOST_CHECK_NO_THROW(ws);
 }
 
@@ -30,10 +30,10 @@ BOOST_AUTO_TEST_CASE(test_weight_sensor_reading)
 {
     WeightSensor ws(17, 18);
 
-    // 这里你可以模拟GPIO读取的结果，然后调用readSensor方法
+    // Here you can simulate the result read by GPIO and then call the readSensor method
     int weight = ws.read_sensor_test();
     
-    // 假设你有一个预期的重量值，你可以用BOOST_CHECK_EQUAL来检查
-    BOOST_CHECK_GE(weight, 0); // 这里的expected_weight应该为正值
+    // Assuming you have an expected weight value, you can check it with BOOST_CHECK_EQUAL
+    BOOST_CHECK_GE(weight, 0); // The expected weight here should be positive
 }
 

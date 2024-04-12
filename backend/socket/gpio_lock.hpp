@@ -3,7 +3,7 @@
 
 #include <mutex>
 
-// 全局互斥锁，用于控制对GPIO资源的访问
+// A global mutex that controls access to GPIO resources
 extern std::mutex gpioMutex;
 
 #endif // GPIO_LOCK_HPP

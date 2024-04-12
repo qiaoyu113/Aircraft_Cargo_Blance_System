@@ -35,26 +35,24 @@ void WebSocketSession::run() {
             boost::beast::flat_buffer buffer;
             ws.read(buffer);
 
-            // 将接收到的消息转换为字符串
+            // Converts the received message to a string
             std::string jsonString = boost::beast::buffers_to_string(buffer.data());
             std::cout << "message: " << jsonString << std::endl;
 
             try {
-                // 解析 JSON 字符串为 JSON 对象
+                // Parse JSON strings as JSON objects
                 json jsonObject = json::parse(jsonString);
 
-                // 访问 JSON 对象的成员
+                // Access the members of the JSON object
                 std::string action = jsonObject["action"];
                 std::string parameter = jsonObject["parameter"];
 
-                // 打印解析后的数据
+                // Print the parsed data
                 std::cout << "Action: " << action << std::endl;
                 std::cout << "Parameter: " << parameter << std::endl;
 
                 if(action == "changeConveyorStatus") {
-                    // 根据接收到的消息来变更
                     int param = changeConveyorStatus(parameter);
-                    // 发送更新后的值回客户端
                     json response;
                     response["action"] = action;
                     response["parameter"] = param;

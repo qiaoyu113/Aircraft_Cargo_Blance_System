@@ -1,31 +1,3 @@
-// #include "WeightSensor.hpp"
-// #include <pigpio.h>
-// #include <iostream>
-// #include <stdexcept>
-
-// // 构造函数实现
-// WeightSensor::WeightSensor(int pin) : pin(pin) {
-//     if (gpioInitialise() < 0) {
-//         throw std::runtime_error("pigpio initialization failed");
-//     }
-//     gpioSetMode(pin, PI_INPUT);
-//     gpioSetPullUpDown(pin, PI_PUD_DOWN);
-// }
-
-// // 设置回调函数
-// void WeightSensor::setCallback(std::function<void(bool)> callback) {
-//     this->callback = callback;
-// }
-
-// // 读取重量并触发回调
-// bool WeightSensor::weightReading() {
-//     bool weightDetected = gpioRead(pin) == PI_HIGH;
-//     if (callback) {
-//         callback(weightDetected);
-//     }
-//     return weightDetected;
-// }
-
 /**
  * @file   WeightSensor.cpp
  * @brief  Gravity sensor code file
@@ -58,7 +30,7 @@ void WeightSensor::setCallback(std::function<void(int)> callback) {
 
 void WeightSensor::setPin() {
     hx711.EN = 1;
-    hx711.coefficient = 415; // 根据实际情况调整
+    hx711.coefficient = 415;
 }
 
 void WeightSensor::initPin() {
@@ -73,7 +45,7 @@ int WeightSensor::readSensor() {
     while(gpioRead(hx711.SCK));
     hx711.value = 0;
     while(gpioRead(hx711.SDA));
-    time_sleep(0.1); // 延时100ms
+    time_sleep(0.1);
     for(i = 0; i < 24; i++) {
         gpioWrite(hx711.SCK, PI_HIGH);
         while(gpioRead(hx711.SCK) == 0) gpioDelay(1000);
@@ -101,19 +73,19 @@ int WeightSensor::readSensor() {
 
 void WeightSensor::weightReading() {
     std::thread([this]() {
-        float lastWeight = -1; // 初始值设为一个不可能的重量，确保第一次总是触发回调
+        float lastWeight = -1; // The initial value is set to an impossible weight, ensuring that the callback is always triggered the first time
         while (true) {
-            float currentWeight = readSensor(); // 读取当前重量，需要根据实际情况实现 readSensor 方法
+            float currentWeight = readSensor(); // To read the current weight, you need to implement the readSensor method according to the actual situation
             std::cout << "------currentWeight------还在循环: " << currentWeight << std::endl;
             if (currentWeight != lastWeight) {
                 if (callback) {
-                    callback(currentWeight); // 当重量变化时调用回调函数
+                    callback(currentWeight); // Call the callback function when the weight changes
                 }
-                lastWeight = currentWeight; // 更新最后的重量记录
+                lastWeight = currentWeight; // Update the last weight record
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(1500)); // 调整检测频率
+            std::this_thread::sleep_for(std::chrono::milliseconds(1500)); // Adjust detection frequency
         }
-    }).detach(); // 分离线程，让它独立运行
+    }).detach(); // Separate the thread and let it run independently
     // int weight = readSensor();
     // return weight; // 根据实际情况返回是否检测到重量的标志
 }

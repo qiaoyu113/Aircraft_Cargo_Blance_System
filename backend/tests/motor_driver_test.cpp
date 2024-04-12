@@ -13,22 +13,22 @@
 #include <boost/test/unit_test.hpp>
 #include "../app/motor_driver/motor_driver.hpp"
 #include "../socket/gpio_lock.hpp"
-std::mutex gpioMutex; // 全局定义
+std::mutex gpioMutex; // Global definition
 
 BOOST_AUTO_TEST_CASE(testMotorStartAndStop) {
-    int stepPin = 19; // 假设的STEP引脚
-    int dirPin = 17;  // 假设的DIR引脚
+    int stepPin = 19; // Hypothetical STEP pin
+    int dirPin = 17;  // Assumed DIR pin
 
     StepperMotor motor(stepPin, dirPin);
 
-    // 测试电机开始移动
+    // Test motor starts moving
     motor.startMoving(StepperMotor::DIR_FORWARD);
     BOOST_CHECK(motor.getCurrentDirection() == StepperMotor::DIR_FORWARD);
 
     motor.startMoving(StepperMotor::DIR_BACKWARD);
     BOOST_CHECK(motor.getCurrentDirection() == StepperMotor::DIR_BACKWARD);
 
-    // 测试电机停止
+    // Test motor stop
     motor.stop();
     BOOST_CHECK(motor.getCurrentDirection() == StepperMotor::DIR_STOP);
 }

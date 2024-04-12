@@ -32,28 +32,24 @@ void websocket_session(tcp::socket socket) {
             boost::beast::flat_buffer buffer;
             ws.read(buffer);
 
-            // 将接收到的消息转换为字符串
+            // Converts the received message to a string
             std::string jsonString = boost::beast::buffers_to_string(buffer.data());
             std::cout << "message: " << jsonString << std::endl;
 
             try {
-                // 解析 JSON 字符串为 JSON 对象
+                // Parse JSON strings as JSON objects
                 json jsonObject = json::parse(jsonString);
 
-                // 访问 JSON 对象的成员
+                // Access the members of the JSON object
                 std::string action = jsonObject["action"];
                 std::string parameter = jsonObject["parameter"];
 
-                // 打印解析后的数据
-                // std::cout << "Action: " << action << std::endl;
-                // std::cout << "Parameter: " << parameter << std::endl;
-
-                // 根据接收到的消息来增加或减少计数器
+                // Increase or decrease the counter based on the received message
                 int param = 0;
                 if(action == "changeConveyorStatus") {
                     param = changeConveyorStatus(parameter);
                 }
-                // 发送更新后的计数器值回客户端
+                // Sends the updated counter value back to the client
                 json response;
                 response["action"] = action;
                 response["parameter"] = param;

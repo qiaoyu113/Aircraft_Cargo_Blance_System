@@ -44,7 +44,7 @@ private:
     tcp::socket socket;
     websocket::stream<tcp::socket> ws;
     std::function<void(bool)> buttonCallback;
-    MessageSender messageSender; // 添加MessageSender成员变量
+    MessageSender messageSender;
 };
 
 #endif // WEBSOCKET_SESSION_HPP

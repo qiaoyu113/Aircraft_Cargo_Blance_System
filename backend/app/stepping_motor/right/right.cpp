@@ -1,3 +1,13 @@
+/**
+ * @file   right.cpp
+ * @brief  Header for stepper motor driver functionality
+ *
+ * Control the motor 
+ *
+ * @author Yuhan Liu
+ * @date   2024-03-05
+ */
+
 #include "right.hpp"
 // #include <wiringPi.h>
 #include <pigpio.h>
@@ -16,11 +26,11 @@ Right::Right(int pin) : pin(pin) {
 void Right::turnOn() {
     // digitalWrite(pin, HIGH);
     gpioWrite(pin, PI_HIGH);
-    conveyorStatus.changeConveyorStatus(1); // 使用ConveyorStatus对象
+    conveyorStatus.changeConveyorStatus(1); // Use a ConveyorStatus object
 }
 
 void Right::turnOff() {
     // digitalWrite(pin, LOW);
     gpioWrite(pin, PI_LOW);
-    conveyorStatus.changeConveyorStatus(0); // 使用ConveyorStatus对象
+    conveyorStatus.changeConveyorStatus(0); // Use a ConveyorStatus object
 }

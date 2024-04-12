@@ -4,14 +4,14 @@
  *
  * Implementation of the StepperMotor class that controls the movement of a
  * stepper motor using the GPIO pins on a Raspberry Pi.
- * int stepPin = 19; // STEP 引脚
- * int dirPin = 17;  // DIR 引脚
+ * int stepPin = 19; // STEP 
+ * int dirPin = 17;  // DIR 
  * StepperMotor motor(stepPin, dirPin);
- * 启动电机向前移动
+ * The starter motor moves forward
  * motor.startMoving(StepperMotor::DIR_FORWARD);
- * 改变方向
+ * change direction
  * motor.startMoving(StepperMotor::DIR_BACKWARD);
- * 停止电机
+ * stop stepping motor
  * motor.stop();
  *
  * @author Yuhan Liu
@@ -45,7 +45,7 @@ void StepperMotor::startMoving(int direction) {
     setDirection(direction);
     if (direction != DIR_STOP) {
         // 启动电机
-        runMotor(500); // 传递合适的延迟参数，或根据需要调整
+        runMotor(500); // Pass the appropriate delay parameters, or adjust them as needed
     }
 }
 
@@ -68,11 +68,11 @@ void StepperMotor::runMotor(int delayUs) {
         gpioWrite(stepPin, 0);
         usleep(delayUs);
 
-        // 计算已经经过的时间
+        // Calculate the time that has elapsed
         auto currentTime = std::chrono::steady_clock::now();
         auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
 
-        // 如果已经过了1秒，退出循环
+        // if 1 second has passed, exit the loop
         if (elapsedTime >= 500)
             break;
     }
@@ -81,20 +81,3 @@ void StepperMotor::runMotor(int delayUs) {
 int StepperMotor::getCurrentDirection() const {
     return currentDirection;
 }
-
-// create an instance of StepperMotor and use its methods.
-// 假设这是一个函数，在其他文件中
-// void controlMotor() {
-//     // 创建StepperMotor类的实例
-//     // 假设你有两个GPIO引脚分别用于STEP和DIR
-//     int stepPin = 19; // STEP 引脚
-//     int dirPin = 17;  // DIR 引脚
-//     StepperMotor motor(stepPin, dirPin);
-
-//     // 启动电机向前移动
-//     motor.startMoving(StepperMotor::DIR_FORWARD);
-//     // 改变方向
-//     motor.startMoving(StepperMotor::DIR_BACKWARD);
-//     // 停止电机
-//     motor.stop();
-// }
