@@ -16,9 +16,12 @@
 ## Project Introduction
 In modern aviation logistics, effective management of aircraft cargo balance is crucial for ensuring flight safety and fuel efficiency. An imbalanced load can increase fuel consumption and may impact the aircraft's flight performance and safety. Faced with this challenge, the "Aircraft Cargo Auto Balance System" was conceived to provide an automated, efficient solution for optimizing the distribution and balance of aircraft cargo.
 <p align="center">
-    <img alt="Overview" src="https://i.postimg.cc/L4QdSGtz/IMG-4679.png" width="100%">
+    <img alt="Overview" src="https://i.postimg.cc/zfb8qf9Y/IMG-4687.avif" width="100%">
+    <img alt="Overview" src="https://i.postimg.cc/KvxGtxgt/IMG-4689.avif" width="100%">
+</p>
+
+<p align="center">
     <img alt="Overview" src="https://i.postimg.cc/bY9JRYjq/IMG-4680.png" width="100%">
-    <img alt="Overview" src="https://i.postimg.cc/DwsRqZtg/785d2f92-1d46-449e-7add-83e3cd96760b.png" width="100%">
 </p>
 
 ## Motivation
@@ -54,6 +57,9 @@ The inspiration for this project stems from the growing demand for aircraft carg
    - **Frontend Interface:** Built with Vue to create a user-friendly interface displaying real-time cargo balance status and weight heatmaps.
    - **Communication with Raspberry Pi:** Uses WebSocket to fetch real-time data from the Raspberry Pi.
    - **User Display:** Utilizes real-time readings from the weight sensors to provide feedback to the frontend, offering users a more intuitive view of the balance through heat distribution maps and balance values.
+
+## Project Display
+[![Watch the video](https://img.youtube.com/vi/BFPnpCT8uog/maxresdefault.jpg)](https://www.youtube.com/watch?v=BFPnpCT8uog)
 
 ## Overview Projects
 The Aircraft Cargo Auto Balance System is engineered with precision to ensure seamless integration and communication between its components. The heart of the system is a Raspberry Pi, which serves as the central processing unit, orchestrating the flow of commands and data.
