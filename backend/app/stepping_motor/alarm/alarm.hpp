@@ -1,3 +1,13 @@
+/**
+ * @file   alarm.hpp
+ * @brief  Header for stepper motor driver functionality
+ *
+ * Control the motor and issue a warning signal
+ *
+ * @author Yuhan Liu
+ * @date   2024-03-05
+ */
+
 #ifndef ALARM_HPP
 #define ALARM_HPP
 

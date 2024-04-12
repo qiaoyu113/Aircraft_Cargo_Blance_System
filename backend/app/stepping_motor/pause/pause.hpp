@@ -1,3 +1,13 @@
+/**
+ * @file   pause.hpp
+ * @brief  Header for stepper motor driver functionality
+ *
+ * Control the motor 
+ *
+ * @author Yuhan Liu
+ * @date   2024-03-05
+ */
+
 #ifndef PAUSE_HPP
 #define PAUSE_HPP
 

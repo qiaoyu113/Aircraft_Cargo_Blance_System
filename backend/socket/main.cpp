@@ -20,15 +20,15 @@
 // #include "../app/led_control/button.hpp"
 #include "../app/controller/controller.hpp"
 #include "gpio_lock.hpp"
-std::mutex gpioMutex; // 实际定义互斥锁
+std::mutex gpioMutex; //Actually defining the mutex
 
 int main() {
     std::cerr << "main is comming" << std::endl;
     try {
         boost::asio::io_context ioc{1};
-        boost::asio::signal_set signals(ioc, SIGINT, SIGTERM); // 监听SIGINT和SIGTERM信号
+        boost::asio::signal_set signals(ioc, SIGINT, SIGTERM); // Listen for SIGINT and SIGTERM signals
         signals.async_wait([&](const boost::system::error_code& /*error*/, int /*signal_number*/) {
-            ioc.stop(); // 当捕获到信号时，停止io_context
+            ioc.stop(); // Stop io_context when a signal is captured
         });
 
         tcp::acceptor acceptor{ioc, {boost::asio::ip::make_address("127.0.0.1"), 8022}};
@@ -38,12 +38,7 @@ int main() {
             acceptor.accept(socket);
 
             std::thread{[socket = std::move(socket)]() mutable {
-                // 模拟电灯
-                // WebSocketSession(std::move(socket)).run();
-                // 真实电灯
-                // Led led;  // 创建 Led 对象
-                // Button button;  // 创建 Button 对象
-                // WebSocketSession(std::move(socket), led, button).run();
+                
                 Controller controller;
 
                 std::cerr << "main is comming" << std::endl;

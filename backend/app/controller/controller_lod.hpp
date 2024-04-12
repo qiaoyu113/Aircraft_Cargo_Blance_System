@@ -30,7 +30,7 @@ public:
     void setCallback(std::function<void(bool, const std::vector<int>&)> callback);
     void readWeight();            // Correct return type
     void setpControl(const std::string& status, int sensorIndex); // Added parameter and corrected name
-    void onWeightChange(int sensorId, int weight); // 将onWeightChange添加为成员函数
+    void onWeightChange(int sensorId, int weight); // Add onWeightChange as a member function
     void TurnOff();
     void RTP(const std::vector<int>& currentWeight);
 private:
@@ -38,14 +38,9 @@ private:
     Right right;
     Pause pause;
     Left left;
-    std::function<void(bool, const std::vector<int>&)> callback; // 更新回调函数的定义
+    std::function<void(bool, const std::vector<int>&)> callback; // Update the definition of the callback
     MessageSender messageSender; 
-    // 重量传感器对象作为成员变量
-    // W1 w1;
-    // W2 w2;
-    // W3 w3;
-    // W4 w4;
-    // W5 w5;
+    
     WeightSensor w1, w2, w3, w4, w5;
     std::vector<int> lastWeights;
     std::vector<int> currentWeights; 
