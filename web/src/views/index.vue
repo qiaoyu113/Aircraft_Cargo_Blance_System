@@ -72,7 +72,7 @@ export default {
     },
     connect() {
       // this.ws = new WebSocket('ws://1.tcp.vip.cpolar.cn:22939');
-      this.ws = new WebSocket('ws://2a5e9011.r7.cpolar.top');
+      this.ws = new WebSocket('ws://660d8ad6.r8.cpolar.top');
       this.ws.onmessage = (event) => {
         // 当收到消息时更新message
         const res = JSON.parse(event.data);
@@ -88,11 +88,17 @@ export default {
           this.balanceRate = res.parameter
         // 监听w1传感器的数值
         } else if(res.action == 'visualization') {
-          this.$set(this.conveyorData, 0, res.parameter[0])
-          this.$set(this.conveyorData, 1, res.parameter[1])
+          // this.$set(this.conveyorData, 0, res.parameter[0])
+          // this.$set(this.conveyorData, 1, res.parameter[1])
+          // this.$set(this.conveyorData, 2, res.parameter[2])
+          // this.$set(this.conveyorData, 3, res.parameter[3])
+          // this.$set(this.conveyorData, 4, res.parameter[4])
+
+          this.$set(this.conveyorData, 0, res.parameter[4])
+          this.$set(this.conveyorData, 1, res.parameter[3])
           this.$set(this.conveyorData, 2, res.parameter[2])
-          this.$set(this.conveyorData, 3, res.parameter[3])
-          this.$set(this.conveyorData, 4, res.parameter[4])
+          this.$set(this.conveyorData, 3, res.parameter[1])
+          this.$set(this.conveyorData, 4, res.parameter[0])
           this.calculateController(res.parameter)
         }
       };
@@ -138,7 +144,7 @@ export default {
       // 如果数值不在这个范围内，则需要相应地调整归一化过程
 
       // 返回仪表盘的值
-      this.balanceRate = weightedAverage
+      this.balanceRate = - weightedAverage
     },
     // calculate conveyor status light
     calculateConveyorStatus(currentWeight) {
