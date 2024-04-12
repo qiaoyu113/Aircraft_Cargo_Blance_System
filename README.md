@@ -20,10 +20,6 @@ In modern aviation logistics, effective management of aircraft cargo balance is 
     <img alt="Overview" src="https://i.postimg.cc/KvxGtxgt/IMG-4689.avif" width="100%">
 </p>
 
-<p align="center">
-    <img alt="Overview" src="https://i.postimg.cc/bY9JRYjq/IMG-4680.png" width="100%">
-</p>
-
 ## Motivation
 The inspiration for this project stems from the growing demand for aircraft cargo management systems in the market, as well as the limitations of existing solutions. By employing the latest sensor technologies and advanced data processing algorithms, the "Aircraft Cargo Auto Balance System" aims to offer a solution that is more accurate and reliable than traditional manual balancing methods.
 
@@ -59,7 +55,11 @@ The inspiration for this project stems from the growing demand for aircraft carg
    - **User Display:** Utilizes real-time readings from the weight sensors to provide feedback to the frontend, offering users a more intuitive view of the balance through heat distribution maps and balance values.
 
 ## Project Display
-[![Watch the video](https://img.youtube.com/vi/BFPnpCT8uog/maxresdefault.jpg)](https://www.youtube.com/watch?v=BFPnpCT8uog)
+[![Watch the video](https://i.postimg.cc/TwPmdFrD/1712930620299.jpg)](https://www.youtube.com/watch?v=BFPnpCT8uog)
+
+## Installation tutorial
+:exclamation: **Backend:** <a href="backend/README.md">Raspberry PI environment installation address</a>
+:exclamation: **Web:** <a href="web/README.md">Raspberry PI environment installation address</a>
 
 ## Overview Projects
 The Aircraft Cargo Auto Balance System is engineered with precision to ensure seamless integration and communication between its components. The heart of the system is a Raspberry Pi, which serves as the central processing unit, orchestrating the flow of commands and data.
@@ -81,6 +81,18 @@ The Aircraft Cargo Auto Balance System is engineered with precision to ensure se
 
 - **Communication Protocols:** The system employs a mix of serial communication and other custom protocols designed to optimize the communication speed and reliability between the Raspberry Pi and the hardware components.
 
+<p align="center">
+    <img alt="Overview" src="https://i.postimg.cc/c1FZ2H1h/Wechat-IMG5038.png" width="100%">
+</p>
+Our project’s software architecture is meticulously designed to support complex operations while ensuring high maintainability and scalability. Key components include the Controller, WebSocketSession, the WeightSensor interface with its implementations, and the MotorDriver. These components work together to fulfill the system's operational requirements.
+
+Within the system, the Controller class plays a pivotal role in coordinating sensor readings and motor control. It retrieves weight data through implementations of the WeightSensor interface and decides how to operate the MotorDriver to adjust load balancing. This not only exemplifies the Single Responsibility Principle but also centralizes the system's business logic clearly.
+
+The WebSocketSession class manages real-time communication with the frontend, providing real-time data updates to the user interface and receiving commands from it. The design of this class is straightforward, ensuring efficient and reliable communication with the frontend. By employing callback mechanisms, the system can respond immediately to new data or commands, enhancing the interactivity's real-time nature.
+
+Sensor logic is abstracted through the WeightSensor interface, allowing the system to support various types of sensors without modifying the control logic, illustrating the Open/Closed Principle and Liskov Substitution Principle. Each specific sensor class, like HX711Sensor, implements this interface, ensuring flexibility and scalability in sensor replacement. Callback functions are extensively used during sensor data retrieval, allowing immediate processing of ready data without the need for polling, thus optimizing performance and response speed.
+
+The MotorDriver class is responsible for the specific motor control logic, with methods to start, stop, and adjust motor operations. This class's design permits future expansions in motor types or control strategies while avoiding direct coupling between high-level business logic and low-level hardware operations, adhering to the Dependen.
 
 <p align="center">
     <img alt="Overview" src="https://i.postimg.cc/KvSgWF7w/Wechat-IMG3760.png" width="100%">
