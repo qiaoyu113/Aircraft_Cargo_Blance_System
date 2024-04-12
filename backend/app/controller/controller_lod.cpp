@@ -16,7 +16,7 @@
 
 double accLimit=1;
 
-// 初始化定义传送带的GPIO引脚号
+// Initialize the GPIO pin number that defines the conveyor belt
 Controller::Controller(): left(29), pause(28), right(27), w1(24, 27), w2(0, 1), w3(2, 5), w4(3, 4), w5(25,23), lastWeights(5, 0), currentWeights(5, 0) {
     // wiringPiSetup();
 }
@@ -26,58 +26,47 @@ void Controller::setCallback(std::function<void(bool, const std::vector<int>&)> 
 }
 
 void Controller::readWeight() {
-    // 为每个 WeightSensor 实例设置回调
+    // Set a callback for each WeightSensor instance
     w1.setCallback([this](int weight) { this->onWeightChange(1, weight); });
     w2.setCallback([this](int weight) { this->onWeightChange(2, weight); });
     w3.setCallback([this](int weight) { this->onWeightChange(3, weight); });
     w4.setCallback([this](int weight) { this->onWeightChange(4, weight); });
     w5.setCallback([this](int weight) { this->onWeightChange(5, weight); });
         
-    // 直接使用成员变量读取重量
+    // Read weights directly using member variables
     w1.weightReading();
     w2.weightReading();
     w3.weightReading();
     w4.weightReading();
     w5.weightReading();
 
-    // double w1_weight = w1.weightReading();
-    // double w2_weight = w2.weightReading();
-    // double w3_weight = w3.weightReading();
-    // double w4_weight = w4.weightReading();
-    // double w5_weight = w5.weightReading();
-
-    // std::cerr << "w1_weight" << w1_weight << std::endl;
-    // std::cerr << "w2_weight" << w2_weight << std::endl;
-    // std::cerr << "w3_weight" << w3_weight << std::endl;
-    // std::cerr << "w4_weight" << w4_weight << std::endl;
-    // std::cerr << "w5_weight" << w5_weight << std::endl;
 }
 
 void Controller::onWeightChange(int sensorId, int weight) {
-    // 处理重量变化
-    // 这里可以根据 sensorId 和 weight 来执行特定逻辑
+    // Handling weight changes
+    // Specific logic can be performed based on sensorId and weight
     std::cout << "Sensor " << sensorId << " weight changed to " << weight << std::endl;
 
     if (currentWeights.size() < 5) {
-        currentWeights.resize(5, 0.0); // 假设有5个传感器
+        currentWeights.resize(5, 0.0); // Suppose there are five sensors
     }
-    // 根据 sensorId 更新对应传感器的重量
-    // 注意：这里假设 sensorId 从1开始计数
+    // Update the weight of the corresponding sensor according to sensorId
+    // Note: Here it is assumed that sensorId starts counting from 1
     currentWeights[sensorId - 1] = weight;
     
-    // 检查当前读数是否与上一次读数相同
+    // Check if the current reading is the same as the last reading
     bool isSameAsLast = currentWeights.size() == lastWeights.size() && 
                     std::equal(currentWeights.begin(), currentWeights.end(), lastWeights.begin());
 
     if (!isSameAsLast) {
-        // 如果当前读数与上一次不同，则执行回调，传递true和当前重量
+        // If the current reading is different from the last, the callback is executed, passing true and the current weight
         if (callback) {
             callback(true, currentWeights);
         }
-        // 更新上一次的重量读数为当前读数
+        // Update the last weight reading to the current reading
         lastWeights = currentWeights;
     } else {
-        // 如果当前读数与上一次相同，则执行回调，传递false和当前重量
+        // If the current reading is the same as the last, the callback is executed, passing false and the current weight
         if (callback) {
             callback(false, currentWeights);
         }
@@ -85,7 +74,7 @@ void Controller::onWeightChange(int sensorId, int weight) {
 }
 
 void Controller::setpControl(const std::string& status, int sensorIndex) {
-    // 可以在这里添加基于sensorIndex的逻辑
+    // Sensorindex-based logic can be added here
     std::cout << "Sensor " << sensorIndex << " triggered action: " << status << std::endl;
 
     if(status == "right"){
@@ -103,9 +92,9 @@ void Controller::setpControl(const std::string& status, int sensorIndex) {
     }
 }
 
-// Real-Time Processing 实时处理逻辑
+// Real-Time Processing logic
 void Controller::RTP(const std::vector<int>& currentWeight) {
-    // 假设currentWeight的大小总是5
+    // Assume that the size of currentWeight is always 5
     if (currentWeight.size() != 5) {
         std::cerr << "Error: Expected 5 weight readings." << std::endl;
         return;
@@ -166,22 +155,7 @@ void Controller::RTP(const std::vector<int>& currentWeight) {
       setpControl("pause",0);
     }
 
-    // // 对每个传感器的读数独立判断
-    // if (currentWeight[0] > 0) {
-    //     setpControl("right", 0);  // 第1个传感器特定的操作
-    // }
-    // if (currentWeight[1] > 0) {
-    //     setpControl("right", 1);  // 第2个传感器特定的操作
-    // }
-    // if (currentWeight[2] > 0) {
-    //     setpControl("pause", 2);  // 第3个传感器特定的操作
-    // }
-    // if (currentWeight[3] > 0) {
-    //     setpControl("left", 3);  // 第4个传感器特定的操作
-    // }
-    // if (currentWeight[4] > 0) {
-    //     setpControl("left", 4);  // 第5个传感器特定的操作
-    // }
+    
 }
 
 void Controller::TurnOff() {

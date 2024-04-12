@@ -17,10 +17,10 @@ BalanceRate::BalanceRate() : messageSender() {}
 void BalanceRate::changeBalanceRate(int parameter) {
     int newCounter = parameter;
 
-    // 只有当newCounter的值与lastCounter不同时，才执行发送逻辑
+    // The send logic is executed only if the value of newCounter differs from lastCounter
     if (newCounter != lastCounter) {
         messageSender.sendMessage("balanceRate", newCounter);
 
-        lastCounter = newCounter; // 更新lastCounter为当前的newCounter值
+        lastCounter = newCounter; // Update lastCounter to its current value of newCounter
     }
 }

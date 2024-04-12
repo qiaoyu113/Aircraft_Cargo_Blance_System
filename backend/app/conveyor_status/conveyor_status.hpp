@@ -18,7 +18,7 @@
 
 class ConveyorStatus {
 public:
-    ConveyorStatus(); // 不需要 MessageSender 参数的构造函数
+    ConveyorStatus(); // A constructor for the MessageSender parameter is not required
     void changeConveyorStatus(int parameter);
 
 private:

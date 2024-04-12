@@ -1,3 +1,13 @@
+/**
+ * @file   pause.cpp
+ * @brief  Header for stepper motor driver functionality
+ *
+ * Control the motor 
+ *
+ * @author Yuhan Liu
+ * @date   2024-03-05
+ */
+
 #include "pause.hpp"
 // #include <wiringPi.h>
 #include <pigpio.h>

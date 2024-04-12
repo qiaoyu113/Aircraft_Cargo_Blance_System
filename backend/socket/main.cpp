@@ -41,13 +41,9 @@ int main() {
                 // 模拟电灯 Electric lamp simulation
                 // WebSocketSession(std::move(socket)).run();
                 // 真实电灯 Real electric lamp
-                // Led led;  // 创建 Led 对象
                 // Button button;  // 创建 Button 对象
                 // WebSocketSession(std::move(socket), led, button).run();
                 Controller controller;
-
-                std::cerr << "main is comming" << std::endl;
-
                 WebSocketSession(std::move(socket), controller).run();
             }}.detach();
         }
