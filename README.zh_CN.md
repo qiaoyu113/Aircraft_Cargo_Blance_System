@@ -246,6 +246,17 @@ Aircraft_Cargo_Balance_System/
 |-- LICENSE                               # 许可信息
 ```
 
+## Project Management
+我们使用github项目管理工具来规划2次迭代的项目，总共有53个任务。该项目的最终主要开发者是乔宇和刘宇涵。
+项目管理地址：<a href="https://github.com/users/qiaoyu113/projects/1/views/2">Aircraft_Cargo_Blance_System Project Management Platform</a>
+最终完成的任务数如下:
+| Username    | Score |
+|-------------|-------|
+| Yu Qiao   | 39    |
+| YiLing Deng | 6     |
+| Yuhan Liu | 34    |
+| Chanzhang He  | 8     |
+
 ## 关注我们
 <p align="center">
     <img alt="ins" src="https://i.postimg.cc/jjg737v4/ins.jpg" width="250" height="250" style="margin-bottom: 10px;">
