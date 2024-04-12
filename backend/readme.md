@@ -45,8 +45,9 @@ cmake ..
 make
 make install
 ```
-### nlohmann下载并编译后要将json-develop中include内的nlohmann移动到/json-develop/nlohmann ！！！！
-### After nlohmann is downloaded and compiled, move the nlohmann included in json-develop to /json-develop/nlohmann ！！！！
+
+:exclamation: nlohmann下载并编译后要将json-develop中include内的nlohmann移动到/json-develop/nlohmann ！
+:exclamation: After nlohmann is downloaded and compiled, move the nlohmann included in json-develop to /json-develop/nlohmann ！
 
 ### Compile Project （CMAKE）
 #### Navigate to the project root directory
@@ -74,17 +75,30 @@ make
 ```
 ./run
 ```
+or
+```
+sudo ./run
+```
 
 #### Close the tcp
 ```
-sudo lsof -i :22
+sudo lsof -i
 sudo kill -9 ID
 ```
 
-##### (The packaged build file has been quarantined and will not be uploaded to github ！)
-##### (The packaged Packages include boost and nlohmann file has been quarantined and will not be uploaded to github ！)
+:exclamation: (The packaged build file has been quarantined and will not be uploaded to github ！)
+:exclamation: (The packaged Packages include boost and nlohmann file has been quarantined and will not be uploaded to github ！)
 
-### if running code in terminal for single file: 
+### Run the unit test: 
+```
+./all_tests
+```
+or
+```
+sudo ./all_tests
+```
+
+### if running code in terminal for single file (demo): 
 ```
 1. g++ -std=c++11 server.cpp -o server
 g++ -std=c++11 -I../packages/json-develop -o server server.cpp
@@ -95,6 +109,23 @@ or
 g++ led.cpp -o led -lpigpio -lrt -lpthread
 sudo ./led
 ```
+
+### websocket Method for connecting to the web end
+1. To install cploar in the Raspberry PI, visit https://www.cpolar.com/
+2. Run cpolar http 8022 after installation：
+```
+cpolar http 8022
+```
+3. Start the web project in the remote system and configure the new WebSocket in /web/src/views/index.vue as the ip address of the cploar
+```
+this.ws = new WebSocket('ws://xxx.cn');
+```
+4. Start the Raspberry PI project
+```
+./run
+```
+5. Refresh web project
+6. The connection is successful. Hardware starts.
 
 ## Project Framework and Structure
 ```
