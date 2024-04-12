@@ -16,11 +16,11 @@ Pause::Pause(int pin) : pin(pin) {
 void Pause::turnOn() {
     // digitalWrite(pin, HIGH);
     gpioWrite(pin, PI_HIGH);
-    conveyorStatus.changeConveyorStatus(1); // 使用ConveyorStatus对象
+    conveyorStatus.changeConveyorStatus(1); // Use a ConveyorStatus object
 }
 
 void Pause::turnOff() {
     // digitalWrite(pin, LOW);
     gpioWrite(pin, PI_LOW);
-    conveyorStatus.changeConveyorStatus(0); // 使用ConveyorStatus对象
+    conveyorStatus.changeConveyorStatus(0); // Use a ConveyorStatus object
 }

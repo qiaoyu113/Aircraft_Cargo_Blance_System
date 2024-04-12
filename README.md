@@ -59,11 +59,12 @@ The inspiration for this project stems from the growing demand for aircraft carg
 
 ## Installation tutorial
 <p>
-:exclamation: **Backend:** <a href="backend/readme.md">Raspberry PI environment installation address</a>
+:exclamation: Backend: <a href="backend/readme.md">Raspberry PI environment installation address</a>
 </p>
 <p>
-:exclamation: **Web:** <a href="web/readme.md">Raspberry PI environment installation address</a>
+:exclamation: Web: <a href="web/README.md">Web environment installation address</a>
 </p>
+
 ## Overview Projects
 The Aircraft Cargo Auto Balance System is engineered with precision to ensure seamless integration and communication between its components. The heart of the system is a Raspberry Pi, which serves as the central processing unit, orchestrating the flow of commands and data.
 <p align="center">

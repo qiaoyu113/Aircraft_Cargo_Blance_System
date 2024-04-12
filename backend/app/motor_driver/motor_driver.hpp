@@ -25,7 +25,6 @@ public:
     
     void startMoving(int direction); // Start the motor
     void stop(); // Stop the motor
-    // 测试：获取当前方向
     int getCurrentDirection() const;
     
     // Direction constants

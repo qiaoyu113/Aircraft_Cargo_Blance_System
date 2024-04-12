@@ -1,5 +1,16 @@
+/**
+ * @file   hx711_sensor.hpp
+ * @brief  Gravity sensor code file
+ *
+ * @author Yu Qiao
+ * @date   2024-04-1
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #include <functional>
-#include "../../../include/common.h" // 确保引入了 AdvancedHX711 类的定义
+#include "../../../include/common.h"
 #include "../../../socket/gpio_lock.hpp"
 
 class WeightSensor {
@@ -10,10 +21,10 @@ public:
     float read_sensor_test();
 
 private:
-    HX711::AdvancedHX711 hx; // 使用 AdvancedHX711 类
-    // HX711::SimpleHX711 hx; // 使用 AdvancedHX711 类
+    HX711::AdvancedHX711 hx; 
+    // HX711::SimpleHX711 hx; 
     std::function<void(float)> callback;
     void initSensor();
     float readWeight();
-    float offset = 0; // 存储偏移量
+    float offset = 0;
 };

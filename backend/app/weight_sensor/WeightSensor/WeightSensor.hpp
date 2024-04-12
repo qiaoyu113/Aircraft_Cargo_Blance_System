@@ -37,26 +37,26 @@
 struct hx711_pin {
     int SCK;
     int SDA;
-    int EN;                      // 校准使能
-    int calibration;             // 校准
-    int coefficient;             // 比例系数
-    unsigned long value;         // 记录数值
-    int weight;                  // 重量
+    int EN;                      // Calibration enable
+    int calibration;             // Calibration
+    int coefficient;             // Scale factor
+    unsigned long value;         // Record value
+    int weight;                  // Weight          
 };
 
 class WeightSensor {
 public:
     WeightSensor(int pinSCK, int pinSDA);
-    void setCallback(std::function<void(int)> callback); // 修改回调函数的参数类型为int
+    void setCallback(std::function<void(int)> callback); // Modify the parameter type of the callback function to int
     void weightReading();
     int read_sensor_test();
     
 private:
     hx711_pin hx711;
-    std::function<void(int)> callback; // 如果您计划使用回调
+    std::function<void(int)> callback; // If you plan to use a callback
     void initPin();
-    int readSensor(); // 确保返回类型与方法实现匹配
-    void setPin(); // 匹配声明与定义
+    int readSensor(); // Ensure the return type matches the method implementation
+    void setPin(); // Match declaration with definition
 };
 
 #endif // WEIGHTSENSOR_HPP
