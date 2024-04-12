@@ -90,6 +90,11 @@ sudo kill -9 ID
 g++ -std=c++11 -I../packages/json-develop -o server server.cpp
 2. ./server
 ```
+or
+```
+g++ led.cpp -o led -lpigpio -lrt -lpthread
+sudo ./led
+```
 
 ## Project Framework and Structure
 ```

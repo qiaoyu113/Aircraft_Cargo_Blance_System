@@ -1,3 +1,14 @@
+/**
+ * @file   button.cpp
+ * @brief  Button executive file
+ *
+ * @author Yuhan Liu
+ * @date   2024-02-02
+ *
+ * Additional notes:
+ * - ...
+ */
+
 #ifndef BUTTON_HPP
 #define BUTTON_HPP
 

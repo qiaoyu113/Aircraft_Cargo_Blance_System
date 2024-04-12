@@ -1,3 +1,14 @@
+/**
+ * @file   send_message.cpp
+ * @brief  It is responsible for sending the reading of the gravity sensor to the remote server through the socket in real time
+ *
+ * @author Yu Qiao
+ * @date   2024-02-12
+ *
+ * Additional notes:
+ * - ...
+ */
+
 // send_message.cpp
 #include "send_message.hpp"
 #include <nlohmann/json.hpp>
@@ -15,7 +26,7 @@ MessageSender::MessageSender() {}
 // }
 
 void MessageSender::setSendFunction(const std::function<void(const std::string&)>& sendFunction) {
-    std::cout << "setSendFunction" << std::endl;
+    // std::cout << "setSendFunction"<< std::endl;
     this->sendFunction = sendFunction;
 }
 
