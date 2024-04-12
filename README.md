@@ -27,7 +27,7 @@ The inspiration for this project stems from the growing demand for aircraft carg
 
 | Name      | Email                                   | Contribution                                       | GitHub                              |
 | --------- | --------------------------------------- | -------------------------------------------------- | ----------------------------------- |
-| Yu Qiao | [qy0803@yeah.net](mailto:qy0803@yeah.net)        | Responsible for the overall project software framework design, front-end overall development, hardware development | [qiaoyu113](https://github.com/qiaoyu113)    |
+| Yu Qiao | [2908983Q@student.gla.ac.uk](mailto:2908983Q@student.gla.ac.uk)        | Responsible for the overall project software framework design, front-end overall development, hardware development | [qiaoyu113](https://github.com/qiaoyu113)    |
 | Yuhang Liu | [2859549l@student.gla.ac.uk](mailto:yuhanliu123@outlook.com) | Responsible for the overall hardware framework design of the project, hardware and software development | [yuhanliu123](https://github.com/yuhanliu123)    |
 | Yiling Deng | [2840572D@student.gla.ac.uk](mailto:2840572D@student.gla.ac.uk) | ... | [YiLingDeng-97](https://github.com/YiLingDeng-97)    |
 | Chanzhang He | [2949931H@student.gla.ac.uk](mailto:2949931H@student.gla.ac.uk) | ... | [zzzzzlian](https://github.com/zzzzzlian)    |
