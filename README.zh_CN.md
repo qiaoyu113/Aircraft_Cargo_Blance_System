@@ -113,7 +113,7 @@ MotorDriver类负责具体的电机控制逻辑，通过一组方法来启动、
 通过这些设计和实现策略，项目不仅遵循了SOLID原则，还确保了系统架构的整体效能和未来的可持续发展。回调的广泛使用使得系统能够以事件驱动的方式高效处理实时数据和用户交互，提升了整体的响应速度和用户体验。
 
 <p align="center">
-    <img alt="Overview" src="https://i.postimg.cc/KvSgWF7w/Wechat-IMG3760.png" width="80%">
+    <img alt="Overview" src="https://i.postimg.cc/KvSgWF7w/Wechat-IMG3760.png" width="90%">
 </p>
 
 该图像展示了飞机货物平衡系统的复杂用户界面，展示了复杂的硬件传感器数据无缝转换为直观和视觉上引人入胜的显示。

@@ -113,7 +113,7 @@ Interactions within the system are facilitated through clean and focused interfa
 Through these design and implementation strategies, the project not only follows SOLID principles but also ensures the overall efficacy and sustainable future development of the system architecture. The extensive use of callbacks enables the system to handle real-time data and user interactions efficiently in an event-driven manner, enhancing overall response speed and user experience.
 
 <p align="center">
-    <img alt="Overview" src="https://i.postimg.cc/KvSgWF7w/Wechat-IMG3760.png" width="80%">
+    <img alt="Overview" src="https://i.postimg.cc/KvSgWF7w/Wechat-IMG3760.png" width="90%">
 </p>
 
 The image illustrates a sophisticated user interface of the Aircraft Cargo Balance System, showcasing the seamless translation of intricate hardware sensor data into an intuitive and visually engaging display.
