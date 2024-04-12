@@ -54,13 +54,16 @@ The inspiration for this project stems from the growing demand for aircraft carg
    - **Communication with Raspberry Pi:** Uses WebSocket to fetch real-time data from the Raspberry Pi.
    - **User Display:** Utilizes real-time readings from the weight sensors to provide feedback to the frontend, offering users a more intuitive view of the balance through heat distribution maps and balance values.
 
-## Project Display
+## Project Video Display
 [![Watch the video](https://i.postimg.cc/TwPmdFrD/1712930620299.jpg)](https://www.youtube.com/watch?v=BFPnpCT8uog)
 
 ## Installation tutorial
-:exclamation: **Backend:** <a href="backend/README.md">Raspberry PI environment installation address</a>
-:exclamation: **Web:** <a href="web/README.md">Raspberry PI environment installation address</a>
-
+<p>
+:exclamation: **Backend:** <a href="backend/readme.md">Raspberry PI environment installation address</a>
+</p>
+<p>
+:exclamation: **Web:** <a href="web/readme.md">Raspberry PI environment installation address</a>
+</p>
 ## Overview Projects
 The Aircraft Cargo Auto Balance System is engineered with precision to ensure seamless integration and communication between its components. The heart of the system is a Raspberry Pi, which serves as the central processing unit, orchestrating the flow of commands and data.
 <p align="center">
