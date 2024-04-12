@@ -47,7 +47,7 @@ yarn run serve
 
 ## Project Framework and Structure
 ```
-frontend/
+web/
 |-- node_modules/
 |-- public/
 |-- src/
