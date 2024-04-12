@@ -67,7 +67,7 @@ The inspiration for this project stems from the growing demand for aircraft carg
 
 ## 3D Model Design
 <p align="center">
-    <img alt="Overview" src="https://i.postimg.cc/HsCdBtcG/IMG-4698.avif" width="100%">
+    <img alt="Overview" src="https://i.postimg.cc/4dwDQj0w/IMG-4698.jpg" width="100%">
 </p>
 
 To ensure precise cargo weight measurement and balance, we have developed a detailed 3D model. This model includes five smaller weighing plates, which are crucial for the individual measurement of cargo weight. These plates are connected to force sensors, capturing the exact weight of the cargo. To guarantee stability and accuracy in measurement, a larger plate has been designed to be affixed at the center bottom of the conveyor belt. This larger plate not only acts as a support structure for the weighing plates but also serves to connect the force sensors, ensuring accurate transmission of the cargo's gravitational information. The entire assembly is securely mounted on the conveyor belt, maintaining the stability of the system and ensuring real-time monitoring and balancing of cargo weight during transit.
