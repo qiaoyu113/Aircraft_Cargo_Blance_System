@@ -16,8 +16,8 @@
 ## Project Introduction
 In modern aviation logistics, effective management of aircraft cargo balance is crucial for ensuring flight safety and fuel efficiency. An imbalanced load can increase fuel consumption and may impact the aircraft's flight performance and safety. Faced with this challenge, the "Aircraft Cargo Auto Balance System" was conceived to provide an automated, efficient solution for optimizing the distribution and balance of aircraft cargo.
 <p align="center">
-    <img alt="Overview" src="https://i.postimg.cc/L4QdSGtz/IMG-4679.png" width="50%">
-    <img alt="Overview" src="https://i.postimg.cc/bY9JRYjq/IMG-4680.png" width="50%">
+    <img alt="Overview" src="https://i.postimg.cc/L4QdSGtz/IMG-4679.png" width="100%">
+    <img alt="Overview" src="https://i.postimg.cc/bY9JRYjq/IMG-4680.png" width="100%">
     <img alt="Overview" src="https://i.postimg.cc/DwsRqZtg/785d2f92-1d46-449e-7add-83e3cd96760b.png" width="100%">
 </p>
 
