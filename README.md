@@ -248,7 +248,7 @@ Aircraft_Cargo_Balance_System/
 
 ## Project Management
 We used the github project management tool to plan the project for 2 iterations, with a total of 53 tasks. The final lead developers of the project were Yu Qiao and Yuhan Liu. 
-Project management address:<a href="[backend/readme.md](https://github.com/users/qiaoyu113/projects/1/views/2)">Aircraft_Cargo_Blance_System Project Management Platform</a>
+Project management address:<a href="https://github.com/users/qiaoyu113/projects/1/views/2">Aircraft_Cargo_Blance_System Project Management Platform</a>
 The final number of tasks completed is as follows:
 | Username    | Score |
 |-------------|-------|
