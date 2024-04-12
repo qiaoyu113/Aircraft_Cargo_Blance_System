@@ -106,7 +106,11 @@ The WebSocketSession class manages real-time communication with the frontend, pr
 
 Sensor logic is abstracted through the WeightSensor interface, allowing the system to support various types of sensors without modifying the control logic, illustrating the Open/Closed Principle and Liskov Substitution Principle. Each specific sensor class, like HX711Sensor, implements this interface, ensuring flexibility and scalability in sensor replacement. Callback functions are extensively used during sensor data retrieval, allowing immediate processing of ready data without the need for polling, thus optimizing performance and response speed.
 
-The MotorDriver class is responsible for the specific motor control logic, with methods to start, stop, and adjust motor operations. This class's design permits future expansions in motor types or control strategies while avoiding direct coupling between high-level business logic and low-level hardware operations, adhering to the Dependen.
+The MotorDriver class is responsible for the specific motor control logic, with methods to start, stop, and adjust motor operations. This class's design permits future expansions in motor types or control strategies while avoiding direct coupling between high-level business logic and low-level hardware operations, adhering to the Dependency Inversion Principle.
+
+Interactions within the system are facilitated through clean and focused interfaces, minimizing direct dependencies between modules for ease of understanding and maintenance. Moreover, effective memory management strategies and multithreading safety measures ensure the application's performance and stability.
+
+Through these design and implementation strategies, the project not only follows SOLID principles but also ensures the overall efficacy and sustainable future development of the system architecture. The extensive use of callbacks enables the system to handle real-time data and user interactions efficiently in an event-driven manner, enhancing overall response speed and user experience.
 
 <p align="center">
     <img alt="Overview" src="https://i.postimg.cc/KvSgWF7w/Wechat-IMG3760.png" width="100%">
