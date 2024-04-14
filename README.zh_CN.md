@@ -1,7 +1,5 @@
 # 飞机货物自动化平衡管理系统
 
-### Author：乔宇 & 刘宇涵
-
 <p align="center">
     <img alt="logo" src="https://i.postimg.cc/HL5pVSkN/icon.png" width="150" height="150" style="margin-bottom: 10px;">
 </p>
@@ -29,8 +27,8 @@ Aircraft Cargo Balance System 是一个用于飞机货物平衡管理的开源�
 | -------- | --------------------- | ---------------------------------------------- | ------------------------------- |
 | 乔宇    | [2908983Q@student.gla.ac.uk](mailto:2908983Q@student.gla.ac.uk) | 负责整个项目软件框架设计，前端整体开发，硬件开发                | [qiaoyu113](https://github.com/qiaoyu113)    |
 | 刘宇涵    | [2859549l@student.gla.ac.uk](mailto:yuhanliu123@outlook.com) | 负责项目整体硬件框架设计，硬件及软件开发             | [yuhanliu123](https://github.com/yuhanliu123)    |
-| 邓祎灵    | [2840572D@student.gla.ac.uk](mailto:2840572D@student.gla.ac.uk) | ...            | [YiLingDeng-97](https://github.com/YiLingDeng-97)    |
-| 何宸章    | [2949931H@student.gla.ac.uk](mailto:2949931H@student.gla.ac.uk) | ...                | [zzzzzlian](https://github.com/zzzzzlian)    |
+| 邓祎灵    | [2840572D@student.gla.ac.uk](mailto:2840572D@student.gla.ac.uk) | 项目方案构思            | [YiLingDeng-97](https://github.com/YiLingDeng-97)    |
+| 何宸章    | [2949931H@student.gla.ac.uk](mailto:2949931H@student.gla.ac.uk) | 项目方案构思            | [zzzzzlian](https://github.com/zzzzzlian)    |
 
 
 ## 功能特性

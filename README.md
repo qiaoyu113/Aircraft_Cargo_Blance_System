@@ -2,8 +2,6 @@
 
 # Aircraft Cargo Auto Balance System
 
-### Author：Yu Qiao & Yuhan Liu
-
 <p align="center">
     <img alt="logo" src="https://i.postimg.cc/HL5pVSkN/icon.png" width="150" height="150" style="margin-bottom: 10px;">
 </p>
@@ -31,8 +29,8 @@ The inspiration for this project stems from the growing demand for aircraft carg
 | --------- | --------------------------------------- | -------------------------------------------------- | ----------------------------------- |
 | Yu Qiao | [2908983Q@student.gla.ac.uk](mailto:2908983Q@student.gla.ac.uk)        | Responsible for the overall project software framework design, front-end overall development, hardware development | [qiaoyu113](https://github.com/qiaoyu113)    |
 | Yuhang Liu | [2859549l@student.gla.ac.uk](mailto:yuhanliu123@outlook.com) | Responsible for the overall hardware framework design of the project, hardware and software development | [yuhanliu123](https://github.com/yuhanliu123)    |
-| Yiling Deng | [2840572D@student.gla.ac.uk](mailto:2840572D@student.gla.ac.uk) | ... | [YiLingDeng-97](https://github.com/YiLingDeng-97)    |
-| Chanzhang He | [2949931H@student.gla.ac.uk](mailto:2949931H@student.gla.ac.uk) | ... | [zzzzzlian](https://github.com/zzzzzlian)    |
+| Yiling Deng | [2840572D@student.gla.ac.uk](mailto:2840572D@student.gla.ac.uk) | Real-time conception of project scheme | [YiLingDeng-97](https://github.com/YiLingDeng-97)    |
+| Chanzhang He | [2949931H@student.gla.ac.uk](mailto:2949931H@student.gla.ac.uk) | Real-time conception of project scheme | [zzzzzlian](https://github.com/zzzzzlian)    |
 
 
 ## Key Features
