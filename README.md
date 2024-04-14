@@ -1,3 +1,5 @@
+![version](https://img.shields.io/badge/version-2.1.0-blue) ![commit](https://img.shields.io/github/commit-activity/t/qiaoyu113/Aircraft_Cargo_Blance_System) ![languages](https://img.shields.io/github/languages/count/qiaoyu113/Aircraft_Cargo_Blance_System) ![MIT](https://img.shields.io/github/license/qiaoyu113/Aircraft_Cargo_Blance_System)
+
 # Aircraft Cargo Auto Balance System
 
 ### Author：Yu Qiao & Yuhan Liu
