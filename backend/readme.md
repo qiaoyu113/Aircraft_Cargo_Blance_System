@@ -18,10 +18,14 @@
 https://www.boost.org/doc/libs/1_84_0/more/getting_started/unix-variants.html
 ### nlohmann download link: 
 https://github.com/nlohmann/json.git
-### install wiringpi
+### install Pigpio
 ```
 sudo apt-get update
-sudo apt-get install wiringpi
+wget https://github.com/joan2937/pigpio/archive/master.zip
+unzip master.zip
+cd pigpio-master
+make
+sudo make install
 ```
 
 ### install boost
